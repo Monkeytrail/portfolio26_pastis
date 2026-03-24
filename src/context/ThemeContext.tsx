@@ -1,6 +1,6 @@
 'use client';
 
-import { createContext, useContext, useEffect, useState, ReactNode } from 'react';
+import { createContext, useContext, useState, ReactNode } from 'react';
 
 type Theme = 'dark' | 'light';
 
@@ -15,23 +15,19 @@ const ThemeContext = createContext<ThemeContextValue>({
 });
 
 export function ThemeProvider({ children }: { children: ReactNode }) {
-  const [theme, setTheme] = useState<Theme>('dark');
-
-  useEffect(() => {
-    const stored = localStorage.getItem('theme') as Theme | null;
-    const preferred = window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
-    const initial = stored ?? preferred;
-    setTheme(initial);
-    document.documentElement.setAttribute('data-theme', initial);
-  }, []);
+  // Read directly from the DOM attribute set by the inline script in <head>.
+  // This prevents any flash or reset — even if this component remounts during
+  // Next.js RSC navigation, it always starts from the current live theme.
+  const [theme, setTheme] = useState<Theme>(() => {
+    if (typeof document === 'undefined') return 'dark';
+    return (document.documentElement.getAttribute('data-theme') as Theme) ?? 'dark';
+  });
 
   const toggleTheme = () => {
-    setTheme((prev) => {
-      const next: Theme = prev === 'dark' ? 'light' : 'dark';
-      localStorage.setItem('theme', next);
-      document.documentElement.setAttribute('data-theme', next);
-      return next;
-    });
+    const next: Theme = theme === 'dark' ? 'light' : 'dark';
+    setTheme(next);
+    localStorage.setItem('theme', next);
+    document.documentElement.setAttribute('data-theme', next);
   };
 
   return (
