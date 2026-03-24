@@ -28,6 +28,8 @@ export const siteSettings = defineType({
       type: 'string',
       description: 'Short brand name shown in nav and footer (e.g. JvG)',
     }),
+
+    // ── Hero ──
     defineField({
       name: 'heroHeadline',
       title: 'Hero Name',
@@ -47,10 +49,66 @@ export const siteSettings = defineType({
       rows: 3,
     }),
     defineField({
+      name: 'homeHeroCtaLabel',
+      title: 'Hero — Primary CTA Label',
+      type: 'string',
+      description: 'e.g. "View work ↓"',
+    }),
+    defineField({
+      name: 'homeAboutCtaLabel',
+      title: 'Hero — Secondary CTA Label',
+      type: 'string',
+      description: 'e.g. "About me →"',
+    }),
+
+    // ── Work section ──
+    defineField({
+      name: 'workSectionLabel',
+      title: 'Work Section — Label',
+      type: 'string',
+      description: 'Small label above heading (e.g. "Selected Work")',
+    }),
+    defineField({
+      name: 'workSectionHeading',
+      title: 'Work Section — Heading',
+      type: 'string',
+    }),
+    defineField({
+      name: 'workSectionSubheading',
+      title: 'Work Section — Subheading',
+      type: 'text',
+      rows: 2,
+    }),
+
+    // ── About page meta ──
+    defineField({
+      name: 'aboutPageTitle',
+      title: 'About Page — Meta Title',
+      type: 'string',
+    }),
+    defineField({
+      name: 'aboutPageDescription',
+      title: 'About Page — Meta Description',
+      type: 'text',
+      rows: 2,
+    }),
+
+    // ── Project detail ──
+    defineField({
+      name: 'projectBackLinkLabel',
+      title: 'Project — Back Link Label',
+      type: 'string',
+      description: 'e.g. "← All work"',
+    }),
+
+    // ── Contact ──
+    defineField({
       name: 'contactEmail',
       title: 'Contact Email',
       type: 'string',
     }),
+
+    // ── Footer ──
     defineField({
       name: 'footerTagline',
       title: 'Footer Tagline',
@@ -61,7 +119,7 @@ export const siteSettings = defineType({
       name: 'footerCopyright',
       title: 'Footer Copyright',
       type: 'string',
-      description: 'Copyright line in the footer (e.g. © 2025 Jeroen van Ginneken)',
+      description: 'Leave empty to use the current year automatically.',
     }),
     defineField({
       name: 'socialLinks',

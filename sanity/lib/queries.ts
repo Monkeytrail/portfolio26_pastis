@@ -13,9 +13,19 @@ export const projectBySlugQuery = `*[_type == "project" && slug.current == $slug
 export const projectSlugsQuery = `*[_type == "project"]{ "slug": slug.current }`;
 
 export const aboutQuery = `*[_type == "about"][0] {
-  headline, subheadline, profileImage, intro, whatILove, skills, skillCards, experience, education, quote, email, linkedinUrl
+  eyebrow, headline, subheadline, profileImage, intro, getInTouchLabel,
+  skills, whatILove, skillCards,
+  skillsSectionLabel, skillsSectionHeading, skillsSectionSubheading,
+  experienceSectionLabel, experienceSectionHeading, experienceSectionSubheading, experience,
+  educationSectionLabel, educationSectionHeading, education,
+  contactSectionLabel, contactSectionHeading, quote, email, linkedinUrl
 }`;
 
 export const siteSettingsQuery = `*[_type == "siteSettings"][0] {
-  siteTitle, siteDescription, logo, brand, heroHeadline, heroEyebrow, heroSubheadline, contactEmail, footerTagline, footerCopyright, socialLinks
+  siteTitle, siteDescription, logo, brand,
+  heroHeadline, heroEyebrow, heroSubheadline, homeHeroCtaLabel, homeAboutCtaLabel,
+  workSectionLabel, workSectionHeading, workSectionSubheading,
+  aboutPageTitle, aboutPageDescription,
+  projectBackLinkLabel,
+  contactEmail, footerTagline, footerCopyright, socialLinks
 }`;

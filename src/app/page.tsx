@@ -91,10 +91,10 @@ export default async function HomePage() {
               <p className="hero-subtitle">{heroSubheadline}</p>
               <div className="hero-actions">
                 <a href="#work" className="btn btn-primary">
-                  View work ↓
+                  {settings?.homeHeroCtaLabel ?? 'View work ↓'}
                 </a>
                 <Link href="/about" className="btn btn-ghost">
-                  About me →
+                  {settings?.homeAboutCtaLabel ?? 'About me →'}
                 </Link>
               </div>
             </div>
@@ -107,10 +107,10 @@ export default async function HomePage() {
       <section className="section" id="work">
         <div className="container">
           <div className="section-header">
-            <div className="section-label">Selected Work</div>
-            <h2 className="section-heading">Projects that matter</h2>
+            <div className="section-label">{settings?.workSectionLabel ?? 'Selected Work'}</div>
+            <h2 className="section-heading">{settings?.workSectionHeading ?? 'Projects that matter'}</h2>
             <p className="section-subheading">
-              A selection of UX/UI work spanning product design, design systems, and digital strategy.
+              {settings?.workSectionSubheading ?? 'A selection of UX/UI work spanning product design, design systems, and digital strategy.'}
             </p>
           </div>
 

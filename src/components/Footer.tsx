@@ -19,7 +19,7 @@ interface FooterProps {
 const FALLBACK: Required<FooterProps> = {
   brand: 'JvG',
   tagline: 'UX/UI Designer · Antwerp',
-  copyright: '© 2025 Jeroen van Ginneken',
+  copyright: `© ${new Date().getFullYear()} Jeroen van Ginneken`,
   contactEmail: 'coffee@jeroenvanginneken.be',
   socials: [
     { label: 'LinkedIn', href: 'https://linkedin.com/in/jeroenvanginneken', icon: 'in' },

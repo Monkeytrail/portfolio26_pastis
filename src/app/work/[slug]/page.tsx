@@ -2,7 +2,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { client } from '@/sanity/lib/client';
-import { projectBySlugQuery, projectSlugsQuery } from '@/sanity/lib/queries';
+import { projectBySlugQuery, projectSlugsQuery, siteSettingsQuery } from '@/sanity/lib/queries';
 import { urlForImage } from '@/sanity/lib/image';
 
 interface PageProps {
@@ -142,9 +142,13 @@ export default async function ProjectPage({ params }: PageProps) {
   const { slug } = await params;
 
   let project: any = null;
+  let settings: any = null;
 
   try {
-    project = await client.fetch(projectBySlugQuery, { slug });
+    [project, settings] = await Promise.all([
+      client.fetch(projectBySlugQuery, { slug }),
+      client.fetch(siteSettingsQuery),
+    ]);
   } catch {
     // Sanity not configured
   }
@@ -234,7 +238,7 @@ export default async function ProjectPage({ params }: PageProps) {
           )}
 
           <Link href="/" className="project-back-link">
-            ← All work
+            {settings?.projectBackLinkLabel ?? '← All work'}
           </Link>
         </div>
       </div>
