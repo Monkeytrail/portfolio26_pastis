@@ -24,8 +24,8 @@ export const about = defineType({
     defineField({
       name: 'intro',
       title: 'Introduction',
-      type: 'text',
-      rows: 6,
+      type: 'array',
+      of: [{ type: 'block' }],
     }),
     defineField({
       name: 'whatILove',
@@ -47,6 +47,7 @@ export const about = defineType({
       of: [
         {
           type: 'object',
+          name: 'job',
           fields: [
             { name: 'role', title: 'Role', type: 'string' },
             { name: 'company', title: 'Company', type: 'string' },
@@ -66,6 +67,7 @@ export const about = defineType({
       of: [
         {
           type: 'object',
+          name: 'degree',
           fields: [
             { name: 'degree', title: 'Degree', type: 'string' },
             { name: 'school', title: 'School', type: 'string' },
