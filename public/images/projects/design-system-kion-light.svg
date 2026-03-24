@@ -1,0 +1,204 @@
+<svg width="1200" height="675" viewBox="0 0 1200 675" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <pattern id="gridL" width="48" height="48" patternUnits="userSpaceOnUse">
+      <line x1="48" y1="0" x2="0" y2="0" stroke="#e8e8e8" stroke-width="1"/>
+      <line x1="0" y1="0" x2="0" y2="48" stroke="#e8e8e8" stroke-width="1"/>
+    </pattern>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="675" fill="#f7f7f7"/>
+  <rect width="1200" height="675" fill="url(#gridL)" opacity="0.6"/>
+
+  <!-- Large "DS" watermark -->
+  <text x="540" y="500" font-family="Inter, system-ui, sans-serif" font-size="420" fill="#efefef" font-weight="900" opacity="0.8">DS</text>
+
+  <!-- Header -->
+  <text x="72" y="80" font-family="Inter, system-ui, sans-serif" font-size="11" fill="#5c6069" letter-spacing="2" font-weight="500">DESIGN SYSTEM — WAREHOUSE SOFTWARE</text>
+  <rect x="72" y="88" width="60" height="2" fill="#fcba28"/>
+  <rect x="136" y="88" width="30" height="2" fill="#fc7428"/>
+
+  <!-- Left sidebar: Tokens -->
+  <rect x="72" y="108" width="220" height="484" rx="6" fill="#ffffff" stroke="#e1e2e4" stroke-width="1"/>
+  <text x="92" y="136" font-family="Inter, system-ui, sans-serif" font-size="9" fill="#5c6069" letter-spacing="2">TOKENS</text>
+  <line x1="92" y1="144" x2="272" y2="144" stroke="#e1e2e4" stroke-width="1"/>
+
+  <!-- Color tokens -->
+  <text x="92" y="164" font-family="Inter, system-ui, sans-serif" font-size="9" fill="#5c6069" letter-spacing="1">COLOUR</text>
+  <rect x="92" y="172" width="22" height="22" rx="3" fill="#fcba28"/>
+  <rect x="120" y="172" width="22" height="22" rx="3" fill="#fc7428"/>
+  <rect x="148" y="172" width="22" height="22" rx="3" fill="#0f0d0e"/>
+  <rect x="176" y="172" width="22" height="22" rx="3" fill="#5c6069"/>
+  <rect x="204" y="172" width="22" height="22" rx="3" fill="#f0ede8" stroke="#e1e2e4" stroke-width="1"/>
+  <rect x="232" y="172" width="22" height="22" rx="3" fill="#ffffff" stroke="#e1e2e4" stroke-width="1"/>
+
+  <line x1="92" y1="206" x2="272" y2="206" stroke="#e1e2e4" stroke-width="1"/>
+
+  <!-- Typography -->
+  <text x="92" y="224" font-family="Inter, system-ui, sans-serif" font-size="9" fill="#5c6069" letter-spacing="1">TYPE SCALE</text>
+  <text x="92" y="248" font-family="Inter, system-ui, sans-serif" font-size="20" fill="#0f0d0e" font-weight="700">Aa</text>
+  <text x="140" y="252" font-family="Inter, system-ui, sans-serif" font-size="14" fill="#0f0d0e" font-weight="400">Bb</text>
+  <text x="172" y="249" font-family="Inter, system-ui, sans-serif" font-size="11" fill="#5c6069" font-weight="500">Cc</text>
+  <text x="92" y="274" font-family="Inter, system-ui, sans-serif" font-size="10" fill="#5c6069">Inter · 300 400 600 700 800</text>
+
+  <line x1="92" y1="292" x2="272" y2="292" stroke="#e1e2e4" stroke-width="1"/>
+
+  <!-- Spacing -->
+  <text x="92" y="312" font-family="Inter, system-ui, sans-serif" font-size="9" fill="#5c6069" letter-spacing="1">SPACING</text>
+  <rect x="92" y="324" width="6" height="16" rx="1" fill="#fcba28" opacity="0.4"/>
+  <rect x="106" y="320" width="10" height="20" rx="1" fill="#fcba28" opacity="0.55"/>
+  <rect x="124" y="316" width="14" height="24" rx="1" fill="#fcba28" opacity="0.7"/>
+  <rect x="146" y="312" width="20" height="28" rx="1" fill="#fcba28" opacity="0.85"/>
+  <rect x="174" y="308" width="28" height="32" rx="1" fill="#fcba28"/>
+  <rect x="210" y="304" width="40" height="36" rx="1" fill="#fc7428" opacity="0.7"/>
+  <rect x="258" y="300" width="52" height="40" rx="1" fill="#fc7428" opacity="0.4"/>
+  <text x="92" y="358" font-family="Inter, system-ui, sans-serif" font-size="9" fill="#5c6069">4 · 8 · 12 · 16 · 24 · 32 · 48</text>
+
+  <line x1="92" y1="374" x2="272" y2="374" stroke="#e1e2e4" stroke-width="1"/>
+
+  <!-- Radius -->
+  <text x="92" y="394" font-family="Inter, system-ui, sans-serif" font-size="9" fill="#5c6069" letter-spacing="1">RADIUS</text>
+  <rect x="92" y="406" width="32" height="32" rx="1" fill="none" stroke="#fcba28" stroke-width="1.5"/>
+  <rect x="132" y="406" width="32" height="32" rx="4" fill="none" stroke="#fcba28" stroke-width="1.5"/>
+  <rect x="172" y="406" width="32" height="32" rx="10" fill="none" stroke="#fcba28" stroke-width="1.5"/>
+  <rect x="212" y="406" width="32" height="32" rx="16" fill="none" stroke="#fc7428" stroke-width="1.5"/>
+
+  <line x1="92" y1="452" x2="272" y2="452" stroke="#e1e2e4" stroke-width="1"/>
+
+  <!-- Status -->
+  <text x="92" y="470" font-family="Inter, system-ui, sans-serif" font-size="9" fill="#5c6069" letter-spacing="1">STATUS</text>
+  <rect x="92" y="480" width="56" height="20" rx="10" fill="#fcba28" opacity="0.2"/>
+  <text x="120" y="494" font-family="Inter, system-ui, sans-serif" font-size="9" fill="#fcba28" text-anchor="middle">Active</text>
+  <rect x="156" y="480" width="56" height="20" rx="10" fill="#fc7428" opacity="0.15"/>
+  <text x="184" y="494" font-family="Inter, system-ui, sans-serif" font-size="9" fill="#fc7428" text-anchor="middle">Warning</text>
+  <rect x="220" y="480" width="52" height="20" rx="10" fill="#f0ede8" stroke="#e1e2e4" stroke-width="1"/>
+  <text x="246" y="494" font-family="Inter, system-ui, sans-serif" font-size="9" fill="#5c6069" text-anchor="middle">Inactive</text>
+
+  <line x1="92" y1="512" x2="272" y2="512" stroke="#e1e2e4" stroke-width="1"/>
+
+  <!-- Motion -->
+  <text x="92" y="530" font-family="Inter, system-ui, sans-serif" font-size="9" fill="#5c6069" letter-spacing="1">MOTION</text>
+  <text x="92" y="548" font-family="Inter, system-ui, sans-serif" font-size="10" fill="#0f0d0e">Fast · 120ms ease</text>
+  <text x="92" y="564" font-family="Inter, system-ui, sans-serif" font-size="10" fill="#0f0d0e">Base · 200ms ease</text>
+  <text x="92" y="580" font-family="Inter, system-ui, sans-serif" font-size="10" fill="#5c6069">Slow · 400ms ease-out</text>
+
+  <!-- Component cards -->
+
+  <!-- Row 1 -->
+  <!-- Button -->
+  <rect x="316" y="108" width="248" height="148" rx="6" fill="#ffffff" stroke="#e1e2e4" stroke-width="1"/>
+  <text x="336" y="134" font-family="Inter, system-ui, sans-serif" font-size="9" fill="#5c6069" letter-spacing="2">BUTTON</text>
+  <rect x="336" y="148" width="96" height="36" rx="4" fill="#fcba28"/>
+  <text x="384" y="171" font-family="Inter, system-ui, sans-serif" font-size="13" fill="#0f0d0e" font-weight="600" text-anchor="middle">Primary</text>
+  <rect x="444" y="148" width="96" height="36" rx="4" fill="none" stroke="#fcba28" stroke-width="1.5"/>
+  <text x="492" y="171" font-family="Inter, system-ui, sans-serif" font-size="13" fill="#fcba28" font-weight="500" text-anchor="middle">Ghost</text>
+  <rect x="336" y="196" width="96" height="36" rx="4" fill="#f0ede8" stroke="#e1e2e4" stroke-width="1"/>
+  <text x="384" y="219" font-family="Inter, system-ui, sans-serif" font-size="13" fill="#5c6069" text-anchor="middle">Muted</text>
+  <rect x="444" y="196" width="96" height="36" rx="4" fill="#fc7428"/>
+  <text x="492" y="219" font-family="Inter, system-ui, sans-serif" font-size="13" fill="#ffffff" font-weight="600" text-anchor="middle">Action</text>
+
+  <!-- Input -->
+  <rect x="584" y="108" width="248" height="148" rx="6" fill="#ffffff" stroke="#e1e2e4" stroke-width="1"/>
+  <text x="604" y="134" font-family="Inter, system-ui, sans-serif" font-size="9" fill="#5c6069" letter-spacing="2">INPUT</text>
+  <rect x="604" y="148" width="208" height="40" rx="4" fill="#f7f7f7" stroke="#e1e2e4" stroke-width="1"/>
+  <text x="622" y="173" font-family="Inter, system-ui, sans-serif" font-size="12" fill="#5c6069">Default state</text>
+  <rect x="604" y="200" width="208" height="40" rx="4" fill="#ffffff" stroke="#fcba28" stroke-width="1.5"/>
+  <text x="622" y="225" font-family="Inter, system-ui, sans-serif" font-size="12" fill="#0f0d0e">Active state</text>
+  <line x1="622" y1="205" x2="622" y2="236" stroke="#fcba28" stroke-width="1.5"/>
+
+  <!-- Badge -->
+  <rect x="852" y="108" width="276" height="148" rx="6" fill="#ffffff" stroke="#e1e2e4" stroke-width="1"/>
+  <text x="872" y="134" font-family="Inter, system-ui, sans-serif" font-size="9" fill="#5c6069" letter-spacing="2">BADGE</text>
+  <rect x="872" y="148" width="68" height="26" rx="13" fill="#fcba28"/>
+  <text x="906" y="166" font-family="Inter, system-ui, sans-serif" font-size="11" fill="#0f0d0e" font-weight="600" text-anchor="middle">Primary</text>
+  <rect x="950" y="148" width="64" height="26" rx="13" fill="none" stroke="#fcba28" stroke-width="1.5"/>
+  <text x="982" y="166" font-family="Inter, system-ui, sans-serif" font-size="11" fill="#fcba28" text-anchor="middle">Outline</text>
+  <rect x="1024" y="148" width="68" height="26" rx="13" fill="#f0ede8" stroke="#e1e2e4" stroke-width="1"/>
+  <text x="1058" y="166" font-family="Inter, system-ui, sans-serif" font-size="11" fill="#5c6069" text-anchor="middle">Muted</text>
+  <rect x="872" y="186" width="60" height="26" rx="13" fill="#fc7428" opacity="0.15" stroke="#fc7428" stroke-width="1"/>
+  <text x="902" y="204" font-family="Inter, system-ui, sans-serif" font-size="11" fill="#fc7428" text-anchor="middle">Alert</text>
+  <rect x="942" y="186" width="72" height="26" rx="13" fill="#fcba28" opacity="0.15" stroke="#fcba28" stroke-width="1"/>
+  <text x="978" y="204" font-family="Inter, system-ui, sans-serif" font-size="11" fill="#fcba28" text-anchor="middle">Success</text>
+
+  <!-- Row 2 -->
+  <!-- Card -->
+  <rect x="316" y="276" width="248" height="168" rx="6" fill="#ffffff" stroke="#e1e2e4" stroke-width="1"/>
+  <text x="336" y="302" font-family="Inter, system-ui, sans-serif" font-size="9" fill="#5c6069" letter-spacing="2">CARD</text>
+  <rect x="336" y="314" width="208" height="108" rx="6" fill="#f7f7f7" stroke="#e1e2e4" stroke-width="1"/>
+  <rect x="336" y="314" width="208" height="48" rx="6" fill="#f0ede8"/>
+  <rect x="336" y="356" width="208" height="6" fill="#f0ede8"/>
+  <text x="354" y="343" font-family="Inter, system-ui, sans-serif" font-size="14" fill="#0f0d0e" font-weight="600">Card title</text>
+  <text x="354" y="380" font-family="Inter, system-ui, sans-serif" font-size="10" fill="#5c6069">Supporting description text</text>
+  <rect x="354" y="394" width="48" height="16" rx="8" fill="#fcba28" opacity="0.2"/>
+  <text x="378" y="406" font-family="Inter, system-ui, sans-serif" font-size="8" fill="#fcba28" text-anchor="middle">Tag</text>
+
+  <!-- Navigation -->
+  <rect x="584" y="276" width="248" height="168" rx="6" fill="#ffffff" stroke="#e1e2e4" stroke-width="1"/>
+  <text x="604" y="302" font-family="Inter, system-ui, sans-serif" font-size="9" fill="#5c6069" letter-spacing="2">NAVIGATION</text>
+  <rect x="604" y="314" width="208" height="48" rx="6" fill="#f7f7f7" stroke="#e1e2e4" stroke-width="1"/>
+  <text x="622" y="343" font-family="Inter, system-ui, sans-serif" font-size="14" fill="#0f0d0e" font-weight="700">Logo</text>
+  <text x="706" y="343" font-family="Inter, system-ui, sans-serif" font-size="12" fill="#5c6069">Work</text>
+  <text x="746" y="343" font-family="Inter, system-ui, sans-serif" font-size="12" fill="#5c6069">About</text>
+  <line x1="604" y1="376" x2="812" y2="376" stroke="#e1e2e4" stroke-width="1"/>
+  <line x1="622" y1="376" x2="662" y2="376" stroke="#fcba28" stroke-width="2"/>
+  <text x="604" y="400" font-family="Inter, system-ui, sans-serif" font-size="10" fill="#5c6069">Active state indicator</text>
+  <rect x="604" y="410" width="208" height="20" rx="4" fill="#f0ede8"/>
+  <text x="622" y="425" font-family="Inter, system-ui, sans-serif" font-size="10" fill="#5c6069">Hover state bg</text>
+
+  <!-- Timeline -->
+  <rect x="852" y="276" width="276" height="168" rx="6" fill="#ffffff" stroke="#e1e2e4" stroke-width="1"/>
+  <text x="872" y="302" font-family="Inter, system-ui, sans-serif" font-size="9" fill="#5c6069" letter-spacing="2">TIMELINE</text>
+  <line x1="896" y1="318" x2="896" y2="428" stroke="#e1e2e4" stroke-width="2"/>
+  <circle cx="896" cy="330" r="7" fill="#fcba28"/>
+  <text x="914" y="334" font-family="Inter, system-ui, sans-serif" font-size="12" fill="#0f0d0e" font-weight="600">2024 · Senior Designer</text>
+  <text x="914" y="350" font-family="Inter, system-ui, sans-serif" font-size="10" fill="#5c6069">Company name</text>
+  <circle cx="896" cy="378" r="7" fill="#ffffff" stroke="#fcba28" stroke-width="1.5"/>
+  <text x="914" y="382" font-family="Inter, system-ui, sans-serif" font-size="12" fill="#0f0d0e" font-weight="600">2022 · UX Designer</text>
+  <text x="914" y="398" font-family="Inter, system-ui, sans-serif" font-size="10" fill="#5c6069">Company name</text>
+  <circle cx="896" cy="422" r="5" fill="#ffffff" stroke="#e1e2e4" stroke-width="1.5"/>
+
+  <!-- Row 3 -->
+  <!-- Stats -->
+  <rect x="316" y="464" width="248" height="128" rx="6" fill="#ffffff" stroke="#e1e2e4" stroke-width="1"/>
+  <text x="336" y="490" font-family="Inter, system-ui, sans-serif" font-size="9" fill="#5c6069" letter-spacing="2">STAT</text>
+  <text x="336" y="540" font-family="Inter, system-ui, sans-serif" font-size="44" fill="#fcba28" font-weight="800">6</text>
+  <text x="336" y="562" font-family="Inter, system-ui, sans-serif" font-size="11" fill="#5c6069">Teams adopted</text>
+  <line x1="436" y1="504" x2="436" y2="575" stroke="#e1e2e4" stroke-width="1"/>
+  <text x="452" y="536" font-family="Inter, system-ui, sans-serif" font-size="44" fill="#fc7428" font-weight="800">98</text>
+  <text x="504" y="526" font-family="Inter, system-ui, sans-serif" font-size="14" fill="#fc7428" font-weight="600">%</text>
+  <text x="452" y="562" font-family="Inter, system-ui, sans-serif" font-size="11" fill="#5c6069">Coverage</text>
+
+  <!-- Toggle -->
+  <rect x="584" y="464" width="248" height="128" rx="6" fill="#ffffff" stroke="#e1e2e4" stroke-width="1"/>
+  <text x="604" y="490" font-family="Inter, system-ui, sans-serif" font-size="9" fill="#5c6069" letter-spacing="2">TOGGLE</text>
+  <rect x="604" y="502" width="52" height="28" rx="14" fill="#fcba28"/>
+  <circle cx="642" cy="516" r="11" fill="#ffffff"/>
+  <text x="668" y="521" font-family="Inter, system-ui, sans-serif" font-size="12" fill="#0f0d0e">Enabled</text>
+  <rect x="604" y="542" width="52" height="28" rx="14" fill="#e1e2e4"/>
+  <circle cx="617" cy="556" r="11" fill="#ffffff" stroke="#e1e2e4" stroke-width="1"/>
+  <text x="668" y="561" font-family="Inter, system-ui, sans-serif" font-size="12" fill="#5c6069">Disabled</text>
+
+  <!-- Icons -->
+  <rect x="852" y="464" width="276" height="128" rx="6" fill="#ffffff" stroke="#e1e2e4" stroke-width="1"/>
+  <text x="872" y="490" font-family="Inter, system-ui, sans-serif" font-size="9" fill="#5c6069" letter-spacing="2">ICON SYSTEM</text>
+  <rect x="872" y="502" width="40" height="40" rx="4" fill="#f7f7f7" stroke="#e1e2e4" stroke-width="1"/>
+  <circle cx="892" cy="517" r="6" fill="none" stroke="#fcba28" stroke-width="1.5"/>
+  <line x1="896" y1="522" x2="903" y2="529" stroke="#fcba28" stroke-width="1.5" stroke-linecap="round"/>
+  <rect x="920" y="502" width="40" height="40" rx="4" fill="#f7f7f7" stroke="#e1e2e4" stroke-width="1"/>
+  <circle cx="940" cy="518" r="7" fill="none" stroke="#fcba28" stroke-width="1.5"/>
+  <line x1="940" y1="511" x2="940" y2="525" stroke="#fcba28" stroke-width="1.5"/>
+  <line x1="933" y1="518" x2="947" y2="518" stroke="#fcba28" stroke-width="1.5"/>
+  <rect x="968" y="502" width="40" height="40" rx="4" fill="#f7f7f7" stroke="#e1e2e4" stroke-width="1"/>
+  <rect x="980" y="512" width="16" height="20" rx="2" fill="none" stroke="#fc7428" stroke-width="1.5"/>
+  <rect x="1016" y="502" width="40" height="40" rx="4" fill="#f7f7f7" stroke="#e1e2e4" stroke-width="1"/>
+  <circle cx="1036" cy="520" r="5" fill="none" stroke="#fc7428" stroke-width="1.5"/>
+  <text x="872" y="562" font-family="Inter, system-ui, sans-serif" font-size="10" fill="#5c6069">32 icons · 3 sizes · 2 weights</text>
+
+  <!-- Label band -->
+  <rect x="0" y="636" width="1200" height="39" fill="#f0ede8"/>
+  <line x1="0" y1="636" x2="1200" y2="636" stroke="#e1e2e4" stroke-width="1"/>
+  <text x="72" y="660" font-family="Inter, system-ui, sans-serif" font-size="11" fill="#5c6069" letter-spacing="1.5" font-weight="500">DESIGN SYSTEM KION</text>
+  <text x="280" y="660" font-family="Inter, system-ui, sans-serif" font-size="11" fill="#c0c2c6" letter-spacing="1">·  KION  ·  2026</text>
+  <rect x="72" y="636" width="80" height="3" fill="#fcba28"/>
+  <rect x="156" y="636" width="40" height="3" fill="#fc7428"/>
+</svg>

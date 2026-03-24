@@ -1,0 +1,193 @@
+<svg width="1200" height="675" viewBox="0 0 1200 675" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="skyBg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#f0f2f5"/>
+      <stop offset="60%" stop-color="#e8ecf1"/>
+      <stop offset="100%" stop-color="#dde4ee"/>
+    </linearGradient>
+    <linearGradient id="waterLight" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#dde4ee" stop-opacity="0.8"/>
+      <stop offset="100%" stop-color="#f0f2f5" stop-opacity="0"/>
+    </linearGradient>
+    <pattern id="wavePatternLight" width="120" height="20" patternUnits="userSpaceOnUse">
+      <path d="M0,10 Q30,2 60,10 Q90,18 120,10" fill="none" stroke="#cfd8e6" stroke-width="1.5"/>
+    </pattern>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="675" fill="url(#skyBg)"/>
+
+  <!-- Horizon water area -->
+  <rect x="0" y="430" width="1200" height="245" fill="#dde4ee" opacity="0.5"/>
+  <rect x="0" y="440" width="1200" height="195" fill="url(#wavePatternLight)" opacity="0.5"/>
+
+  <!-- Horizon line -->
+  <line x1="0" y1="440" x2="1200" y2="440" stroke="#cfd8e6" stroke-width="1"/>
+
+  <!-- Subtle sky dots / clouds -->
+  <circle cx="120" cy="80" r="20" fill="#e8ecf1" opacity="0.6"/>
+  <circle cx="160" cy="72" r="28" fill="#edf0f4" opacity="0.5"/>
+  <circle cx="380" cy="100" r="18" fill="#e8ecf1" opacity="0.4"/>
+  <circle cx="1000" cy="90" r="22" fill="#e8ecf1" opacity="0.5"/>
+  <circle cx="1050" cy="78" r="16" fill="#edf0f4" opacity="0.4"/>
+
+  <!-- Compass rose — center background element -->
+  <g transform="translate(600, 260)" opacity="0.1">
+    <circle cx="0" cy="0" r="160" fill="none" stroke="#fcba28" stroke-width="1"/>
+    <circle cx="0" cy="0" r="120" fill="none" stroke="#fcba28" stroke-width="0.5"/>
+    <circle cx="0" cy="0" r="80" fill="none" stroke="#fcba28" stroke-width="0.5"/>
+    <!-- N -->
+    <polygon points="0,-160 -12,-120 0,-100 12,-120" fill="#fcba28"/>
+    <!-- S -->
+    <polygon points="0,160 -8,120 0,100 8,120" fill="#fcba28" opacity="0.4"/>
+    <!-- E -->
+    <polygon points="160,0 120,-8 100,0 120,8" fill="#fcba28" opacity="0.4"/>
+    <!-- W -->
+    <polygon points="-160,0 -120,-8 -100,0 -120,8" fill="#fcba28" opacity="0.4"/>
+    <!-- Intercardinal points -->
+    <polygon points="113,113 95,85 85,95" fill="#fcba28" opacity="0.3"/>
+    <polygon points="-113,113 -95,85 -85,95" fill="#fcba28" opacity="0.3"/>
+    <polygon points="113,-113 95,-85 85,-95" fill="#fcba28" opacity="0.3"/>
+    <polygon points="-113,-113 -95,-85 -85,-95" fill="#fcba28" opacity="0.3"/>
+    <circle cx="0" cy="0" r="12" fill="#fcba28" opacity="0.5"/>
+    <circle cx="0" cy="0" r="5" fill="#fcba28"/>
+  </g>
+
+  <!-- Ship silhouette — lighter, subtle -->
+  <!-- Hull -->
+  <path d="M280,430 L300,390 L900,390 L920,430 Z" fill="#c8cdd6" stroke="#bfc5cf" stroke-width="1"/>
+  <!-- Deck superstructure -->
+  <rect x="480" y="330" width="240" height="60" rx="2" fill="#d0d5de" stroke="#c8cdd6" stroke-width="1"/>
+  <rect x="540" y="280" width="120" height="50" rx="2" fill="#c8cdd6" stroke="#bfc5cf" stroke-width="1"/>
+  <!-- Bridge windows -->
+  <rect x="556" y="292" width="20" height="14" rx="1" fill="#fcba28" opacity="0.2"/>
+  <rect x="582" y="292" width="20" height="14" rx="1" fill="#fcba28" opacity="0.15"/>
+  <rect x="608" y="292" width="20" height="14" rx="1" fill="#fcba28" opacity="0.2"/>
+  <!-- Mast -->
+  <line x1="600" y1="180" x2="600" y2="280" stroke="#bfc5cf" stroke-width="3"/>
+  <!-- Radar/antenna -->
+  <line x1="560" y1="190" x2="640" y2="190" stroke="#c8cdd6" stroke-width="2"/>
+  <circle cx="600" cy="185" r="4" fill="#fcba28" opacity="0.3"/>
+  <!-- Port light -->
+  <circle cx="282" cy="410" r="4" fill="#fc7428" opacity="0.5"/>
+  <!-- Starboard light -->
+  <circle cx="918" cy="410" r="4" fill="#fcba28" opacity="0.5"/>
+  <!-- Funnel / chimney -->
+  <rect x="580" y="250" width="40" height="30" rx="2" fill="#bfc5cf" stroke="#c8cdd6" stroke-width="1"/>
+  <!-- Water reflection -->
+  <path d="M280,430 L300,445 L900,445 L920,430 Z" fill="#dde4ee" opacity="0.6"/>
+
+  <!-- Website mockup frames — floating in foreground -->
+  <!-- Main browser window — Hero section -->
+  <rect x="72" y="72" width="480" height="340" rx="8" fill="#ffffff" stroke="#e1e2e4" stroke-width="1"/>
+  <!-- Browser chrome -->
+  <rect x="72" y="72" width="480" height="32" rx="8" fill="#f7f7f7"/>
+  <rect x="72" y="98" width="480" height="6" fill="#f7f7f7"/>
+  <circle cx="96" cy="88" r="5" fill="#e1e2e4"/>
+  <circle cx="116" cy="88" r="5" fill="#e1e2e4"/>
+  <circle cx="136" cy="88" r="5" fill="#e1e2e4"/>
+  <rect x="156" y="80" width="280" height="16" rx="8" fill="#ffffff" stroke="#e1e2e4" stroke-width="1"/>
+  <text x="296" y="92" font-family="Inter, system-ui, sans-serif" font-size="9" fill="#5c6069" text-anchor="middle">antwerpmaritimeacademy.be</text>
+
+  <!-- Nav bar inside -->
+  <rect x="72" y="104" width="480" height="44" fill="#ffffff" stroke="#e1e2e4" stroke-width="0"/>
+  <line x1="72" y1="148" x2="552" y2="148" stroke="#e1e2e4" stroke-width="1"/>
+  <text x="92" y="131" font-family="Inter, system-ui, sans-serif" font-size="13" fill="#0f0d0e" font-weight="700">AMA</text>
+  <text x="200" y="131" font-family="Inter, system-ui, sans-serif" font-size="11" fill="#5c6069">Opleidingen</text>
+  <text x="284" y="131" font-family="Inter, system-ui, sans-serif" font-size="11" fill="#5c6069">Over ons</text>
+  <text x="360" y="131" font-family="Inter, system-ui, sans-serif" font-size="11" fill="#5c6069">Contact</text>
+  <rect x="424" y="117" width="112" height="28" rx="4" fill="#fcba28"/>
+  <text x="480" y="136" font-family="Inter, system-ui, sans-serif" font-size="11" fill="#0f0d0e" font-weight="600" text-anchor="middle">Inschrijven →</text>
+
+  <!-- Hero section inside browser -->
+  <rect x="72" y="148" width="480" height="264" fill="#f0f2f5"/>
+  <!-- Wave lines in hero (subtle) -->
+  <line x1="72" y1="340" x2="552" y2="340" stroke="#cfd8e6" stroke-width="1" opacity="0.6"/>
+  <line x1="72" y1="356" x2="552" y2="356" stroke="#cfd8e6" stroke-width="1" opacity="0.4"/>
+  <!-- Hero content -->
+  <text x="112" y="195" font-family="Inter, system-ui, sans-serif" font-size="9" fill="#fcba28" letter-spacing="2" font-weight="600">KONINKLIJKE ACADEMIE</text>
+  <text x="112" y="220" font-family="Inter, system-ui, sans-serif" font-size="24" fill="#0f0d0e" font-weight="800">Vaar de wereld</text>
+  <text x="112" y="246" font-family="Inter, system-ui, sans-serif" font-size="24" fill="#0f0d0e" font-weight="800">over.</text>
+  <text x="112" y="272" font-family="Inter, system-ui, sans-serif" font-size="11" fill="#5c6069">Opleidingen · Antwerpen · Maritiem</text>
+  <rect x="112" y="288" width="140" height="36" rx="4" fill="#fcba28"/>
+  <text x="182" y="311" font-family="Inter, system-ui, sans-serif" font-size="12" fill="#0f0d0e" font-weight="600" text-anchor="middle">Meer ontdekken</text>
+  <rect x="264" y="288" width="140" height="36" rx="4" fill="none" stroke="#fcba28" stroke-width="1.5"/>
+  <text x="334" y="311" font-family="Inter, system-ui, sans-serif" font-size="12" fill="#fcba28" text-anchor="middle">Inschrijven →</text>
+  <!-- Compass decoration in hero -->
+  <g transform="translate(480, 220)" opacity="0.1">
+    <circle cx="0" cy="0" r="40" fill="none" stroke="#fcba28" stroke-width="1"/>
+    <polygon points="0,-40 -5,-20 0,-10 5,-20" fill="#fcba28"/>
+    <polygon points="0,40 -3,20 0,10 3,20" fill="#fcba28" opacity="0.5"/>
+    <line x1="-40" y1="0" x2="40" y2="0" stroke="#fcba28" stroke-width="0.5"/>
+    <circle cx="0" cy="0" r="5" fill="#fcba28"/>
+  </g>
+
+  <!-- Mobile mockup — right side -->
+  <rect x="780" y="52" width="348" height="560" rx="32" fill="#f0ede8" stroke="#e1e2e4" stroke-width="1.5"/>
+  <rect x="796" y="68" width="316" height="528" rx="24" fill="#ffffff"/>
+  <!-- Dynamic island -->
+  <rect x="908" y="80" width="68" height="24" rx="12" fill="#e1e2e4"/>
+
+  <!-- Mobile nav -->
+  <rect x="796" y="104" width="316" height="44" fill="#ffffff"/>
+  <line x1="796" y1="148" x2="1112" y2="148" stroke="#e1e2e4" stroke-width="1"/>
+  <text x="816" y="131" font-family="Inter, system-ui, sans-serif" font-size="12" fill="#0f0d0e" font-weight="700">AMA</text>
+  <rect x="1040" y="112" width="60" height="28" rx="4" fill="#fcba28"/>
+  <text x="1070" y="131" font-family="Inter, system-ui, sans-serif" font-size="10" fill="#0f0d0e" font-weight="600" text-anchor="middle">Menu</text>
+
+  <!-- Mobile hero -->
+  <rect x="796" y="148" width="316" height="200" fill="#f0f2f5"/>
+  <text x="816" y="183" font-family="Inter, system-ui, sans-serif" font-size="8" fill="#fcba28" letter-spacing="1.5">KONINKLIJKE ACADEMIE</text>
+  <text x="816" y="208" font-family="Inter, system-ui, sans-serif" font-size="20" fill="#0f0d0e" font-weight="800">Vaar de</text>
+  <text x="816" y="232" font-family="Inter, system-ui, sans-serif" font-size="20" fill="#0f0d0e" font-weight="800">wereld over.</text>
+  <text x="816" y="252" font-family="Inter, system-ui, sans-serif" font-size="10" fill="#5c6069">Opleidingen · Antwerpen</text>
+  <rect x="816" y="268" width="272" height="60" rx="4" fill="#e8ecf1"/>
+  <g transform="translate(912, 298)" opacity="0.2">
+    <circle cx="0" cy="0" r="20" fill="none" stroke="#fcba28" stroke-width="1"/>
+    <polygon points="0,-20 -3,-10 0,-5 3,-10" fill="#fcba28"/>
+    <circle cx="0" cy="0" r="3" fill="#fcba28"/>
+  </g>
+
+  <!-- Mobile content cards -->
+  <rect x="796" y="360" width="316" height="72" fill="#f7f7f7"/>
+  <line x1="796" y1="360" x2="1112" y2="360" stroke="#e1e2e4" stroke-width="1"/>
+  <text x="816" y="382" font-family="Inter, system-ui, sans-serif" font-size="9" fill="#5c6069" letter-spacing="1">OPLEIDINGEN</text>
+  <rect x="816" y="392" width="132" height="28" rx="4" fill="#f0ede8"/>
+  <text x="882" y="411" font-family="Inter, system-ui, sans-serif" font-size="10" fill="#0f0d0e" text-anchor="middle">Scheepvaart</text>
+  <rect x="956" y="392" width="132" height="28" rx="4" fill="#fcba28" opacity="0.15" stroke="#fcba28" stroke-width="1"/>
+  <text x="1022" y="411" font-family="Inter, system-ui, sans-serif" font-size="10" fill="#fcba28" text-anchor="middle">Logistiek</text>
+
+  <rect x="796" y="444" width="316" height="60" fill="#ffffff"/>
+  <line x1="796" y1="444" x2="1112" y2="444" stroke="#e1e2e4" stroke-width="1"/>
+  <text x="816" y="464" font-family="Inter, system-ui, sans-serif" font-size="11" fill="#0f0d0e" font-weight="500">Nautische wetenschappen</text>
+  <text x="816" y="480" font-family="Inter, system-ui, sans-serif" font-size="10" fill="#5c6069">3 jaar · Bachelor</text>
+  <text x="1096" y="474" font-family="Inter, system-ui, sans-serif" font-size="12" fill="#fcba28" text-anchor="end">→</text>
+
+  <rect x="796" y="516" width="316" height="60" fill="#f7f7f7"/>
+  <line x1="796" y1="516" x2="1112" y2="516" stroke="#e1e2e4" stroke-width="1"/>
+  <text x="816" y="536" font-family="Inter, system-ui, sans-serif" font-size="11" fill="#0f0d0e" font-weight="500">Maritieme logistiek</text>
+  <text x="816" y="552" font-family="Inter, system-ui, sans-serif" font-size="10" fill="#5c6069">3 jaar · Bachelor</text>
+  <text x="1096" y="546" font-family="Inter, system-ui, sans-serif" font-size="12" fill="#5c6069" text-anchor="end">→</text>
+
+  <!-- Home indicator -->
+  <rect x="900" y="580" width="84" height="4" rx="2" fill="#0f0d0e" opacity="0.15"/>
+
+  <!-- Accessibility badge -->
+  <rect x="72" y="428" width="196" height="36" rx="6" fill="#ffffff" stroke="#fcba28" stroke-width="1"/>
+  <circle cx="96" cy="446" r="10" fill="#fcba28" opacity="0.2"/>
+  <text x="96" y="450" font-family="Inter, system-ui, sans-serif" font-size="11" fill="#fcba28" text-anchor="middle">✓</text>
+  <text x="114" y="444" font-family="Inter, system-ui, sans-serif" font-size="10" fill="#0f0d0e" font-weight="500">WCAG 2.1 AA</text>
+  <text x="114" y="457" font-family="Inter, system-ui, sans-serif" font-size="9" fill="#5c6069">Accessibility compliant</text>
+
+  <rect x="280" y="428" width="160" height="36" rx="6" fill="#ffffff" stroke="#e1e2e4" stroke-width="1"/>
+  <text x="360" y="444" font-family="Inter, system-ui, sans-serif" font-size="10" fill="#0f0d0e" text-anchor="middle" font-weight="500">Mobile-first</text>
+  <text x="360" y="457" font-family="Inter, system-ui, sans-serif" font-size="9" fill="#5c6069" text-anchor="middle">Responsive design</text>
+
+  <!-- Label band -->
+  <rect x="0" y="636" width="1200" height="39" fill="#f0ede8"/>
+  <line x1="0" y1="636" x2="1200" y2="636" stroke="#e1e2e4" stroke-width="1"/>
+  <text x="72" y="660" font-family="Inter, system-ui, sans-serif" font-size="11" fill="#5c6069" letter-spacing="1.5" font-weight="500">ANTWERP MARITIME ACADEMY</text>
+  <text x="380" y="660" font-family="Inter, system-ui, sans-serif" font-size="11" fill="#c0c2c6" letter-spacing="1">·  VIAVICTOR  ·  2023</text>
+  <rect x="72" y="636" width="80" height="3" fill="#fcba28"/>
+  <rect x="156" y="636" width="40" height="3" fill="#fc7428"/>
+</svg>

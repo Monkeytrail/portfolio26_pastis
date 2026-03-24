@@ -1,0 +1,195 @@
+<svg width="1200" height="675" viewBox="0 0 1200 675" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="chartGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#fcba28" stop-opacity="0.4"/>
+      <stop offset="100%" stop-color="#fcba28" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="bgGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0d0d0d"/>
+      <stop offset="100%" stop-color="#1a1200"/>
+    </linearGradient>
+    <clipPath id="screenClip">
+      <rect x="378" y="98" width="444" height="479" rx="0"/>
+    </clipPath>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="675" fill="url(#bgGrad)"/>
+
+  <!-- Decorative circles behind phone -->
+  <circle cx="600" cy="337" r="280" fill="none" stroke="#1e1e1e" stroke-width="1" opacity="0.8"/>
+  <circle cx="600" cy="337" r="320" fill="none" stroke="#1a1a1a" stroke-width="1" opacity="0.5"/>
+  <circle cx="600" cy="337" r="360" fill="none" stroke="#181818" stroke-width="1" opacity="0.3"/>
+
+  <!-- Accent dot grid -->
+  <circle cx="180" cy="200" r="2" fill="#fcba28" opacity="0.3"/>
+  <circle cx="228" cy="200" r="2" fill="#fcba28" opacity="0.2"/>
+  <circle cx="276" cy="200" r="2" fill="#fcba28" opacity="0.15"/>
+  <circle cx="180" cy="248" r="2" fill="#fcba28" opacity="0.2"/>
+  <circle cx="228" cy="248" r="2" fill="#fcba28" opacity="0.15"/>
+  <circle cx="180" cy="296" r="2" fill="#fcba28" opacity="0.15"/>
+
+  <circle cx="924" cy="380" r="2" fill="#fc7428" opacity="0.3"/>
+  <circle cx="972" cy="380" r="2" fill="#fc7428" opacity="0.2"/>
+  <circle cx="1020" cy="380" r="2" fill="#fc7428" opacity="0.15"/>
+  <circle cx="924" cy="428" r="2" fill="#fc7428" opacity="0.2"/>
+  <circle cx="972" cy="428" r="2" fill="#fc7428" opacity="0.15"/>
+  <circle cx="924" cy="476" r="2" fill="#fc7428" opacity="0.1"/>
+
+  <!-- Phone outer frame -->
+  <rect x="358" y="52" width="484" height="571" rx="44" fill="#1a1a1a" stroke="#383c44" stroke-width="2"/>
+
+  <!-- Phone inner frame / screen area -->
+  <rect x="374" y="68" width="452" height="539" rx="34" fill="#0f0f0f"/>
+
+  <!-- Dynamic island -->
+  <rect x="556" y="80" width="88" height="28" rx="14" fill="#000"/>
+
+  <!-- Status bar -->
+  <text x="396" y="98" font-family="Inter, system-ui, sans-serif" font-size="10" fill="#f9f4da" font-weight="600">9:41</text>
+  <rect x="784" y="88" width="20" height="10" rx="3" fill="none" stroke="#f9f4da" stroke-width="1.2" opacity="0.7"/>
+  <rect x="785" y="89" width="14" height="8" rx="2" fill="#f9f4da" opacity="0.7"/>
+  <rect x="804" y="90" width="3" height="6" rx="1.5" fill="#f9f4da" opacity="0.5"/>
+
+  <!-- Screen content -->
+  <!-- Header -->
+  <rect x="374" y="112" width="452" height="72" fill="#141414"/>
+  <text x="396" y="138" font-family="Inter, system-ui, sans-serif" font-size="11" fill="#909498">Good morning</text>
+  <text x="396" y="160" font-family="Inter, system-ui, sans-serif" font-size="16" fill="#f9f4da" font-weight="600">Jeroen</text>
+  <!-- Avatar -->
+  <circle cx="794" cy="148" r="20" fill="#262522" stroke="#383c44" stroke-width="1"/>
+  <circle cx="794" cy="143" r="8" fill="#383c44"/>
+  <path d="M774 168 Q794 158 814 168" fill="#383c44"/>
+
+  <!-- Balance card -->
+  <rect x="396" y="196" width="408" height="116" rx="12" fill="#fcba28"/>
+  <text x="416" y="224" font-family="Inter, system-ui, sans-serif" font-size="11" fill="#0d0d0d" font-weight="500" opacity="0.7">Total Balance</text>
+  <text x="416" y="264" font-family="Inter, system-ui, sans-serif" font-size="36" fill="#0d0d0d" font-weight="800">€12,450</text>
+  <text x="569" y="254" font-family="Inter, system-ui, sans-serif" font-size="18" fill="#0d0d0d" font-weight="700">.00</text>
+  <text x="416" y="294" font-family="Inter, system-ui, sans-serif" font-size="11" fill="#0d0d0d" opacity="0.6">**** **** **** 4821</text>
+  <!-- Card chip -->
+  <rect x="738" y="218" width="40" height="30" rx="4" fill="#0d0d0d" opacity="0.2"/>
+  <line x1="738" y1="228" x2="778" y2="228" stroke="#0d0d0d" stroke-width="0.8" opacity="0.2"/>
+  <line x1="750" y1="218" x2="750" y2="248" stroke="#0d0d0d" stroke-width="0.8" opacity="0.2"/>
+  <line x1="765" y1="218" x2="765" y2="248" stroke="#0d0d0d" stroke-width="0.8" opacity="0.2"/>
+
+  <!-- Quick actions row -->
+  <text x="396" y="340" font-family="Inter, system-ui, sans-serif" font-size="11" fill="#909498">Quick actions</text>
+  <!-- Send -->
+  <rect x="396" y="352" width="76" height="76" rx="10" fill="#1e1e1e"/>
+  <circle cx="434" cy="376" r="16" fill="#fcba28" opacity="0.15"/>
+  <line x1="426" y1="376" x2="442" y2="376" stroke="#fcba28" stroke-width="2" stroke-linecap="round"/>
+  <polyline points="436,370 442,376 436,382" fill="none" stroke="#fcba28" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+  <text x="420" y="414" font-family="Inter, system-ui, sans-serif" font-size="9" fill="#909498">Send</text>
+  <!-- Receive -->
+  <rect x="484" y="352" width="76" height="76" rx="10" fill="#1e1e1e"/>
+  <circle cx="522" cy="376" r="16" fill="#fcba28" opacity="0.15"/>
+  <line x1="514" y1="376" x2="530" y2="376" stroke="#fcba28" stroke-width="2" stroke-linecap="round"/>
+  <polyline points="520,370 514,376 520,382" fill="none" stroke="#fcba28" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+  <text x="504" y="414" font-family="Inter, system-ui, sans-serif" font-size="9" fill="#909498">Receive</text>
+  <!-- Top up -->
+  <rect x="572" y="352" width="76" height="76" rx="10" fill="#1e1e1e"/>
+  <circle cx="610" cy="376" r="16" fill="#fc7428" opacity="0.15"/>
+  <line x1="610" y1="368" x2="610" y2="384" stroke="#fc7428" stroke-width="2" stroke-linecap="round"/>
+  <line x1="602" y1="376" x2="618" y2="376" stroke="#fc7428" stroke-width="2" stroke-linecap="round"/>
+  <text x="594" y="414" font-family="Inter, system-ui, sans-serif" font-size="9" fill="#909498">Top up</text>
+  <!-- More -->
+  <rect x="660" y="352" width="76" height="76" rx="10" fill="#1e1e1e"/>
+  <circle cx="694" cy="374" r="3" fill="#909498"/>
+  <circle cx="706" cy="374" r="3" fill="#909498"/>
+  <circle cx="718" cy="374" r="3" fill="#909498"/>
+  <text x="694" y="414" font-family="Inter, system-ui, sans-serif" font-size="9" fill="#909498">More</text>
+  <!-- Pay -->
+  <rect x="748" y="352" width="56" height="76" rx="10" fill="#1e1e1e"/>
+  <circle cx="776" cy="376" r="16" fill="#262522"/>
+  <rect x="768" y="370" width="16" height="12" rx="2" fill="none" stroke="#909498" stroke-width="1.2"/>
+  <line x1="772" y1="370" x2="772" y2="366" stroke="#909498" stroke-width="1.2" stroke-linecap="round"/>
+  <line x1="780" y1="370" x2="780" y2="366" stroke="#909498" stroke-width="1.2" stroke-linecap="round"/>
+  <text x="768" y="414" font-family="Inter, system-ui, sans-serif" font-size="9" fill="#909498">Pay</text>
+
+  <!-- Chart section -->
+  <text x="396" y="454" font-family="Inter, system-ui, sans-serif" font-size="11" fill="#909498">Spending · this month</text>
+  <text x="688" y="454" font-family="Inter, system-ui, sans-serif" font-size="11" fill="#fcba28">−8.4%</text>
+
+  <!-- Area chart -->
+  <rect x="396" y="462" width="408" height="90" rx="6" fill="#141414"/>
+  <!-- Grid lines -->
+  <line x1="396" y1="492" x2="804" y2="492" stroke="#1e1e1e" stroke-width="1"/>
+  <line x1="396" y1="512" x2="804" y2="512" stroke="#1e1e1e" stroke-width="1"/>
+  <line x1="396" y1="532" x2="804" y2="532" stroke="#1e1e1e" stroke-width="1"/>
+  <!-- Area fill -->
+  <polygon points="396,542 432,518 468,525 504,505 540,515 576,490 612,498 648,480 684,488 720,470 756,476 792,462 804,462 804,552 396,552" fill="url(#chartGrad)"/>
+  <!-- Line -->
+  <polyline points="396,542 432,518 468,525 504,505 540,515 576,490 612,498 648,480 684,488 720,470 756,476 792,462" fill="none" stroke="#fcba28" stroke-width="2" stroke-linejoin="round"/>
+  <!-- Data point highlight -->
+  <circle cx="792" cy="462" r="4" fill="#fcba28"/>
+  <circle cx="792" cy="462" r="8" fill="#fcba28" opacity="0.2"/>
+
+  <!-- Transaction list -->
+  <text x="396" y="574" font-family="Inter, system-ui, sans-serif" font-size="11" fill="#909498">Recent</text>
+  <!-- Transaction row 1 -->
+  <rect x="396" y="582" width="408" height="1" fill="#1e1e1e"/>
+  <circle cx="414" cy="601" r="12" fill="#1e1e1e"/>
+  <rect x="432" y="593" width="96" height="8" rx="4" fill="#262522"/>
+  <rect x="432" y="607" width="64" height="6" rx="3" fill="#1e1e1e"/>
+  <text x="758" y="602" font-family="Inter, system-ui, sans-serif" font-size="11" fill="#f9f4da" font-weight="600" text-anchor="end">−€24.50</text>
+
+  <!-- Bottom nav -->
+  <rect x="374" y="566" width="452" height="1" fill="#1e1e1e"/>
+  <rect x="374" y="586" width="452" height="52" fill="#0f0f0f"/>
+
+  <!-- Home indicator -->
+  <rect x="536" y="628" width="128" height="4" rx="2" fill="#f9f4da" opacity="0.3"/>
+
+  <!-- Sidebar stats (left) -->
+  <rect x="80" y="172" width="240" height="100" rx="8" fill="#1e1e1e" stroke="#383c44" stroke-width="1"/>
+  <text x="104" y="200" font-family="Inter, system-ui, sans-serif" font-size="10" fill="#909498" letter-spacing="1">ENGAGEMENT</text>
+  <text x="104" y="238" font-family="Inter, system-ui, sans-serif" font-size="48" fill="#fcba28" font-weight="800">40</text>
+  <text x="176" y="226" font-family="Inter, system-ui, sans-serif" font-size="20" fill="#fcba28" font-weight="700">%</text>
+  <text x="104" y="258" font-family="Inter, system-ui, sans-serif" font-size="11" fill="#909498">increase in engagement</text>
+
+  <rect x="80" y="288" width="240" height="80" rx="8" fill="#1e1e1e" stroke="#383c44" stroke-width="1"/>
+  <text x="104" y="316" font-family="Inter, system-ui, sans-serif" font-size="10" fill="#909498" letter-spacing="1">SESSIONS / DAY</text>
+  <text x="104" y="350" font-family="Inter, system-ui, sans-serif" font-size="32" fill="#f9f4da" font-weight="700">3.8×</text>
+  <text x="200" y="342" font-family="Inter, system-ui, sans-serif" font-size="11" fill="#fc7428">↑ avg</text>
+
+  <rect x="80" y="384" width="240" height="80" rx="8" fill="#1e1e1e" stroke="#383c44" stroke-width="1"/>
+  <text x="104" y="412" font-family="Inter, system-ui, sans-serif" font-size="10" fill="#909498" letter-spacing="1">USER RESEARCH</text>
+  <text x="104" y="444" font-family="Inter, system-ui, sans-serif" font-size="13" fill="#f9f4da" font-weight="500">48 interviews</text>
+  <text x="104" y="460" font-family="Inter, system-ui, sans-serif" font-size="11" fill="#909498">6 usability tests</text>
+
+  <rect x="80" y="480" width="240" height="80" rx="8" fill="#1e1e1e" stroke="#383c44" stroke-width="1"/>
+  <text x="104" y="508" font-family="Inter, system-ui, sans-serif" font-size="10" fill="#909498" letter-spacing="1">PLATFORM</text>
+  <text x="104" y="540" font-family="Inter, system-ui, sans-serif" font-size="13" fill="#f9f4da" font-weight="500">iOS · Android</text>
+  <text x="104" y="556" font-family="Inter, system-ui, sans-serif" font-size="11" fill="#909498">React Native</text>
+
+  <!-- Sidebar stats (right) -->
+  <rect x="880" y="172" width="240" height="100" rx="8" fill="#1e1e1e" stroke="#383c44" stroke-width="1"/>
+  <text x="904" y="200" font-family="Inter, system-ui, sans-serif" font-size="10" fill="#909498" letter-spacing="1">TASK SUCCESS</text>
+  <text x="904" y="238" font-family="Inter, system-ui, sans-serif" font-size="48" fill="#fc7428" font-weight="800">94</text>
+  <text x="976" y="226" font-family="Inter, system-ui, sans-serif" font-size="20" fill="#fc7428" font-weight="700">%</text>
+  <text x="904" y="258" font-family="Inter, system-ui, sans-serif" font-size="11" fill="#909498">completion rate</text>
+
+  <rect x="880" y="288" width="240" height="80" rx="8" fill="#1e1e1e" stroke="#383c44" stroke-width="1"/>
+  <text x="904" y="316" font-family="Inter, system-ui, sans-serif" font-size="10" fill="#909498" letter-spacing="1">NPS SCORE</text>
+  <text x="904" y="350" font-family="Inter, system-ui, sans-serif" font-size="32" fill="#f9f4da" font-weight="700">+72</text>
+  <text x="1000" y="342" font-family="Inter, system-ui, sans-serif" font-size="11" fill="#fcba28">↑ 28</text>
+
+  <rect x="880" y="384" width="240" height="80" rx="8" fill="#1e1e1e" stroke="#383c44" stroke-width="1"/>
+  <text x="904" y="412" font-family="Inter, system-ui, sans-serif" font-size="10" fill="#909498" letter-spacing="1">TIME ON TASK</text>
+  <text x="904" y="444" font-family="Inter, system-ui, sans-serif" font-size="13" fill="#f9f4da" font-weight="500">−34% time</text>
+  <text x="904" y="460" font-family="Inter, system-ui, sans-serif" font-size="11" fill="#909498">send money flow</text>
+
+  <rect x="880" y="480" width="240" height="80" rx="8" fill="#1e1e1e" stroke="#383c44" stroke-width="1"/>
+  <text x="904" y="508" font-family="Inter, system-ui, sans-serif" font-size="10" fill="#909498" letter-spacing="1">SCREENS</text>
+  <text x="904" y="540" font-family="Inter, system-ui, sans-serif" font-size="13" fill="#f9f4da" font-weight="500">42 screens</text>
+  <text x="904" y="556" font-family="Inter, system-ui, sans-serif" font-size="11" fill="#909498">end-to-end</text>
+
+  <!-- Label band -->
+  <rect x="0" y="636" width="1200" height="39" fill="#0d0d0d"/>
+  <line x1="0" y1="636" x2="1200" y2="636" stroke="#1e1e1e" stroke-width="1"/>
+  <text x="72" y="660" font-family="Inter, system-ui, sans-serif" font-size="11" fill="#909498" letter-spacing="1.5" font-weight="500">MOBILE BANKING REDESIGN</text>
+  <text x="356" y="660" font-family="Inter, system-ui, sans-serif" font-size="11" fill="#383c44" letter-spacing="1">·  KREDIT BANK  ·  2024</text>
+  <rect x="72" y="636" width="80" height="3" fill="#fcba28"/>
+  <rect x="156" y="636" width="40" height="3" fill="#fc7428"/>
+</svg>

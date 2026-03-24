@@ -1,0 +1,167 @@
+<svg width="1200" height="675" viewBox="0 0 1200 675" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <pattern id="mapGridLight" width="40" height="40" patternUnits="userSpaceOnUse">
+      <line x1="40" y1="0" x2="0" y2="0" stroke="#e8e8e8" stroke-width="1"/>
+      <line x1="0" y1="0" x2="0" y2="40" stroke="#e8e8e8" stroke-width="1"/>
+    </pattern>
+  </defs>
+
+  <!-- Map area background (right side) -->
+  <rect width="1200" height="675" fill="#ebebeb"/>
+  <rect x="360" y="0" width="840" height="675" fill="url(#mapGridLight)" opacity="0.7"/>
+
+  <!-- Map "streets" - simplified Antwerp city grid -->
+  <!-- Major roads -->
+  <line x1="360" y1="200" x2="1200" y2="200" stroke="#d8d8d8" stroke-width="8"/>
+  <line x1="360" y1="380" x2="1200" y2="380" stroke="#d8d8d8" stroke-width="8"/>
+  <line x1="600" y1="0" x2="600" y2="675" stroke="#d8d8d8" stroke-width="8"/>
+  <line x1="840" y1="0" x2="840" y2="675" stroke="#d8d8d8" stroke-width="8"/>
+
+  <!-- Minor streets -->
+  <line x1="360" y1="120" x2="1200" y2="120" stroke="#e0e0e0" stroke-width="3"/>
+  <line x1="360" y1="290" x2="1200" y2="290" stroke="#e0e0e0" stroke-width="3"/>
+  <line x1="360" y1="460" x2="1200" y2="460" stroke="#e0e0e0" stroke-width="3"/>
+  <line x1="360" y1="560" x2="1200" y2="560" stroke="#e0e0e0" stroke-width="3"/>
+  <line x1="480" y1="0" x2="480" y2="675" stroke="#e0e0e0" stroke-width="3"/>
+  <line x1="720" y1="0" x2="720" y2="675" stroke="#e0e0e0" stroke-width="3"/>
+  <line x1="960" y1="0" x2="960" y2="675" stroke="#e0e0e0" stroke-width="3"/>
+  <line x1="1080" y1="0" x2="1080" y2="675" stroke="#e0e0e0" stroke-width="3"/>
+
+  <!-- Park/green area -->
+  <rect x="850" y="410" width="100" height="60" rx="4" fill="#dde8d0" opacity="0.8"/>
+  <rect x="970" y="200" width="80" height="70" rx="4" fill="#dde8d0" opacity="0.6"/>
+
+  <!-- Map pins for social services -->
+  <!-- Pin 1: Zorg — yellow, active/selected -->
+  <circle cx="680" cy="245" r="28" fill="#fcba28" opacity="0.15"/>
+  <circle cx="680" cy="245" r="18" fill="#fcba28" opacity="0.25"/>
+  <circle cx="680" cy="245" r="10" fill="#fcba28"/>
+  <polygon points="680,255 674,270 686,270" fill="#fcba28"/>
+  <text x="680" y="248" font-family="Inter, system-ui, sans-serif" font-size="9" fill="#0f0d0e" text-anchor="middle" font-weight="700">Z</text>
+
+  <!-- Pin 2: Wonen -->
+  <circle cx="520" cy="330" r="16" fill="#fc7428" opacity="0.2"/>
+  <circle cx="520" cy="330" r="8" fill="#fc7428"/>
+  <polygon points="520,338 515,350 525,350" fill="#fc7428"/>
+  <text x="520" y="333" font-family="Inter, system-ui, sans-serif" font-size="8" fill="#ffffff" text-anchor="middle" font-weight="700">W</text>
+
+  <!-- Pin 3: Kinderopvang -->
+  <circle cx="900" cy="160" r="16" fill="#fcba28" opacity="0.2"/>
+  <circle cx="900" cy="160" r="8" fill="#fcba28" opacity="0.8"/>
+  <polygon points="900,168 895,178 905,178" fill="#fcba28" opacity="0.8"/>
+  <text x="900" y="163" font-family="Inter, system-ui, sans-serif" font-size="8" fill="#0f0d0e" text-anchor="middle" font-weight="700">K</text>
+
+  <!-- Pin 4: Inkomen -->
+  <circle cx="760" cy="430" r="16" fill="#fc7428" opacity="0.2"/>
+  <circle cx="760" cy="430" r="8" fill="#c0c2c6"/>
+  <polygon points="760,438 755,448 765,448" fill="#c0c2c6"/>
+  <text x="760" y="433" font-family="Inter, system-ui, sans-serif" font-size="8" fill="#ffffff" text-anchor="middle" font-weight="700">I</text>
+
+  <!-- Pin 5 -->
+  <circle cx="1020" cy="300" r="14" fill="#fcba28" opacity="0.15"/>
+  <circle cx="1020" cy="300" r="7" fill="#fcba28" opacity="0.6"/>
+  <polygon points="1020,307 1015,318 1025,318" fill="#fcba28" opacity="0.6"/>
+
+  <!-- Pin 6 -->
+  <circle cx="620" cy="490" r="14" fill="#e1e2e4"/>
+  <circle cx="620" cy="490" r="6" fill="#c0c2c6"/>
+  <polygon points="620,496 616,505 624,505" fill="#c0c2c6"/>
+
+  <!-- Pin 7 -->
+  <circle cx="1100" cy="500" r="12" fill="#e1e2e4"/>
+  <circle cx="1100" cy="500" r="5" fill="#c0c2c6" stroke="#e1e2e4" stroke-width="1"/>
+
+  <!-- Selected card popup on map for pin 1 -->
+  <rect x="700" y="168" width="200" height="72" rx="6" fill="#ffffff" stroke="#fcba28" stroke-width="1.5"/>
+  <rect x="700" y="168" width="200" height="4" rx="3" fill="#fcba28"/>
+  <text x="716" y="188" font-family="Inter, system-ui, sans-serif" font-size="11" fill="#0f0d0e" font-weight="600">Thuiszorg Centrum</text>
+  <text x="716" y="204" font-family="Inter, system-ui, sans-serif" font-size="10" fill="#5c6069">Zorg en Welzijn</text>
+  <text x="716" y="220" font-family="Inter, system-ui, sans-serif" font-size="10" fill="#5c6069">Nationalestraat 12, Antwerpen</text>
+  <text x="716" y="232" font-family="Inter, system-ui, sans-serif" font-size="10" fill="#fcba28">0.4 km · Open nu</text>
+  <!-- triangle connector -->
+  <polygon points="680,238 690,238 685,245" fill="#fcba28"/>
+
+  <!-- Left panel: Search and filter -->
+  <rect x="0" y="0" width="360" height="675" fill="#ffffff"/>
+  <line x1="360" y1="0" x2="360" y2="675" stroke="#e1e2e4" stroke-width="1"/>
+
+  <!-- Panel header -->
+  <rect x="0" y="0" width="360" height="64" fill="#f0ede8"/>
+  <line x1="0" y1="64" x2="360" y2="64" stroke="#e1e2e4" stroke-width="1"/>
+  <text x="24" y="30" font-family="Inter, system-ui, sans-serif" font-size="16" fill="#0f0d0e" font-weight="700">De Sociale Kaart</text>
+  <text x="24" y="50" font-family="Inter, system-ui, sans-serif" font-size="11" fill="#5c6069">Vlaanderen · Antwerpen</text>
+
+  <!-- Search -->
+  <rect x="20" y="80" width="320" height="40" rx="6" fill="#ffffff" stroke="#fcba28" stroke-width="1.5"/>
+  <text x="44" y="105" font-family="Inter, system-ui, sans-serif" font-size="12" fill="#0f0d0e">Thuiszorg</text>
+  <line x1="44" y1="86" x2="44" y2="114" stroke="#fcba28" stroke-width="1.5"/>
+
+  <!-- Filter chips -->
+  <text x="20" y="148" font-family="Inter, system-ui, sans-serif" font-size="9" fill="#5c6069" letter-spacing="1">CATEGORIE</text>
+  <rect x="20" y="156" width="68" height="26" rx="13" fill="#fcba28"/>
+  <text x="54" y="174" font-family="Inter, system-ui, sans-serif" font-size="10" fill="#0f0d0e" text-anchor="middle" font-weight="600">Zorg</text>
+  <rect x="96" y="156" width="68" height="26" rx="13" fill="#f7f7f7" stroke="#e1e2e4" stroke-width="1"/>
+  <text x="130" y="174" font-family="Inter, system-ui, sans-serif" font-size="10" fill="#5c6069" text-anchor="middle">Wonen</text>
+  <rect x="172" y="156" width="96" height="26" rx="13" fill="#f7f7f7" stroke="#e1e2e4" stroke-width="1"/>
+  <text x="220" y="174" font-family="Inter, system-ui, sans-serif" font-size="10" fill="#5c6069" text-anchor="middle">Kinderopvang</text>
+  <rect x="20" y="190" width="80" height="26" rx="13" fill="#f7f7f7" stroke="#e1e2e4" stroke-width="1"/>
+  <text x="60" y="208" font-family="Inter, system-ui, sans-serif" font-size="10" fill="#5c6069" text-anchor="middle">Inkomen</text>
+  <rect x="108" y="190" width="84" height="26" rx="13" fill="#f7f7f7" stroke="#e1e2e4" stroke-width="1"/>
+  <text x="150" y="208" font-family="Inter, system-ui, sans-serif" font-size="10" fill="#5c6069" text-anchor="middle">Vrije tijd</text>
+  <rect x="200" y="190" width="72" height="26" rx="13" fill="#f7f7f7" stroke="#e1e2e4" stroke-width="1"/>
+  <text x="236" y="208" font-family="Inter, system-ui, sans-serif" font-size="10" fill="#5c6069" text-anchor="middle">Mobiliteit</text>
+
+  <!-- Distance filter -->
+  <text x="20" y="236" font-family="Inter, system-ui, sans-serif" font-size="9" fill="#5c6069" letter-spacing="1">AFSTAND</text>
+  <rect x="20" y="244" width="320" height="6" rx="3" fill="#e1e2e4"/>
+  <rect x="20" y="244" width="120" height="6" rx="3" fill="#fcba28" opacity="0.7"/>
+  <circle cx="140" cy="247" r="8" fill="#fcba28" stroke="#ffffff" stroke-width="2"/>
+  <text x="296" y="256" font-family="Inter, system-ui, sans-serif" font-size="10" fill="#fcba28" text-anchor="end">2 km</text>
+
+  <!-- Results count -->
+  <line x1="20" y1="274" x2="340" y2="274" stroke="#e1e2e4" stroke-width="1"/>
+  <text x="20" y="296" font-family="Inter, system-ui, sans-serif" font-size="11" fill="#0f0d0e" font-weight="600">14 resultaten</text>
+  <text x="240" y="296" font-family="Inter, system-ui, sans-serif" font-size="10" fill="#5c6069">Sorteer: Dichtst</text>
+  <text x="318" y="296" font-family="Inter, system-ui, sans-serif" font-size="10" fill="#fcba28">▾</text>
+
+  <!-- Result cards -->
+  <!-- Card 1 — selected -->
+  <rect x="20" y="308" width="320" height="80" rx="6" fill="#ffffff" stroke="#fcba28" stroke-width="1.5"/>
+  <rect x="20" y="308" width="4" height="80" rx="2" fill="#fcba28"/>
+  <text x="36" y="330" font-family="Inter, system-ui, sans-serif" font-size="12" fill="#0f0d0e" font-weight="600">Thuiszorg Centrum</text>
+  <rect x="36" y="338" width="52" height="16" rx="8" fill="#fcba28" opacity="0.2"/>
+  <text x="62" y="350" font-family="Inter, system-ui, sans-serif" font-size="9" fill="#fcba28" text-anchor="middle">Zorg</text>
+  <text x="36" y="366" font-family="Inter, system-ui, sans-serif" font-size="10" fill="#5c6069">Nationalestraat 12 · 0.4 km</text>
+  <text x="36" y="380" font-family="Inter, system-ui, sans-serif" font-size="10" fill="#fcba28">Open · 08:00–18:00</text>
+
+  <!-- Card 2 -->
+  <rect x="20" y="400" width="320" height="72" rx="6" fill="#f7f7f7" stroke="#e1e2e4" stroke-width="1"/>
+  <rect x="20" y="400" width="4" height="72" rx="2" fill="#e1e2e4"/>
+  <text x="36" y="420" font-family="Inter, system-ui, sans-serif" font-size="12" fill="#0f0d0e" font-weight="500">CAW Antwerpen</text>
+  <rect x="36" y="428" width="40" height="16" rx="8" fill="#e1e2e4"/>
+  <text x="56" y="440" font-family="Inter, system-ui, sans-serif" font-size="9" fill="#5c6069" text-anchor="middle">Zorg</text>
+  <text x="36" y="456" font-family="Inter, system-ui, sans-serif" font-size="10" fill="#5c6069">Lange Gasthuisstraat 29 · 0.7 km</text>
+  <text x="36" y="464" font-family="Inter, system-ui, sans-serif" font-size="10" fill="#5c6069">Open · 09:00–17:00</text>
+
+  <!-- Card 3 -->
+  <rect x="20" y="484" width="320" height="72" rx="6" fill="#f7f7f7" stroke="#e1e2e4" stroke-width="1"/>
+  <rect x="20" y="484" width="4" height="72" rx="2" fill="#e1e2e4"/>
+  <text x="36" y="504" font-family="Inter, system-ui, sans-serif" font-size="12" fill="#0f0d0e" font-weight="500">Woonzorgcentrum Elst</text>
+  <rect x="36" y="512" width="40" height="16" rx="8" fill="#e1e2e4"/>
+  <text x="56" y="524" font-family="Inter, system-ui, sans-serif" font-size="9" fill="#5c6069" text-anchor="middle">Zorg</text>
+  <text x="36" y="540" font-family="Inter, system-ui, sans-serif" font-size="10" fill="#5c6069">Abdijstraat 44 · 1.2 km</text>
+  <text x="36" y="548" font-family="Inter, system-ui, sans-serif" font-size="10" fill="#5c6069">Open · 24/7</text>
+
+  <!-- More results faded -->
+  <rect x="20" y="568" width="320" height="52" rx="6" fill="#f7f7f7" opacity="0.6"/>
+  <text x="36" y="592" font-family="Inter, system-ui, sans-serif" font-size="12" fill="#c0c2c6" font-weight="500">OCMW Antwerpen</text>
+  <text x="36" y="610" font-family="Inter, system-ui, sans-serif" font-size="10" fill="#e1e2e4">Lange Gasthuisstraat 33 · 1.4 km</text>
+
+  <!-- Label band -->
+  <rect x="0" y="636" width="1200" height="39" fill="#f0ede8"/>
+  <line x1="0" y1="636" x2="1200" y2="636" stroke="#e1e2e4" stroke-width="1"/>
+  <text x="72" y="660" font-family="Inter, system-ui, sans-serif" font-size="11" fill="#5c6069" letter-spacing="1.5" font-weight="500">DE SOCIALE KAART</text>
+  <text x="256" y="660" font-family="Inter, system-ui, sans-serif" font-size="11" fill="#c0c2c6" letter-spacing="1">·  VIAVICTOR  ·  2022</text>
+  <rect x="72" y="636" width="80" height="3" fill="#fcba28"/>
+  <rect x="156" y="636" width="40" height="3" fill="#fc7428"/>
+</svg>

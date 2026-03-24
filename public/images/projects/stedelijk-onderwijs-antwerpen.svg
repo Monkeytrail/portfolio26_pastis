@@ -1,0 +1,234 @@
+<svg width="1200" height="675" viewBox="0 0 1200 675" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="eduBg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0d0d0d"/>
+      <stop offset="100%" stop-color="#0d0f0d"/>
+    </linearGradient>
+    <pattern id="dotGrid" width="32" height="32" patternUnits="userSpaceOnUse">
+      <circle cx="16" cy="16" r="1" fill="#1a1a1a"/>
+    </pattern>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="675" fill="url(#eduBg)"/>
+  <rect width="1200" height="675" fill="url(#dotGrid)" opacity="0.5"/>
+
+  <!-- Top bar — platform navigation -->
+  <rect x="0" y="0" width="1200" height="52" fill="#1e1e1e"/>
+  <line x1="0" y1="52" x2="1200" y2="52" stroke="#383c44" stroke-width="1"/>
+  <text x="28" y="32" font-family="Inter, system-ui, sans-serif" font-size="14" fill="#f9f4da" font-weight="700">Stedelijk</text>
+  <text x="104" y="32" font-family="Inter, system-ui, sans-serif" font-size="14" fill="#fcba28" font-weight="400">onderwijs</text>
+  <line x1="28" y1="52" x2="205" y2="52" stroke="#fcba28" stroke-width="2"/>
+  <text x="240" y="32" font-family="Inter, system-ui, sans-serif" font-size="12" fill="#909498">Scholen</text>
+  <text x="320" y="32" font-family="Inter, system-ui, sans-serif" font-size="12" fill="#909498">Leerlingen</text>
+  <text x="416" y="32" font-family="Inter, system-ui, sans-serif" font-size="12" fill="#909498">Leerkrachten</text>
+  <text x="528" y="32" font-family="Inter, system-ui, sans-serif" font-size="12" fill="#909498">Agenda</text>
+  <text x="608" y="32" font-family="Inter, system-ui, sans-serif" font-size="12" fill="#909498">Resultaten</text>
+
+  <!-- City indicator top right -->
+  <rect x="1048" y="12" width="124" height="28" rx="14" fill="#fcba28" opacity="0.15" stroke="#fcba28" stroke-width="1"/>
+  <text x="1110" y="31" font-family="Inter, system-ui, sans-serif" font-size="11" fill="#fcba28" text-anchor="middle" font-weight="500">Antwerpen</text>
+
+  <!-- Page header -->
+  <text x="72" y="84" font-family="Inter, system-ui, sans-serif" font-size="18" fill="#f9f4da" font-weight="700">Goedemorgen, Mevrouw Peeters</text>
+  <text x="72" y="104" font-family="Inter, system-ui, sans-serif" font-size="12" fill="#909498">Maandag 24 maart 2026 · Basisschool De Fontein</text>
+
+  <!-- Left panel: My school -->
+  <rect x="72" y="124" width="320" height="460" rx="6" fill="#1e1e1e" stroke="#383c44" stroke-width="1"/>
+  <text x="92" y="152" font-family="Inter, system-ui, sans-serif" font-size="11" fill="#f9f4da" font-weight="600">Mijn school</text>
+  <text x="92" y="170" font-family="Inter, system-ui, sans-serif" font-size="10" fill="#909498">Basisschool De Fontein · 3de Graad</text>
+  <line x1="92" y1="180" x2="372" y2="180" stroke="#383c44" stroke-width="1"/>
+
+  <!-- Stat cards within left panel -->
+  <rect x="92" y="192" width="132" height="72" rx="6" fill="#262522"/>
+  <text x="108" y="216" font-family="Inter, system-ui, sans-serif" font-size="9" fill="#909498" letter-spacing="1">LEERLINGEN</text>
+  <text x="108" y="244" font-family="Inter, system-ui, sans-serif" font-size="32" fill="#fcba28" font-weight="800">248</text>
+  <text x="108" y="258" font-family="Inter, system-ui, sans-serif" font-size="9" fill="#909498">ingeschreven</text>
+
+  <rect x="240" y="192" width="132" height="72" rx="6" fill="#262522"/>
+  <text x="256" y="216" font-family="Inter, system-ui, sans-serif" font-size="9" fill="#909498" letter-spacing="1">KLASSEN</text>
+  <text x="256" y="244" font-family="Inter, system-ui, sans-serif" font-size="32" fill="#f9f4da" font-weight="800">12</text>
+  <text x="256" y="258" font-family="Inter, system-ui, sans-serif" font-size="9" fill="#909498">actief</text>
+
+  <rect x="92" y="276" width="132" height="72" rx="6" fill="#262522"/>
+  <text x="108" y="300" font-family="Inter, system-ui, sans-serif" font-size="9" fill="#909498" letter-spacing="1">AANWEZIG</text>
+  <text x="108" y="328" font-family="Inter, system-ui, sans-serif" font-size="32" fill="#fcba28" font-weight="800">94</text>
+  <text x="152" y="316" font-family="Inter, system-ui, sans-serif" font-size="14" fill="#fcba28">%</text>
+  <text x="108" y="342" font-family="Inter, system-ui, sans-serif" font-size="9" fill="#909498">vandaag</text>
+
+  <rect x="240" y="276" width="132" height="72" rx="6" fill="#262522"/>
+  <text x="256" y="300" font-family="Inter, system-ui, sans-serif" font-size="9" fill="#909498" letter-spacing="1">LEERKRACHTEN</text>
+  <text x="256" y="328" font-family="Inter, system-ui, sans-serif" font-size="32" fill="#f9f4da" font-weight="800">18</text>
+  <text x="256" y="342" font-family="Inter, system-ui, sans-serif" font-size="9" fill="#909498">actief</text>
+
+  <!-- Quick actions -->
+  <line x1="92" y1="364" x2="372" y2="364" stroke="#383c44" stroke-width="1"/>
+  <text x="92" y="384" font-family="Inter, system-ui, sans-serif" font-size="10" fill="#909498" letter-spacing="1">SNELLE ACTIES</text>
+  <rect x="92" y="396" width="132" height="36" rx="4" fill="#fcba28"/>
+  <text x="158" y="419" font-family="Inter, system-ui, sans-serif" font-size="12" fill="#0d0d0d" font-weight="600" text-anchor="middle">Aanwezigheid</text>
+  <rect x="240" y="396" width="132" height="36" rx="4" fill="#262522" stroke="#383c44" stroke-width="1"/>
+  <text x="306" y="419" font-family="Inter, system-ui, sans-serif" font-size="12" fill="#909498" text-anchor="middle">Bericht sturen</text>
+  <rect x="92" y="444" width="132" height="36" rx="4" fill="#262522" stroke="#383c44" stroke-width="1"/>
+  <text x="158" y="467" font-family="Inter, system-ui, sans-serif" font-size="12" fill="#909498" text-anchor="middle">Rapport</text>
+  <rect x="240" y="444" width="132" height="36" rx="4" fill="#262522" stroke="#383c44" stroke-width="1"/>
+  <text x="306" y="467" font-family="Inter, system-ui, sans-serif" font-size="12" fill="#909498" text-anchor="middle">Inschrijving</text>
+
+  <!-- School list -->
+  <line x1="92" y1="492" x2="372" y2="492" stroke="#383c44" stroke-width="1"/>
+  <text x="92" y="512" font-family="Inter, system-ui, sans-serif" font-size="10" fill="#909498" letter-spacing="1">MIJN SCHOLEN</text>
+  <rect x="92" y="524" width="280" height="28" rx="4" fill="#fcba28" opacity="0.1"/>
+  <rect x="92" y="524" width="3" height="28" rx="1" fill="#fcba28"/>
+  <text x="104" y="543" font-family="Inter, system-ui, sans-serif" font-size="11" fill="#fcba28">De Fontein · 3de Graad</text>
+  <rect x="92" y="558" width="280" height="28" rx="4" fill="transparent"/>
+  <text x="104" y="577" font-family="Inter, system-ui, sans-serif" font-size="11" fill="#909498">De Klimroos · 2de Graad</text>
+
+  <!-- Center panel: Calendar/Schedule -->
+  <rect x="412" y="124" width="400" height="460" rx="6" fill="#1e1e1e" stroke="#383c44" stroke-width="1"/>
+  <text x="432" y="152" font-family="Inter, system-ui, sans-serif" font-size="11" fill="#f9f4da" font-weight="600">Week van 24 maart</text>
+  <text x="432" y="170" font-family="Inter, system-ui, sans-serif" font-size="10" fill="#909498">Schooljaar 2025–2026 · Kwartaal 3</text>
+  <line x1="432" y1="180" x2="792" y2="180" stroke="#383c44" stroke-width="1"/>
+
+  <!-- Day headers -->
+  <text x="468" y="200" font-family="Inter, system-ui, sans-serif" font-size="10" fill="#fcba28" font-weight="600" text-anchor="middle">Ma</text>
+  <rect x="448" y="204" width="40" height="4" rx="2" fill="#fcba28"/>
+  <text x="540" y="200" font-family="Inter, system-ui, sans-serif" font-size="10" fill="#909498" text-anchor="middle">Di</text>
+  <text x="612" y="200" font-family="Inter, system-ui, sans-serif" font-size="10" fill="#909498" text-anchor="middle">Wo</text>
+  <text x="684" y="200" font-family="Inter, system-ui, sans-serif" font-size="10" fill="#909498" text-anchor="middle">Do</text>
+  <text x="756" y="200" font-family="Inter, system-ui, sans-serif" font-size="10" fill="#909498" text-anchor="middle">Vr</text>
+
+  <!-- Time slots -->
+  <text x="432" y="228" font-family="Inter, system-ui, sans-serif" font-size="9" fill="#909498">08:30</text>
+  <text x="432" y="268" font-family="Inter, system-ui, sans-serif" font-size="9" fill="#909498">09:30</text>
+  <text x="432" y="308" font-family="Inter, system-ui, sans-serif" font-size="9" fill="#909498">10:30</text>
+  <text x="432" y="348" font-family="Inter, system-ui, sans-serif" font-size="9" fill="#909498">11:30</text>
+  <text x="432" y="388" font-family="Inter, system-ui, sans-serif" font-size="9" fill="#909498">13:00</text>
+  <text x="432" y="428" font-family="Inter, system-ui, sans-serif" font-size="9" fill="#909498">14:00</text>
+  <text x="432" y="468" font-family="Inter, system-ui, sans-serif" font-size="9" fill="#909498">15:00</text>
+
+  <!-- Calendar grid lines -->
+  <line x1="452" y1="212" x2="792" y2="212" stroke="#262522" stroke-width="1"/>
+  <line x1="452" y1="252" x2="792" y2="252" stroke="#262522" stroke-width="1"/>
+  <line x1="452" y1="292" x2="792" y2="292" stroke="#262522" stroke-width="1"/>
+  <line x1="452" y1="332" x2="792" y2="332" stroke="#262522" stroke-width="1"/>
+  <line x1="452" y1="372" x2="792" y2="372" stroke="#262522" stroke-width="1"/>
+  <line x1="452" y1="412" x2="792" y2="412" stroke="#262522" stroke-width="1"/>
+  <line x1="452" y1="452" x2="792" y2="452" stroke="#262522" stroke-width="1"/>
+  <line x1="452" y1="492" x2="792" y2="492" stroke="#262522" stroke-width="1"/>
+
+  <!-- Vertical day dividers -->
+  <line x1="504" y1="212" x2="504" y2="492" stroke="#262522" stroke-width="1"/>
+  <line x1="576" y1="212" x2="576" y2="492" stroke="#262522" stroke-width="1"/>
+  <line x1="648" y1="212" x2="648" y2="492" stroke="#262522" stroke-width="1"/>
+  <line x1="720" y1="212" x2="720" y2="492" stroke="#262522" stroke-width="1"/>
+
+  <!-- Today (Monday) highlight column -->
+  <rect x="452" y="212" width="52" height="280" rx="2" fill="#fcba28" opacity="0.04"/>
+
+  <!-- Calendar events Monday -->
+  <rect x="454" y="214" width="48" height="76" rx="3" fill="#fcba28" opacity="0.2"/>
+  <rect x="454" y="214" width="3" height="76" rx="1" fill="#fcba28"/>
+  <text x="460" y="230" font-family="Inter, system-ui, sans-serif" font-size="8" fill="#fcba28" font-weight="600">Nederlands</text>
+  <text x="460" y="243" font-family="Inter, system-ui, sans-serif" font-size="8" fill="#fcba28" opacity="0.7">Klas 5A</text>
+
+  <rect x="454" y="294" width="48" height="76" rx="3" fill="#fcba28" opacity="0.15"/>
+  <rect x="454" y="294" width="3" height="76" rx="1" fill="#fcba28" opacity="0.7"/>
+  <text x="460" y="310" font-family="Inter, system-ui, sans-serif" font-size="8" fill="#fcba28">Wiskunde</text>
+
+  <rect x="454" y="374" width="48" height="76" rx="3" fill="#fc7428" opacity="0.15"/>
+  <rect x="454" y="374" width="3" height="76" rx="1" fill="#fc7428"/>
+  <text x="460" y="390" font-family="Inter, system-ui, sans-serif" font-size="8" fill="#fc7428" font-weight="600">Vergadering</text>
+  <text x="460" y="403" font-family="Inter, system-ui, sans-serif" font-size="8" fill="#fc7428" opacity="0.7">Alle leerkrachten</text>
+
+  <!-- Events other days -->
+  <rect x="526" y="254" width="48" height="36" rx="3" fill="#383c44"/>
+  <text x="533" y="270" font-family="Inter, system-ui, sans-serif" font-size="8" fill="#909498">Gym</text>
+  <rect x="526" y="374" width="48" height="76" rx="3" fill="#262522" stroke="#383c44" stroke-width="0.5"/>
+  <text x="533" y="390" font-family="Inter, system-ui, sans-serif" font-size="8" fill="#909498">Science</text>
+
+  <rect x="598" y="214" width="48" height="36" rx="3" fill="#383c44"/>
+  <text x="605" y="230" font-family="Inter, system-ui, sans-serif" font-size="8" fill="#909498">Muziek</text>
+  <rect x="598" y="374" width="48" height="76" rx="3" fill="#262522" stroke="#383c44" stroke-width="0.5"/>
+  <text x="605" y="390" font-family="Inter, system-ui, sans-serif" font-size="8" fill="#909498">Tekenen</text>
+
+  <!-- Bottom of calendar: today indicator -->
+  <rect x="432" y="500" width="360" height="72" rx="4" fill="#262522"/>
+  <text x="452" y="524" font-family="Inter, system-ui, sans-serif" font-size="10" fill="#909498" letter-spacing="1">VANDAAG · MELDINGEN</text>
+  <rect x="452" y="534" width="320" height="28" rx="4" fill="#fcba28" opacity="0.1" stroke="#fcba28" stroke-width="1"/>
+  <text x="468" y="547" font-family="Inter, system-ui, sans-serif" font-size="10" fill="#fcba28" font-weight="500">3 leerlingen afwezig · attest vereist</text>
+  <text x="468" y="558" font-family="Inter, system-ui, sans-serif" font-size="9" fill="#fcba28" opacity="0.6">Klas 5A · ingediend 08:42</text>
+
+  <!-- Right panel: Student cards / recent -->
+  <rect x="832" y="124" width="296" height="460" rx="6" fill="#1e1e1e" stroke="#383c44" stroke-width="1"/>
+  <text x="852" y="152" font-family="Inter, system-ui, sans-serif" font-size="11" fill="#f9f4da" font-weight="600">Leerlingen · 5A</text>
+  <line x1="852" y1="164" x2="1108" y2="164" stroke="#383c44" stroke-width="1"/>
+
+  <!-- Search bar -->
+  <rect x="852" y="176" width="256" height="32" rx="4" fill="#262522" stroke="#383c44" stroke-width="1"/>
+  <text x="868" y="197" font-family="Inter, system-ui, sans-serif" font-size="11" fill="#909498">Zoek leerling...</text>
+
+  <!-- Student rows -->
+  <line x1="852" y1="220" x2="1108" y2="220" stroke="#383c44" stroke-width="0.5"/>
+  <!-- Student 1 -->
+  <circle cx="868" cy="240" r="12" fill="#fcba28" opacity="0.3"/>
+  <text x="868" y="245" font-family="Inter, system-ui, sans-serif" font-size="11" fill="#fcba28" text-anchor="middle" font-weight="600">A</text>
+  <text x="890" y="236" font-family="Inter, system-ui, sans-serif" font-size="11" fill="#f9f4da" font-weight="500">Amber Claes</text>
+  <text x="890" y="250" font-family="Inter, system-ui, sans-serif" font-size="10" fill="#909498">5A · nr. 01</text>
+  <rect x="1036" y="232" width="56" height="16" rx="8" fill="#fcba28" opacity="0.2"/>
+  <text x="1064" y="244" font-family="Inter, system-ui, sans-serif" font-size="9" fill="#fcba28" text-anchor="middle">Aanwezig</text>
+
+  <line x1="852" y1="260" x2="1108" y2="260" stroke="#383c44" stroke-width="0.5"/>
+  <!-- Student 2 -->
+  <circle cx="868" cy="280" r="12" fill="#383c44"/>
+  <text x="868" y="285" font-family="Inter, system-ui, sans-serif" font-size="11" fill="#909498" text-anchor="middle" font-weight="600">B</text>
+  <text x="890" y="276" font-family="Inter, system-ui, sans-serif" font-size="11" fill="#f9f4da" font-weight="500">Boris Maes</text>
+  <text x="890" y="290" font-family="Inter, system-ui, sans-serif" font-size="10" fill="#909498">5A · nr. 02</text>
+  <rect x="1036" y="272" width="56" height="16" rx="8" fill="#fc7428" opacity="0.15"/>
+  <text x="1064" y="284" font-family="Inter, system-ui, sans-serif" font-size="9" fill="#fc7428" text-anchor="middle">Afwezig</text>
+
+  <line x1="852" y1="300" x2="1108" y2="300" stroke="#383c44" stroke-width="0.5"/>
+  <!-- Student 3 -->
+  <circle cx="868" cy="320" r="12" fill="#fcba28" opacity="0.25"/>
+  <text x="868" y="325" font-family="Inter, system-ui, sans-serif" font-size="11" fill="#fcba28" text-anchor="middle" font-weight="600">C</text>
+  <text x="890" y="316" font-family="Inter, system-ui, sans-serif" font-size="11" fill="#f9f4da" font-weight="500">Charlotte De Backer</text>
+  <text x="890" y="330" font-family="Inter, system-ui, sans-serif" font-size="10" fill="#909498">5A · nr. 03</text>
+  <rect x="1036" y="312" width="56" height="16" rx="8" fill="#fcba28" opacity="0.2"/>
+  <text x="1064" y="324" font-family="Inter, system-ui, sans-serif" font-size="9" fill="#fcba28" text-anchor="middle">Aanwezig</text>
+
+  <line x1="852" y1="340" x2="1108" y2="340" stroke="#383c44" stroke-width="0.5"/>
+  <!-- More rows muted -->
+  <circle cx="868" cy="360" r="12" fill="#262522"/>
+  <text x="868" y="365" font-family="Inter, system-ui, sans-serif" font-size="11" fill="#909498" text-anchor="middle">D</text>
+  <text x="890" y="356" font-family="Inter, system-ui, sans-serif" font-size="11" fill="#909498">David Hermans</text>
+  <text x="890" y="370" font-family="Inter, system-ui, sans-serif" font-size="10" fill="#383c44">5A · nr. 04</text>
+  <rect x="1036" y="352" width="56" height="16" rx="8" fill="#fcba28" opacity="0.2"/>
+  <text x="1064" y="364" font-family="Inter, system-ui, sans-serif" font-size="9" fill="#fcba28" text-anchor="middle">Aanwezig</text>
+
+  <line x1="852" y1="380" x2="1108" y2="380" stroke="#383c44" stroke-width="0.5"/>
+  <circle cx="868" cy="400" r="12" fill="#262522"/>
+  <text x="868" y="405" font-family="Inter, system-ui, sans-serif" font-size="11" fill="#909498" text-anchor="middle">E</text>
+  <text x="890" y="396" font-family="Inter, system-ui, sans-serif" font-size="11" fill="#909498">Elena Van Dyck</text>
+  <text x="890" y="410" font-family="Inter, system-ui, sans-serif" font-size="10" fill="#383c44">5A · nr. 05</text>
+  <rect x="1036" y="392" width="56" height="16" rx="8" fill="#fcba28" opacity="0.2"/>
+  <text x="1064" y="404" font-family="Inter, system-ui, sans-serif" font-size="9" fill="#fcba28" text-anchor="middle">Aanwezig</text>
+
+  <!-- Fade out remaining rows -->
+  <rect x="852" y="420" width="256" height="60" rx="4" fill="url(#eduBg)" opacity="0.7"/>
+  <line x1="852" y1="420" x2="1108" y2="420" stroke="#383c44" stroke-width="0.5" opacity="0.5"/>
+  <text x="868" y="445" font-family="Inter, system-ui, sans-serif" font-size="11" fill="#383c44">Frederik Pieters</text>
+  <text x="868" y="465" font-family="Inter, system-ui, sans-serif" font-size="11" fill="#262522">Gerben Stevens</text>
+
+  <!-- Summary bottom right -->
+  <rect x="852" y="492" width="256" height="80" rx="4" fill="#262522"/>
+  <text x="872" y="516" font-family="Inter, system-ui, sans-serif" font-size="9" fill="#909498" letter-spacing="1">KLAS OVERZICHT · 5A</text>
+  <text x="872" y="540" font-family="Inter, system-ui, sans-serif" font-size="24" fill="#fcba28" font-weight="700">22/24</text>
+  <text x="940" y="540" font-family="Inter, system-ui, sans-serif" font-size="12" fill="#909498"> aanwezig</text>
+  <text x="872" y="562" font-family="Inter, system-ui, sans-serif" font-size="10" fill="#909498">2 afwezig · attesten vereist</text>
+
+  <!-- Label band -->
+  <rect x="0" y="636" width="1200" height="39" fill="#0d0d0d"/>
+  <line x1="0" y1="636" x2="1200" y2="636" stroke="#1e1e1e" stroke-width="1"/>
+  <text x="72" y="660" font-family="Inter, system-ui, sans-serif" font-size="11" fill="#909498" letter-spacing="1.5" font-weight="500">STEDELIJK ONDERWIJS ANTWERPEN</text>
+  <text x="416" y="660" font-family="Inter, system-ui, sans-serif" font-size="11" fill="#383c44" letter-spacing="1">·  VIAVICTOR  ·  2023</text>
+  <rect x="72" y="636" width="80" height="3" fill="#fcba28"/>
+  <rect x="156" y="636" width="40" height="3" fill="#fc7428"/>
+</svg>

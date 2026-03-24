@@ -1,0 +1,238 @@
+<svg width="1200" height="675" viewBox="0 0 1200 675" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#0d0d10"/>
+      <stop offset="100%" stop-color="#0d0d0d"/>
+    </linearGradient>
+    <linearGradient id="funnelGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#fcba28" stop-opacity="0.3"/>
+      <stop offset="100%" stop-color="#fc7428" stop-opacity="0.15"/>
+    </linearGradient>
+    <linearGradient id="barFill" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#fcba28"/>
+      <stop offset="100%" stop-color="#fc7428"/>
+    </linearGradient>
+    <clipPath id="browserClip">
+      <rect x="60" y="48" width="700" height="600" rx="10"/>
+    </clipPath>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="675" fill="url(#bg)"/>
+
+  <!-- Subtle grid -->
+  <line x1="0" y1="675" x2="1200" y2="0" stroke="#383c44" stroke-width="0.3" opacity="0.2"/>
+  <line x1="0" y1="337" x2="1200" y2="337" stroke="#383c44" stroke-width="0.3" opacity="0.15"/>
+
+  <!-- === BROWSER MOCKUP: left/center === -->
+  <!-- Browser chrome -->
+  <rect x="60" y="24" width="700" height="624" rx="10" fill="#1e1e1e" stroke="#383c44" stroke-width="1"/>
+  <!-- Browser top bar -->
+  <rect x="60" y="24" width="700" height="44" rx="10" fill="#141414"/>
+  <rect x="60" y="54" width="700" height="14" fill="#141414"/>
+  <rect x="60" y="68" width="700" height="1" fill="#383c44"/>
+  <!-- Traffic lights -->
+  <circle cx="88" cy="46" r="6" fill="#e05a5a" opacity="0.8"/>
+  <circle cx="108" cy="46" r="6" fill="#fcba28" opacity="0.8"/>
+  <circle cx="128" cy="46" r="6" fill="#4cba7d" opacity="0.8"/>
+  <!-- URL bar -->
+  <rect x="188" y="36" width="380" height="20" rx="4" fill="#0d0d0d" stroke="#383c44" stroke-width="1"/>
+  <rect x="200" y="42" width="120" height="4" rx="1" fill="#909498" opacity="0.4"/>
+  <circle cx="196" cy="46" r="3" fill="none" stroke="#4cba7d" stroke-width="1" opacity="0.6"/>
+  <!-- Nav icons right -->
+  <rect x="582" y="38" width="16" height="16" rx="2" fill="none" stroke="#383c44" stroke-width="1"/>
+  <rect x="607" y="38" width="16" height="16" rx="2" fill="none" stroke="#383c44" stroke-width="1"/>
+  <rect x="632" y="38" width="16" height="16" rx="2" fill="none" stroke="#383c44" stroke-width="1"/>
+
+  <!-- Page content clipped -->
+  <g clip-path="url(#browserClip)">
+    <rect x="60" y="68" width="700" height="580" fill="#0d0d0d"/>
+
+    <!-- Store nav bar -->
+    <rect x="60" y="68" width="700" height="48" fill="#141414"/>
+    <rect x="60" y="116" width="700" height="1" fill="#383c44"/>
+    <rect x="80" y="84" width="60" height="5" rx="1" fill="#f9f4da" opacity="0.9"/>
+    <rect x="200" y="84" width="44" height="5" rx="1" fill="#909498" opacity="0.6"/>
+    <rect x="260" y="84" width="60" height="5" rx="1" fill="#909498" opacity="0.6"/>
+    <rect x="336" y="84" width="44" height="5" rx="1" fill="#909498" opacity="0.6"/>
+    <!-- Cart icon -->
+    <rect x="680" y="80" width="20" height="20" rx="2" fill="none" stroke="#909498" stroke-width="1" opacity="0.6"/>
+    <rect x="652" y="80" width="20" height="20" rx="2" fill="none" stroke="#909498" stroke-width="1" opacity="0.6"/>
+
+    <!-- Progress indicator (3 steps) -->
+    <rect x="60" y="117" width="700" height="52" fill="#141414"/>
+    <rect x="60" y="169" width="700" height="1" fill="#383c44"/>
+    <!-- Step 1: Cart (completed) -->
+    <circle cx="198" cy="143" r="14" fill="#fcba28"/>
+    <path d="M 191 143 l 4 5 10-9" stroke="#0d0d0d" stroke-width="2" fill="none" stroke-linecap="round"/>
+    <rect x="176" y="161" width="44" height="4" rx="1" fill="#fcba28" opacity="0.8"/>
+    <!-- Connector line -->
+    <rect x="212" y="142" width="130" height="2" rx="1" fill="#fcba28" opacity="0.4"/>
+    <!-- Step 2: Checkout (active) -->
+    <circle cx="352" cy="143" r="14" fill="#fcba28"/>
+    <rect x="345" y="140" width="14" height="5" rx="1" fill="#0d0d0d"/>
+    <rect x="326" y="161" width="52" height="4" rx="1" fill="#fcba28" opacity="0.8"/>
+    <!-- Connector line -->
+    <rect x="366" y="142" width="130" height="2" rx="1" fill="#383c44" opacity="0.6"/>
+    <!-- Step 3: Confirm (inactive) -->
+    <circle cx="506" cy="143" r="14" fill="none" stroke="#383c44" stroke-width="2"/>
+    <rect x="499" y="140" width="14" height="5" rx="1" fill="#383c44" opacity="0.5"/>
+    <rect x="482" y="161" width="48" height="4" rx="1" fill="#909498" opacity="0.5"/>
+
+    <!-- Main content: Checkout form (left) + Order summary (right) -->
+    <!-- Left: Form -->
+    <rect x="80" y="185" width="380" height="5" rx="1" fill="#f9f4da" opacity="0.8"/>
+    <!-- Name field -->
+    <rect x="80" y="204" width="80" height="4" rx="1" fill="#909498" opacity="0.5"/>
+    <rect x="80" y="214" width="180" height="28" rx="4" fill="#141414" stroke="#383c44" stroke-width="1"/>
+    <rect x="90" y="224" width="100" height="4" rx="1" fill="#909498" opacity="0.5"/>
+    <!-- Email field -->
+    <rect x="270" y="204" width="60" height="4" rx="1" fill="#909498" opacity="0.5"/>
+    <rect x="270" y="214" width="190" height="28" rx="4" fill="#141414" stroke="#fcba28" stroke-width="1.5"/>
+    <rect x="280" y="224" width="130" height="4" rx="1" fill="#f9f4da" opacity="0.8"/>
+    <circle cx="448" cy="228" r="5" fill="#fcba28" opacity="0.7"/>
+    <!-- Address field -->
+    <rect x="80" y="258" width="60" height="4" rx="1" fill="#909498" opacity="0.5"/>
+    <rect x="80" y="268" width="380" height="28" rx="4" fill="#141414" stroke="#383c44" stroke-width="1"/>
+    <rect x="90" y="278" width="160" height="4" rx="1" fill="#909498" opacity="0.5"/>
+    <!-- City/Postal row -->
+    <rect x="80" y="312" width="36" height="4" rx="1" fill="#909498" opacity="0.5"/>
+    <rect x="80" y="322" width="200" height="28" rx="4" fill="#141414" stroke="#383c44" stroke-width="1"/>
+    <rect x="90" y="332" width="100" height="4" rx="1" fill="#909498" opacity="0.5"/>
+    <rect x="296" y="312" width="56" height="4" rx="1" fill="#909498" opacity="0.5"/>
+    <rect x="296" y="322" width="164" height="28" rx="4" fill="#141414" stroke="#383c44" stroke-width="1"/>
+    <rect x="306" y="332" width="80" height="4" rx="1" fill="#909498" opacity="0.5"/>
+    <!-- Payment section header -->
+    <rect x="80" y="370" width="5" height="5" rx="1" fill="#fcba28"/>
+    <rect x="92" y="370" width="80" height="5" rx="1" fill="#f9f4da" opacity="0.8"/>
+    <rect x="80" y="390" width="380" height="1" fill="#383c44" opacity="0.5"/>
+    <!-- Card number -->
+    <rect x="80" y="402" width="60" height="4" rx="1" fill="#909498" opacity="0.5"/>
+    <rect x="80" y="412" width="380" height="28" rx="4" fill="#141414" stroke="#383c44" stroke-width="1"/>
+    <rect x="90" y="422" width="120" height="4" rx="1" fill="#909498" opacity="0.5"/>
+    <rect x="432" y="418" width="20" height="14" rx="2" fill="#fcba28" opacity="0.3" stroke="#fcba28" stroke-width="1"/>
+    <!-- CVV + Expiry -->
+    <rect x="80" y="456" width="180" height="28" rx="4" fill="#141414" stroke="#383c44" stroke-width="1"/>
+    <rect x="90" y="466" width="60" height="4" rx="1" fill="#909498" opacity="0.5"/>
+    <rect x="280" y="456" width="180" height="28" rx="4" fill="#141414" stroke="#383c44" stroke-width="1"/>
+    <rect x="290" y="466" width="40" height="4" rx="1" fill="#909498" opacity="0.5"/>
+    <!-- CTA button -->
+    <rect x="80" y="502" width="380" height="44" rx="6" fill="url(#barFill)"/>
+    <rect x="220" y="519" width="100" height="7" rx="2" fill="#0d0d0d"/>
+
+    <!-- Right: Order summary panel -->
+    <rect x="480" y="185" width="260" height="340" rx="6" fill="#141414" stroke="#383c44" stroke-width="1"/>
+    <rect x="496" y="200" width="80" height="5" rx="1" fill="#f9f4da" opacity="0.85"/>
+    <!-- Products in summary -->
+    <rect x="496" y="220" width="40" height="40" rx="3" fill="#262522"/>
+    <rect x="498" y="222" width="36" height="36" rx="2" fill="#fcba2815"/>
+    <rect x="544" y="222" width="100" height="5" rx="1" fill="#f9f4da" opacity="0.8"/>
+    <rect x="544" y="232" width="70" height="4" rx="1" fill="#909498" opacity="0.5"/>
+    <rect x="544" y="244" width="50" height="4" rx="1" fill="#909498" opacity="0.4"/>
+    <rect x="654" y="222" width="80" height="5" rx="1" fill="#f9f4da" opacity="0.85"/>
+
+    <rect x="496" y="274" width="40" height="40" rx="3" fill="#262522"/>
+    <rect x="498" y="276" width="36" height="36" rx="2" fill="#fc742815"/>
+    <rect x="544" y="276" width="80" height="5" rx="1" fill="#f9f4da" opacity="0.8"/>
+    <rect x="544" y="286" width="60" height="4" rx="1" fill="#909498" opacity="0.5"/>
+    <rect x="544" y="298" width="44" height="4" rx="1" fill="#909498" opacity="0.4"/>
+    <rect x="654" y="276" width="80" height="5" rx="1" fill="#f9f4da" opacity="0.85"/>
+
+    <rect x="496" y="328" width="40" height="40" rx="3" fill="#262522"/>
+    <rect x="498" y="330" width="36" height="36" rx="2" fill="#4cba7d15"/>
+    <rect x="544" y="330" width="90" height="5" rx="1" fill="#f9f4da" opacity="0.8"/>
+    <rect x="544" y="340" width="56" height="4" rx="1" fill="#909498" opacity="0.5"/>
+    <rect x="544" y="352" width="40" height="4" rx="1" fill="#909498" opacity="0.4"/>
+    <rect x="654" y="330" width="80" height="5" rx="1" fill="#f9f4da" opacity="0.85"/>
+
+    <!-- Summary totals -->
+    <rect x="496" y="380" width="228" height="1" fill="#383c44"/>
+    <rect x="496" y="392" width="60" height="4" rx="1" fill="#909498" opacity="0.5"/>
+    <rect x="680" y="392" width="44" height="4" rx="1" fill="#f9f4da" opacity="0.7"/>
+    <rect x="496" y="406" width="50" height="4" rx="1" fill="#909498" opacity="0.5"/>
+    <rect x="684" y="406" width="40" height="4" rx="1" fill="#4cba7d" opacity="0.8"/>
+    <rect x="496" y="422" width="228" height="1" fill="#383c44"/>
+    <rect x="496" y="434" width="36" height="5" rx="1" fill="#f9f4da" opacity="0.9"/>
+    <rect x="664" y="432" width="60" height="8" rx="2" fill="#fcba28" opacity="0.15"/>
+    <rect x="666" y="435" width="56" height="4" rx="1" fill="#fcba28" opacity="0.9"/>
+
+    <!-- Coupon/promo -->
+    <rect x="496" y="452" width="164" height="28" rx="4" fill="#0d0d0d" stroke="#383c44" stroke-width="1"/>
+    <rect x="506" y="462" width="80" height="4" rx="1" fill="#909498" opacity="0.4"/>
+    <rect x="664" y="452" width="60" height="28" rx="4" fill="#fcba2815" stroke="#fcba28" stroke-width="1"/>
+    <rect x="672" y="462" width="44" height="4" rx="1" fill="#fcba28" opacity="0.75"/>
+
+    <!-- SSL badge -->
+    <rect x="496" y="494" width="228" height="24" rx="4" fill="#4cba7d10" stroke="#4cba7d" stroke-width="1" opacity="0.6"/>
+    <rect x="508" y="503" width="200" height="4" rx="1" fill="#4cba7d" opacity="0.5"/>
+  </g>
+
+  <!-- === RIGHT PANEL: Analytics / Conversion === -->
+  <rect x="800" y="24" width="360" height="627" rx="10" fill="#141414" stroke="#383c44" stroke-width="1"/>
+  <rect x="818" y="44" width="120" height="6" rx="1" fill="#f9f4da" opacity="0.85"/>
+  <rect x="818" y="58" width="180" height="4" rx="1" fill="#909498" opacity="0.45"/>
+  <rect x="800" y="78" width="360" height="1" fill="#383c44"/>
+
+  <!-- Funnel visualization -->
+  <rect x="818" y="90" width="60" height="4" rx="1" fill="#909498" opacity="0.45"/>
+
+  <!-- Funnel stages -->
+  <!-- Stage 1: Visitors (widest) -->
+  <rect x="828" y="106" width="304" height="52" rx="4" fill="url(#funnelGrad)" stroke="#fcba28" stroke-width="1" opacity="0.8"/>
+  <rect x="840" y="116" width="80" height="4" rx="1" fill="#f9f4da" opacity="0.8"/>
+  <rect x="840" y="126" width="60" height="5" rx="1" fill="#fcba28" opacity="0.9"/>
+  <rect x="1060" y="120" width="60" height="5" rx="1" fill="#909498" opacity="0.5"/>
+
+  <!-- Stage 2: Product Page -->
+  <rect x="848" y="170" width="264" height="52" rx="4" fill="url(#funnelGrad)" stroke="#fcba28" stroke-width="1" opacity="0.65"/>
+  <rect x="860" y="180" width="90" height="4" rx="1" fill="#f9f4da" opacity="0.8"/>
+  <rect x="860" y="190" width="60" height="5" rx="1" fill="#fcba28" opacity="0.9"/>
+  <rect x="1042" y="184" width="58" height="4" rx="1" fill="#909498" opacity="0.5"/>
+
+  <!-- Stage 3: Cart -->
+  <rect x="868" y="234" width="224" height="52" rx="4" fill="url(#funnelGrad)" stroke="#fcba28" stroke-width="1" opacity="0.5"/>
+  <rect x="880" y="244" width="50" height="4" rx="1" fill="#f9f4da" opacity="0.8"/>
+  <rect x="880" y="254" width="60" height="5" rx="1" fill="#fcba28" opacity="0.9"/>
+  <rect x="1024" y="248" width="56" height="4" rx="1" fill="#909498" opacity="0.5"/>
+
+  <!-- Stage 4: Checkout -->
+  <rect x="888" y="298" width="184" height="52" rx="4" fill="url(#funnelGrad)" stroke="#fc7428" stroke-width="1" opacity="0.65"/>
+  <rect x="900" y="308" width="60" height="4" rx="1" fill="#f9f4da" opacity="0.8"/>
+  <rect x="900" y="318" width="56" height="5" rx="1" fill="#fc7428" opacity="0.9"/>
+  <rect x="1004" y="312" width="56" height="4" rx="1" fill="#909498" opacity="0.5"/>
+
+  <!-- Stage 5: Purchase (narrowest) -->
+  <rect x="908" y="362" width="144" height="52" rx="4" fill="url(#funnelGrad)" stroke="#4cba7d" stroke-width="1.5" opacity="0.9"/>
+  <rect x="920" y="372" width="60" height="4" rx="1" fill="#f9f4da" opacity="0.9"/>
+  <rect x="920" y="382" width="56" height="5" rx="1" fill="#4cba7d" opacity="0.95"/>
+  <rect x="984" y="376" width="56" height="4" rx="1" fill="#909498" opacity="0.5"/>
+
+  <!-- Improvement callout -->
+  <rect x="800" y="430" width="360" height="1" fill="#383c44"/>
+  <rect x="818" y="450" width="324" height="90" rx="6" fill="#fcba2810" stroke="#fcba28" stroke-width="1"/>
+  <rect x="834" y="468" width="180" height="7" rx="2" fill="#fcba28" opacity="0.9"/>
+  <rect x="834" y="484" width="240" height="4" rx="1" fill="#f9f4da" opacity="0.6"/>
+  <rect x="834" y="494" width="200" height="4" rx="1" fill="#f9f4da" opacity="0.5"/>
+  <!-- Big number -->
+  <rect x="1040" y="456" width="80" height="42" rx="4" fill="#fcba28" opacity="0.15"/>
+  <rect x="1044" y="462" width="72" height="24" rx="2" fill="#fcba28" opacity="0.9"/>
+  <rect x="1056" y="492" width="50" height="4" rx="1" fill="#fcba28" opacity="0.6"/>
+
+  <!-- A/B test results -->
+  <rect x="800" y="556" width="360" height="1" fill="#383c44"/>
+  <rect x="818" y="568" width="50" height="4" rx="1" fill="#909498" opacity="0.45"/>
+  <!-- A variant -->
+  <rect x="818" y="582" width="140" height="52" rx="4" fill="#1e1e1e" stroke="#383c44" stroke-width="1"/>
+  <rect x="828" y="592" width="30" height="4" rx="1" fill="#909498" opacity="0.5"/>
+  <rect x="828" y="602" width="80" height="5" rx="1" fill="#f9f4da" opacity="0.8"/>
+  <rect x="828" y="614" width="56" height="4" rx="1" fill="#909498" opacity="0.4"/>
+  <!-- B variant (winner) -->
+  <rect x="974" y="582" width="140" height="52" rx="4" fill="#fcba2815" stroke="#fcba28" stroke-width="1.5"/>
+  <rect x="984" y="590" width="30" height="4" rx="1" fill="#fcba28" opacity="0.6"/>
+  <rect x="984" y="592" width="90" height="16" rx="8" fill="#fcba28" opacity="0.15"/>
+  <rect x="986" y="597" width="86" height="4" rx="1" fill="#fcba28" opacity="0.7"/>
+  <rect x="984" y="614" width="56" height="4" rx="1" fill="#fcba28" opacity="0.5"/>
+  <!-- Winner badge -->
+  <rect x="1070" y="576" width="44" height="18" rx="9" fill="#fcba28"/>
+  <rect x="1077" y="582" width="30" height="4" rx="1" fill="#0d0d0d"/>
+</svg>

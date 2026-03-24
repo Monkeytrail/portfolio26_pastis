@@ -1,0 +1,133 @@
+<svg width="1200" height="675" viewBox="0 0 1200 675" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="funnelGrad1" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#fcba28" stop-opacity="0.15"/>
+      <stop offset="100%" stop-color="#fcba28" stop-opacity="0.05"/>
+    </linearGradient>
+    <linearGradient id="funnelGrad2" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#fcba28" stop-opacity="0.25"/>
+      <stop offset="100%" stop-color="#fcba28" stop-opacity="0.1"/>
+    </linearGradient>
+    <linearGradient id="funnelGrad3" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#fc7428" stop-opacity="0.35"/>
+      <stop offset="100%" stop-color="#fc7428" stop-opacity="0.15"/>
+    </linearGradient>
+    <linearGradient id="bgEcom" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0d0d0d"/>
+      <stop offset="100%" stop-color="#0a0d0d"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="675" fill="url(#bgEcom)"/>
+
+  <!-- Subtle dot pattern top right -->
+  <circle cx="1000" cy="80" r="1.5" fill="#fcba28" opacity="0.3"/>
+  <circle cx="1040" cy="80" r="1.5" fill="#fcba28" opacity="0.25"/>
+  <circle cx="1080" cy="80" r="1.5" fill="#fcba28" opacity="0.2"/>
+  <circle cx="1120" cy="80" r="1.5" fill="#fcba28" opacity="0.15"/>
+  <circle cx="1000" cy="120" r="1.5" fill="#fcba28" opacity="0.2"/>
+  <circle cx="1040" cy="120" r="1.5" fill="#fcba28" opacity="0.15"/>
+  <circle cx="1080" cy="120" r="1.5" fill="#fcba28" opacity="0.12"/>
+  <circle cx="1000" cy="160" r="1.5" fill="#fcba28" opacity="0.12"/>
+  <circle cx="1040" cy="160" r="1.5" fill="#fcba28" opacity="0.1"/>
+
+  <!-- Title section -->
+  <text x="72" y="96" font-family="Inter, system-ui, sans-serif" font-size="11" fill="#909498" letter-spacing="2" font-weight="500">CHECKOUT FLOW OPTIMISATION</text>
+  <rect x="72" y="104" width="60" height="2" fill="#fcba28"/>
+  <rect x="136" y="104" width="30" height="2" fill="#fc7428"/>
+
+  <!-- FUNNEL VISUALIZATION — center of the image -->
+
+  <!-- Step labels above funnel -->
+  <text x="214" y="155" font-family="Inter, system-ui, sans-serif" font-size="10" fill="#909498" letter-spacing="1.5" text-anchor="middle">BROWSE</text>
+  <text x="448" y="155" font-family="Inter, system-ui, sans-serif" font-size="10" fill="#909498" letter-spacing="1.5" text-anchor="middle">CART</text>
+  <text x="682" y="155" font-family="Inter, system-ui, sans-serif" font-size="10" fill="#909498" letter-spacing="1.5" text-anchor="middle">CHECKOUT</text>
+  <text x="916" y="155" font-family="Inter, system-ui, sans-serif" font-size="10" fill="#fc7428" letter-spacing="1.5" text-anchor="middle">CONFIRM</text>
+
+  <!-- Funnel bars -->
+  <!-- Step 1: Browse — 100% = full width 284px, height 280 -->
+  <rect x="72" y="168" width="284" height="280" rx="4" fill="url(#funnelGrad1)" stroke="#fcba28" stroke-width="1" stroke-opacity="0.3"/>
+  <rect x="72" y="168" width="284" height="4" rx="2" fill="#fcba28" opacity="0.5"/>
+  <text x="214" y="330" font-family="Inter, system-ui, sans-serif" font-size="40" fill="#f9f4da" font-weight="800" text-anchor="middle">100%</text>
+  <text x="214" y="360" font-family="Inter, system-ui, sans-serif" font-size="12" fill="#909498" text-anchor="middle">12,400 sessions</text>
+
+  <!-- Arrow 1→2 -->
+  <line x1="356" y1="308" x2="400" y2="308" stroke="#383c44" stroke-width="1.5" stroke-dasharray="4,3"/>
+  <polygon points="396,303 406,308 396,313" fill="#383c44"/>
+  <text x="378" y="296" font-family="Inter, system-ui, sans-serif" font-size="9" fill="#909498" text-anchor="middle">62%</text>
+
+  <!-- Step 2: Cart — 62% = 176px -->
+  <rect x="306" y="220" width="284" height="228" rx="4" fill="url(#funnelGrad1)" stroke="#fcba28" stroke-width="1" stroke-opacity="0.4"/>
+  <rect x="306" y="220" width="284" height="4" rx="2" fill="#fcba28" opacity="0.6"/>
+  <text x="448" y="330" font-family="Inter, system-ui, sans-serif" font-size="40" fill="#f9f4da" font-weight="800" text-anchor="middle">62%</text>
+  <text x="448" y="360" font-family="Inter, system-ui, sans-serif" font-size="12" fill="#909498" text-anchor="middle">7,688 sessions</text>
+
+  <!-- Arrow 2→3 -->
+  <line x1="590" y1="308" x2="634" y2="308" stroke="#383c44" stroke-width="1.5" stroke-dasharray="4,3"/>
+  <polygon points="630,303 640,308 630,313" fill="#383c44"/>
+  <text x="612" y="296" font-family="Inter, system-ui, sans-serif" font-size="9" fill="#909498" text-anchor="middle">43%</text>
+
+  <!-- Step 3: Checkout — 43% = 121px -->
+  <rect x="540" y="262" width="284" height="186" rx="4" fill="url(#funnelGrad2)" stroke="#fcba28" stroke-width="1.5" stroke-opacity="0.5"/>
+  <rect x="540" y="262" width="284" height="4" rx="2" fill="#fcba28" opacity="0.8"/>
+  <text x="682" y="330" font-family="Inter, system-ui, sans-serif" font-size="40" fill="#f9f4da" font-weight="800" text-anchor="middle">43%</text>
+  <text x="682" y="360" font-family="Inter, system-ui, sans-serif" font-size="12" fill="#909498" text-anchor="middle">5,332 sessions</text>
+
+  <!-- Arrow 3→4 -->
+  <line x1="824" y1="308" x2="868" y2="308" stroke="#fc7428" stroke-width="1.5" stroke-dasharray="4,3" opacity="0.6"/>
+  <polygon points="864,303 874,308 864,313" fill="#fc7428" opacity="0.6"/>
+  <text x="846" y="296" font-family="Inter, system-ui, sans-serif" font-size="9" fill="#fc7428" text-anchor="middle">75%</text>
+
+  <!-- Step 4: Confirm — 75% of checkout = 32% total -->
+  <rect x="774" y="296" width="284" height="152" rx="4" fill="url(#funnelGrad3)" stroke="#fc7428" stroke-width="2" stroke-opacity="0.8"/>
+  <rect x="774" y="296" width="284" height="4" rx="2" fill="#fc7428"/>
+  <text x="916" y="330" font-family="Inter, system-ui, sans-serif" font-size="40" fill="#fc7428" font-weight="800" text-anchor="middle">32%</text>
+  <text x="916" y="360" font-family="Inter, system-ui, sans-serif" font-size="12" fill="#fc7428" text-anchor="middle">converted</text>
+
+  <!-- Improvement tag -->
+  <rect x="808" y="456" width="216" height="32" rx="16" fill="#fc7428" opacity="0.15" stroke="#fc7428" stroke-width="1"/>
+  <text x="916" y="477" font-family="Inter, system-ui, sans-serif" font-size="12" fill="#fc7428" text-anchor="middle" font-weight="600">↑ +25% vs. baseline</text>
+
+  <!-- Drop-off annotations -->
+  <line x1="356" y1="220" x2="356" y2="200" stroke="#383c44" stroke-width="1" stroke-dasharray="3,2"/>
+  <text x="214" y="196" font-family="Inter, system-ui, sans-serif" font-size="9" fill="#909498" text-anchor="middle">drop-off 38%</text>
+
+  <line x1="590" y1="262" x2="590" y2="242" stroke="#383c44" stroke-width="1" stroke-dasharray="3,2"/>
+  <text x="448" y="238" font-family="Inter, system-ui, sans-serif" font-size="9" fill="#909498" text-anchor="middle">drop-off 19%</text>
+
+  <!-- Bottom area: before/after comparison -->
+  <rect x="72" y="510" width="510" height="108" rx="8" fill="#1e1e1e" stroke="#383c44" stroke-width="1"/>
+  <text x="96" y="537" font-family="Inter, system-ui, sans-serif" font-size="10" fill="#909498" letter-spacing="1.5">BEFORE REDESIGN</text>
+  <!-- Before stats -->
+  <text x="96" y="566" font-family="Inter, system-ui, sans-serif" font-size="28" fill="#f9f4da" font-weight="700">7%</text>
+  <text x="148" y="566" font-family="Inter, system-ui, sans-serif" font-size="12" fill="#909498" font-weight="400"> conversion</text>
+  <text x="96" y="590" font-family="Inter, system-ui, sans-serif" font-size="13" fill="#f9f4da" font-weight="500">68%</text>
+  <text x="130" y="590" font-family="Inter, system-ui, sans-serif" font-size="12" fill="#909498"> cart abandonment</text>
+  <text x="96" y="608" font-family="Inter, system-ui, sans-serif" font-size="13" fill="#f9f4da" font-weight="500">4.2 steps</text>
+  <text x="160" y="608" font-family="Inter, system-ui, sans-serif" font-size="12" fill="#909498"> avg to checkout</text>
+
+  <!-- Divider with arrow -->
+  <line x1="430" y1="510" x2="430" y2="618" stroke="#383c44" stroke-width="1"/>
+  <circle cx="430" cy="564" r="16" fill="#262522" stroke="#383c44" stroke-width="1"/>
+  <polyline points="424,564 430,558 436,564" fill="none" stroke="#fcba28" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+  <line x1="430" y1="558" x2="430" y2="572" stroke="#fcba28" stroke-width="2" stroke-linecap="round"/>
+
+  <rect x="618" y="510" width="510" height="108" rx="8" fill="#1e1e1e" stroke="#fcba28" stroke-width="1"/>
+  <text x="642" y="537" font-family="Inter, system-ui, sans-serif" font-size="10" fill="#fcba28" letter-spacing="1.5">AFTER REDESIGN</text>
+  <!-- After stats -->
+  <text x="642" y="566" font-family="Inter, system-ui, sans-serif" font-size="28" fill="#fcba28" font-weight="700">32%</text>
+  <text x="706" y="566" font-family="Inter, system-ui, sans-serif" font-size="12" fill="#909498" font-weight="400"> conversion</text>
+  <text x="642" y="590" font-family="Inter, system-ui, sans-serif" font-size="13" fill="#fcba28" font-weight="500">43%</text>
+  <text x="680" y="590" font-family="Inter, system-ui, sans-serif" font-size="12" fill="#909498"> cart abandonment (−25%)</text>
+  <text x="642" y="608" font-family="Inter, system-ui, sans-serif" font-size="13" fill="#fcba28" font-weight="500">2.8 steps</text>
+  <text x="712" y="608" font-family="Inter, system-ui, sans-serif" font-size="12" fill="#909498"> avg to checkout (−33%)</text>
+
+  <!-- Label band -->
+  <rect x="0" y="636" width="1200" height="39" fill="#0d0d0d"/>
+  <line x1="0" y1="636" x2="1200" y2="636" stroke="#1e1e1e" stroke-width="1"/>
+  <text x="72" y="660" font-family="Inter, system-ui, sans-serif" font-size="11" fill="#909498" letter-spacing="1.5" font-weight="500">E-COMMERCE EXPERIENCE</text>
+  <text x="324" y="660" font-family="Inter, system-ui, sans-serif" font-size="11" fill="#383c44" letter-spacing="1">·  RETAIL PLATFORM  ·  2023</text>
+  <rect x="72" y="636" width="80" height="3" fill="#fcba28"/>
+  <rect x="156" y="636" width="40" height="3" fill="#fc7428"/>
+</svg>

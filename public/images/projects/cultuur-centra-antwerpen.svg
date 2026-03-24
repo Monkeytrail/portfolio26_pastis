@@ -1,0 +1,187 @@
+<svg width="1200" height="675" viewBox="0 0 1200 675" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="cultureBg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0d0d0d"/>
+      <stop offset="100%" stop-color="#0f0d0d"/>
+    </linearGradient>
+    <linearGradient id="venueGrad1" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#fcba28" stop-opacity="0.12"/>
+      <stop offset="100%" stop-color="#0d0d0d" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="venueGrad2" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#fc7428" stop-opacity="0.1"/>
+      <stop offset="100%" stop-color="#0d0d0d" stop-opacity="0"/>
+    </linearGradient>
+    <pattern id="cultureDots" width="24" height="24" patternUnits="userSpaceOnUse">
+      <circle cx="12" cy="12" r="0.8" fill="#1e1e1e"/>
+    </pattern>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="675" fill="url(#cultureBg)"/>
+  <rect width="1200" height="675" fill="url(#cultureDots)" opacity="0.6"/>
+
+  <!-- Decorative curtain arcs — theatrical motif -->
+  <path d="M0,0 Q100,120 0,240" fill="none" stroke="#1a1a1a" stroke-width="2"/>
+  <path d="M0,0 Q140,160 0,320" fill="none" stroke="#1a1a1a" stroke-width="1"/>
+  <path d="M1200,0 Q1100,120 1200,240" fill="none" stroke="#1a1a1a" stroke-width="2"/>
+  <path d="M1200,0 Q1060,160 1200,320" fill="none" stroke="#1a1a1a" stroke-width="1"/>
+
+  <!-- Header -->
+  <text x="600" y="56" font-family="Inter, system-ui, sans-serif" font-size="12" fill="#909498" letter-spacing="3" font-weight="500" text-anchor="middle">CULTUUR CENTRA ANTWERPEN</text>
+  <rect x="540" y="64" width="40" height="2" rx="1" fill="#fcba28"/>
+  <rect x="586" y="64" width="28" height="2" rx="1" fill="#fc7428"/>
+  <rect x="620" y="64" width="40" height="2" rx="1" fill="#fcba28"/>
+
+  <!-- 4 Venue cards — 2x2 grid -->
+
+  <!-- Card 1: deSingel (top-left) -->
+  <rect x="72" y="88" width="504" height="248" rx="8" fill="#1e1e1e" stroke="#383c44" stroke-width="1"/>
+  <rect x="72" y="88" width="504" height="248" fill="url(#venueGrad1)" rx="8"/>
+  <!-- Venue illustration area -->
+  <rect x="72" y="88" width="504" height="140" rx="8" fill="#141414"/>
+  <rect x="72" y="220" width="504" height="6" fill="#141414"/>
+  <!-- Abstract stage / arch motif -->
+  <path d="M200,148 Q324,80 448,148" fill="none" stroke="#fcba28" stroke-width="1.5" opacity="0.4"/>
+  <path d="M240,160 Q324,100 408,160" fill="none" stroke="#fcba28" stroke-width="1" opacity="0.3"/>
+  <!-- Stage lights -->
+  <line x1="200" y1="88" x2="260" y2="160" stroke="#fcba28" stroke-width="0.8" opacity="0.15"/>
+  <line x1="260" y1="88" x2="300" y2="160" stroke="#fcba28" stroke-width="0.8" opacity="0.12"/>
+  <line x1="390" y1="88" x2="350" y2="160" stroke="#fcba28" stroke-width="0.8" opacity="0.12"/>
+  <line x1="448" y1="88" x2="390" y2="160" stroke="#fcba28" stroke-width="0.8" opacity="0.15"/>
+  <!-- Stage floor -->
+  <rect x="220" y="160" width="208" height="66" rx="2" fill="#0d0d0d" stroke="#1e1e1e" stroke-width="1"/>
+  <!-- Stage seating rows (perspective) -->
+  <line x1="220" y1="176" x2="428" y2="176" stroke="#1a1a1a" stroke-width="1"/>
+  <line x1="220" y1="192" x2="428" y2="192" stroke="#1a1a1a" stroke-width="1"/>
+  <line x1="220" y1="208" x2="428" y2="208" stroke="#1a1a1a" stroke-width="1"/>
+  <!-- Spotlight -->
+  <circle cx="324" cy="100" r="6" fill="#fcba28" opacity="0.6"/>
+  <path d="M318,104 L290,155 L358,155 Z" fill="#fcba28" opacity="0.04"/>
+
+  <!-- Venue 1 info -->
+  <rect x="72" y="232" width="4" height="104" rx="2" fill="#fcba28"/>
+  <text x="92" y="256" font-family="Inter, system-ui, sans-serif" font-size="15" fill="#f9f4da" font-weight="700">deSingel</text>
+  <text x="92" y="274" font-family="Inter, system-ui, sans-serif" font-size="11" fill="#909498">Internationaal kunstencentrum</text>
+  <rect x="92" y="286" width="64" height="20" rx="10" fill="#fcba28" opacity="0.15"/>
+  <text x="124" y="300" font-family="Inter, system-ui, sans-serif" font-size="9" fill="#fcba28" text-anchor="middle">Theater</text>
+  <rect x="164" y="286" width="56" height="20" rx="10" fill="#383c44"/>
+  <text x="192" y="300" font-family="Inter, system-ui, sans-serif" font-size="9" fill="#909498" text-anchor="middle">Opera</text>
+  <rect x="228" y="286" width="56" height="20" rx="10" fill="#383c44"/>
+  <text x="256" y="300" font-family="Inter, system-ui, sans-serif" font-size="9" fill="#909498" text-anchor="middle">Dans</text>
+  <text x="92" y="328" font-family="Inter, system-ui, sans-serif" font-size="10" fill="#909498">Desguinlei 25, Antwerpen</text>
+
+  <!-- Card 2: CC Berchem (top-right) -->
+  <rect x="624" y="88" width="504" height="248" rx="8" fill="#1e1e1e" stroke="#383c44" stroke-width="1"/>
+  <rect x="624" y="88" width="504" height="248" fill="url(#venueGrad2)" rx="8"/>
+  <rect x="624" y="88" width="504" height="140" rx="8" fill="#141414"/>
+  <rect x="624" y="220" width="504" height="6" fill="#141414"/>
+  <!-- Abstract geometric arts motif -->
+  <circle cx="876" cy="130" r="50" fill="none" stroke="#fc7428" stroke-width="1" opacity="0.2"/>
+  <circle cx="876" cy="130" r="35" fill="none" stroke="#fc7428" stroke-width="0.8" opacity="0.15"/>
+  <circle cx="876" cy="130" r="18" fill="#fc7428" opacity="0.06"/>
+  <!-- Geometric shapes -->
+  <polygon points="836,88 876,160 916,88" fill="none" stroke="#fc7428" stroke-width="1" opacity="0.15"/>
+  <rect x="848" y="100" width="56" height="56" fill="none" stroke="#fcba28" stroke-width="0.8" opacity="0.1" transform="rotate(20, 876, 128)"/>
+  <!-- Spotlights -->
+  <line x1="700" y1="88" x2="830" y2="155" stroke="#fc7428" stroke-width="0.8" opacity="0.1"/>
+  <line x1="1052" y1="88" x2="930" y2="155" stroke="#fc7428" stroke-width="0.8" opacity="0.1"/>
+
+  <rect x="624" y="232" width="4" height="104" rx="2" fill="#fc7428"/>
+  <text x="644" y="256" font-family="Inter, system-ui, sans-serif" font-size="15" fill="#f9f4da" font-weight="700">CC Berchem</text>
+  <text x="644" y="274" font-family="Inter, system-ui, sans-serif" font-size="11" fill="#909498">Cultureel centrum Berchem</text>
+  <rect x="644" y="286" width="72" height="20" rx="10" fill="#fc7428" opacity="0.15"/>
+  <text x="680" y="300" font-family="Inter, system-ui, sans-serif" font-size="9" fill="#fc7428" text-anchor="middle">Tentoonst.</text>
+  <rect x="724" y="286" width="64" height="20" rx="10" fill="#383c44"/>
+  <text x="756" y="300" font-family="Inter, system-ui, sans-serif" font-size="9" fill="#909498" text-anchor="middle">Concerten</text>
+  <text x="644" y="328" font-family="Inter, system-ui, sans-serif" font-size="10" fill="#909498">Driekoningenstraat 1, Berchem</text>
+
+  <!-- Card 3: CC Merksem (bottom-left) -->
+  <rect x="72" y="352" width="504" height="248" rx="8" fill="#1e1e1e" stroke="#383c44" stroke-width="1"/>
+  <rect x="72" y="352" width="504" height="140" rx="8" fill="#141414"/>
+  <rect x="72" y="484" width="504" height="6" fill="#141414"/>
+  <!-- Music / note motif -->
+  <!-- Music staff lines -->
+  <line x1="120" y1="380" x2="528" y2="380" stroke="#1e1e1e" stroke-width="1"/>
+  <line x1="120" y1="396" x2="528" y2="396" stroke="#1e1e1e" stroke-width="1"/>
+  <line x1="120" y1="412" x2="528" y2="412" stroke="#1e1e1e" stroke-width="1"/>
+  <line x1="120" y1="428" x2="528" y2="428" stroke="#1e1e1e" stroke-width="1"/>
+  <line x1="120" y1="444" x2="528" y2="444" stroke="#1e1e1e" stroke-width="1"/>
+  <!-- Treble clef suggestion -->
+  <text x="130" y="432" font-family="Georgia, serif" font-size="56" fill="#fcba28" opacity="0.12">𝄞</text>
+  <!-- Notes -->
+  <circle cx="240" cy="388" r="8" fill="#fcba28" opacity="0.2"/>
+  <line x1="248" y1="388" x2="248" y2="356" stroke="#fcba28" stroke-width="1.5" opacity="0.3"/>
+  <circle cx="300" cy="404" r="8" fill="#fcba28" opacity="0.15"/>
+  <line x1="308" y1="404" x2="308" y2="372" stroke="#fcba28" stroke-width="1.5" opacity="0.2"/>
+  <circle cx="360" cy="396" r="8" fill="#fc7428" opacity="0.15"/>
+  <line x1="368" y1="396" x2="368" y2="364" stroke="#fc7428" stroke-width="1.5" opacity="0.2"/>
+  <circle cx="420" cy="412" r="8" fill="#fc7428" opacity="0.1"/>
+  <circle cx="480" cy="388" r="8" fill="#fcba28" opacity="0.12"/>
+
+  <rect x="72" y="496" width="4" height="104" rx="2" fill="#fcba28" opacity="0.6"/>
+  <text x="92" y="520" font-family="Inter, system-ui, sans-serif" font-size="15" fill="#f9f4da" font-weight="700">CC Merksem</text>
+  <text x="92" y="538" font-family="Inter, system-ui, sans-serif" font-size="11" fill="#909498">Cultureel centrum Merksem</text>
+  <rect x="92" y="550" width="56" height="20" rx="10" fill="#fcba28" opacity="0.12"/>
+  <text x="120" y="564" font-family="Inter, system-ui, sans-serif" font-size="9" fill="#fcba28" text-anchor="middle">Muziek</text>
+  <rect x="156" y="550" width="64" height="20" rx="10" fill="#383c44"/>
+  <text x="188" y="564" font-family="Inter, system-ui, sans-serif" font-size="9" fill="#909498" text-anchor="middle">Workshops</text>
+  <text x="92" y="592" font-family="Inter, system-ui, sans-serif" font-size="10" fill="#909498">Bredabaan 401, Merksem</text>
+
+  <!-- Card 4: CC Luchtbal (bottom-right) -->
+  <rect x="624" y="352" width="504" height="248" rx="8" fill="#1e1e1e" stroke="#383c44" stroke-width="1"/>
+  <rect x="624" y="352" width="504" height="140" rx="8" fill="#141414"/>
+  <rect x="624" y="484" width="504" height="6" fill="#141414"/>
+  <!-- Community / people motif -->
+  <!-- Circles for people (abstract) -->
+  <circle cx="760" cy="420" r="24" fill="#262522" stroke="#383c44" stroke-width="1"/>
+  <circle cx="760" cy="408" r="10" fill="#383c44"/>
+  <path d="M736,430 Q760,420 784,430" fill="#383c44"/>
+  <circle cx="820" cy="410" r="24" fill="#fcba28" opacity="0.08" stroke="#fcba28" stroke-width="1" stroke-opacity="0.3"/>
+  <circle cx="820" cy="398" r="10" fill="#fcba28" opacity="0.3"/>
+  <path d="M796,422 Q820,412 844,422" fill="none" stroke="#fcba28" stroke-width="1" opacity="0.4"/>
+  <circle cx="880" cy="420" r="24" fill="#262522" stroke="#383c44" stroke-width="1"/>
+  <circle cx="880" cy="408" r="10" fill="#383c44"/>
+  <path d="M856,430 Q880,420 904,430" fill="#383c44"/>
+  <circle cx="940" cy="410" r="24" fill="#fc7428" opacity="0.06" stroke="#fc7428" stroke-width="1" stroke-opacity="0.25"/>
+  <circle cx="940" cy="398" r="10" fill="#fc7428" opacity="0.2"/>
+  <path d="M916,422 Q940,412 964,422" fill="none" stroke="#fc7428" stroke-width="1" opacity="0.3"/>
+  <circle cx="1000" cy="420" r="24" fill="#262522" stroke="#383c44" stroke-width="1"/>
+  <circle cx="1000" cy="408" r="10" fill="#383c44"/>
+
+  <!-- Connecting line: community feel -->
+  <line x1="760" y1="428" x2="820" y2="428" stroke="#fcba28" stroke-width="1" stroke-dasharray="3,3" opacity="0.3"/>
+  <line x1="820" y1="428" x2="880" y2="428" stroke="#fc7428" stroke-width="1" stroke-dasharray="3,3" opacity="0.25"/>
+  <line x1="880" y1="428" x2="940" y2="428" stroke="#fc7428" stroke-width="1" stroke-dasharray="3,3" opacity="0.2"/>
+  <line x1="940" y1="428" x2="1000" y2="428" stroke="#383c44" stroke-width="1" stroke-dasharray="3,3" opacity="0.2"/>
+
+  <rect x="624" y="496" width="4" height="104" rx="2" fill="#fc7428" opacity="0.6"/>
+  <text x="644" y="520" font-family="Inter, system-ui, sans-serif" font-size="15" fill="#f9f4da" font-weight="700">CC Luchtbal</text>
+  <text x="644" y="538" font-family="Inter, system-ui, sans-serif" font-size="11" fill="#909498">Cultureel centrum Luchtbal</text>
+  <rect x="644" y="550" width="80" height="20" rx="10" fill="#fc7428" opacity="0.12"/>
+  <text x="684" y="564" font-family="Inter, system-ui, sans-serif" font-size="9" fill="#fc7428" text-anchor="middle">Community</text>
+  <rect x="732" y="550" width="72" height="20" rx="10" fill="#383c44"/>
+  <text x="768" y="564" font-family="Inter, system-ui, sans-serif" font-size="9" fill="#909498" text-anchor="middle">Jeugd</text>
+  <text x="644" y="592" font-family="Inter, system-ui, sans-serif" font-size="10" fill="#909498">Van Schoonbekestraat 100, Antwerpen</text>
+
+  <!-- Service Design badge -->
+  <rect x="72" y="616" width="200" height="20" rx="10" fill="#262522" stroke="#383c44" stroke-width="1"/>
+  <text x="172" y="630" font-family="Inter, system-ui, sans-serif" font-size="9" fill="#909498" text-anchor="middle">Service Design · 4 trajecten</text>
+
+  <rect x="284" y="616" width="200" height="20" rx="10" fill="#262522" stroke="#383c44" stroke-width="1"/>
+  <text x="384" y="630" font-family="Inter, system-ui, sans-serif" font-size="9" fill="#909498" text-anchor="middle">UX Research · doelgroepanalyse</text>
+
+  <rect x="496" y="616" width="200" height="20" rx="10" fill="#262522" stroke="#fcba28" stroke-width="1"/>
+  <text x="596" y="630" font-family="Inter, system-ui, sans-serif" font-size="9" fill="#fcba28" text-anchor="middle">Accessibility · WCAG</text>
+
+  <rect x="708" y="616" width="200" height="20" rx="10" fill="#262522" stroke="#383c44" stroke-width="1"/>
+  <text x="808" y="630" font-family="Inter, system-ui, sans-serif" font-size="9" fill="#909498" text-anchor="middle">Wireframes · 4 maatwerk sites</text>
+
+  <!-- Label band -->
+  <rect x="0" y="636" width="1200" height="39" fill="#0d0d0d"/>
+  <line x1="0" y1="636" x2="1200" y2="636" stroke="#1e1e1e" stroke-width="1"/>
+  <text x="72" y="660" font-family="Inter, system-ui, sans-serif" font-size="11" fill="#909498" letter-spacing="1.5" font-weight="500">CULTUUR CENTRA ANTWERPEN</text>
+  <text x="380" y="660" font-family="Inter, system-ui, sans-serif" font-size="11" fill="#383c44" letter-spacing="1">·  VIAVICTOR  ·  2024</text>
+  <rect x="72" y="636" width="80" height="3" fill="#fcba28"/>
+  <rect x="156" y="636" width="40" height="3" fill="#fc7428"/>
+</svg>
