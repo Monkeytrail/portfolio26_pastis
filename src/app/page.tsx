@@ -18,6 +18,8 @@ export default async function HomePage() {
       <h1>{settings?.heroHeadline}</h1>
       <p>{settings?.heroSubheadline}</p>
 
+      <h2 className="work-section-title">Selected work</h2>
+
       <ul className="work-list">
         {projects?.map((project: any) => (
           <li key={project._id}>
