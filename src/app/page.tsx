@@ -1,5 +1,6 @@
 import { client } from '@/sanity/lib/client';
 import { projectsQuery, siteSettingsQuery } from '@/sanity/lib/queries';
+import CopyEmailButton from '@/components/CopyEmailButton';
 
 export default async function HomePage() {
   let projects: any[] = [];
@@ -38,9 +39,7 @@ export default async function HomePage() {
           </a>
         )}
         {settings?.contactEmail && (
-          <a href={`mailto:${settings.contactEmail}`} className="hero-btn">
-            Send an email
-          </a>
+          <CopyEmailButton email={settings.contactEmail} className="hero-btn" />
         )}
       </div>
     </div>

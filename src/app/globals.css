@@ -147,6 +147,7 @@ img {
   color: var(--text-secondary);
   line-height: 1.75;
   margin-bottom: 1.25rem;
+  white-space: pre-wrap;
 }
 
 .prose a {
@@ -188,6 +189,19 @@ img {
 .hero-btn:hover {
   border-color: var(--action-primary);
   color: var(--text-primary);
+}
+
+.hero-btn[type="button"] {
+  background: none;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+.copy-icon {
+  display: inline-flex;
+  align-items: center;
+  margin-left: 0.4rem;
+  opacity: 0.6;
 }
 
 /* ============================================================
