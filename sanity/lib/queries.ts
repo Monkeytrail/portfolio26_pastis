@@ -1,4 +1,4 @@
-export const projectsQuery = `*[_type == "project" && featured == true] | order(order asc) {
+export const projectsQuery = `*[_type == "project" && featured == true] | order(year desc) {
   _id, title, slug { current }, shortDescription, description, year, client, coverImage, coverImageLight, tags
 }`;
 
