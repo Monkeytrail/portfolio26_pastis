@@ -145,6 +145,7 @@ export default async function ProjectPage({ params }: PageProps) {
   if (!project) notFound();
 
   const context = [project.client, project.year].filter(Boolean).join(' · ');
+  const coverImageUrl = project.coverImage ? urlForImage(project.coverImage) : null;
 
   return (
     <article className="prose">
@@ -158,6 +159,17 @@ export default async function ProjectPage({ params }: PageProps) {
 
       {project.tags?.length > 0 && (
         <p className="project-tags">{project.tags.join(', ')}</p>
+      )}
+
+      {coverImageUrl && (
+        <Image
+          src={coverImageUrl}
+          alt={project.title}
+          width={660}
+          height={440}
+          className="project-cover-image"
+          priority
+        />
       )}
 
       {project.description && (

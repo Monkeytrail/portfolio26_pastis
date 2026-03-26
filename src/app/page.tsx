@@ -49,11 +49,22 @@ export default async function HomePage() {
   const subheadline =
     settings?.heroSubheadline ??
     'I design digital products that are clear, functional, and crafted to matter. Based in Antwerp, working globally.';
+  const email = settings?.contactEmail ?? 'coffee@jeroenvanginneken.be';
+  const linkedinUrl = settings?.socialLinks?.linkedin ?? 'https://linkedin.com/in/jeroenvanginneken';
 
   return (
     <div className="prose">
       <h1>{headline}</h1>
       <p>{subheadline}</p>
+
+      <div className="hero-actions">
+        <a href={linkedinUrl} target="_blank" rel="noopener noreferrer" className="hero-btn">
+          LinkedIn ↗
+        </a>
+        <a href={`mailto:${email}`} className="hero-btn">
+          Send an email
+        </a>
+      </div>
 
       <ul className="work-list">
         {displayProjects.map((project: any) => (

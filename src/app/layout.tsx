@@ -23,13 +23,6 @@ export default async function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  let settings: any = null;
-  try {
-    settings = await client.fetch(siteSettingsQuery);
-  } catch { }
-
-  const email = settings?.contactEmail ?? 'coffee@jeroenvanginneken.be';
-
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
@@ -43,15 +36,6 @@ export default async function RootLayout({
         <Script src="/pastis.js" strategy="afterInteractive" />
         <ThemeProvider>
           <main>{children}</main>
-          <footer className="site-footer">
-            <a href="/">Work</a>
-            <span aria-hidden="true">·</span>
-            <a href="/about">About</a>
-            <span aria-hidden="true">·</span>
-            <a href={`mailto:${email}`}>Contact</a>
-            <span aria-hidden="true">·</span>
-            <span>Antwerp</span>
-          </footer>
         </ThemeProvider>
       </body>
     </html>

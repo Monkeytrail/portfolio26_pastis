@@ -158,6 +158,34 @@ img {
 }
 
 /* ============================================================
+   HOME — HERO ACTIONS
+   ============================================================ */
+.hero-actions {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  margin-bottom: 3rem;
+}
+
+.hero-btn {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-md);
+  text-decoration: none;
+  transition: border-color var(--transition-fast), color var(--transition-fast);
+}
+
+.hero-btn:hover {
+  border-color: var(--action-primary);
+  color: var(--text-primary);
+}
+
+/* ============================================================
    HOME — WORK LIST
    ============================================================ */
 .work-list {
@@ -168,6 +196,16 @@ img {
 .work-list li {
   border-top: 1px solid var(--border-default);
   padding: 0.875rem 0;
+  transition: opacity var(--transition-fast);
+  cursor: pointer;
+}
+
+.work-list:has(li:hover) li {
+  opacity: 0.5;
+}
+
+.work-list:has(li:hover) li:hover {
+  opacity: 1;
 }
 
 .work-list li:last-child {
@@ -182,7 +220,7 @@ img {
   text-decoration: none;
 }
 
-.work-list a:hover .work-title {
+.work-list li:hover .work-title {
   color: var(--action-primary);
 }
 
@@ -209,6 +247,7 @@ img {
    FOOTER
    ============================================================ */
 .site-footer {
+  display: none;
   max-width: 660px;
   margin: 0 auto;
   padding: 0 24px 56px;
@@ -347,6 +386,16 @@ img {
   font-size: 0.8125rem;
   color: var(--text-tertiary);
   margin-bottom: 2rem;
+}
+
+.project-cover-image {
+  display: block;
+  width: 144%;
+  height: auto;
+  margin: 2rem 0;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
 .project-description {
