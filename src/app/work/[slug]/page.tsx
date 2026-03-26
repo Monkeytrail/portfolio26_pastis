@@ -32,37 +32,6 @@ export async function generateMetadata({ params }: PageProps) {
   return { title: 'Project — Jeroen van Ginneken' };
 }
 
-const FALLBACK_PROJECTS: Record<string, any> = {
-  'design-system-at-scale': {
-    _id: 'fallback-1',
-    title: 'Design System at Scale',
-    client: 'FinTech Corp',
-    year: '2024',
-    tags: ['Design Systems', 'Figma', 'React'],
-    description:
-      'An end-to-end design system built to unify product experiences across 6 teams. Starting from a component audit, I established a shared token layer, built 120+ documented Figma components, and collaborated with engineers to publish a React implementation used in production.',
-    shortDescription: 'Built a cohesive component library adopted across 6 product teams.',
-    coverImage: null,
-    detailedContent: [
-      { contentType: 'heading', text: 'The Challenge' },
-      { contentType: 'text', text: 'Six product teams, twelve designers, and a design language that had fragmented over three years of rapid growth. Components were duplicated, tokens inconsistent, and the developer handoff process was a source of constant friction.' },
-      { contentType: 'heading', text: 'Approach' },
-      { contentType: 'text', text: 'I started with a full component audit — cataloguing every UI element in production, identifying duplicates, and mapping them against user expectations. From there, I designed the token architecture: global, alias, and component-level tokens that could support multiple themes.' },
-      { contentType: 'quote', text: 'The design system became the single source of truth, reducing design debt and accelerating feature delivery by 30%.' },
-      {
-        contentType: 'results',
-        items: [
-          '120+ documented Figma components shipped',
-          '30% faster feature delivery post-adoption',
-          'Reduced visual inconsistencies by 80%',
-          'Onboarding time for new designers cut from 2 weeks to 3 days',
-        ],
-      },
-    ],
-    links: [],
-  },
-};
-
 function ContentBlock({ block }: { block: any }) {
   switch (block.contentType) {
     case 'heading':
@@ -137,10 +106,6 @@ export default async function ProjectPage({ params }: PageProps) {
       client.fetch(siteSettingsQuery),
     ]);
   } catch { }
-
-  if (!project) {
-    project = FALLBACK_PROJECTS[slug] ?? null;
-  }
 
   if (!project) notFound();
 

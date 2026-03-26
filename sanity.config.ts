@@ -4,10 +4,11 @@ import { visionTool } from '@sanity/vision';
 import { schemaTypes } from './sanity/schemaTypes';
 
 export default defineConfig({
-  name: 'portfolio-pastis',
+  name: 'default',
   title: 'Portfolio Pastis',
   projectId: 'p1xxvps4',
   dataset: 'production',
+  basePath: '/studio',
   plugins: [structureTool(), visionTool()],
   schema: { types: schemaTypes },
 });
