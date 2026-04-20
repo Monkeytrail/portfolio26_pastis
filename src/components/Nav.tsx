@@ -45,7 +45,7 @@ export default function Nav({ brand, contactEmail }: NavProps) {
 
   return (
     <pastis-nav ref={ref} brand={brand ?? 'JvG'} sticky="">
-      <pastis-theme-toggle slot="actions" />
+      {/* Light mode temporarily disabled — restore when re-enabling: <pastis-theme-toggle slot="actions" /> */}
     </pastis-nav>
   );
 }

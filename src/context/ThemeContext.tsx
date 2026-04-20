@@ -16,12 +16,12 @@ const ThemeContext = createContext<ThemeContextValue>({
 });
 
 export function ThemeProvider({ children }: { children: ReactNode }) {
-  const [theme, setTheme] = useState<Theme>(() => {
-    if (typeof window === 'undefined') return 'dark';
-    const stored = localStorage.getItem('theme') as Theme | null;
-    const preferred = window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
-    return stored || preferred;
-  });
+  // Light mode temporarily disabled — always use dark.
+  // To re-enable: restore localStorage/matchMedia logic:
+  //   const stored = localStorage.getItem('theme') as Theme | null;
+  //   const preferred = window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+  //   return stored || preferred;
+  const [theme, setTheme] = useState<Theme>('dark');
 
   const pathname = usePathname();
 

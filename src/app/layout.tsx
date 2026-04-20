@@ -26,9 +26,12 @@ export default async function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
+        {/* Theme init script — currently locked to dark; restore dynamic logic when light mode is re-enabled:
+          (function(){try{var s=localStorage.getItem('theme'),p=window.matchMedia('(prefers-color-scheme: light)').matches?'light':'dark';document.documentElement.setAttribute('data-theme',s||p);}catch(e){document.documentElement.setAttribute('data-theme','dark');}})();
+        */}
         <script
           dangerouslySetInnerHTML={{
-            __html: `(function(){try{var s=localStorage.getItem('theme'),p=window.matchMedia('(prefers-color-scheme: light)').matches?'light':'dark';document.documentElement.setAttribute('data-theme',s||p);}catch(e){document.documentElement.setAttribute('data-theme','dark');}})();`,
+            __html: `document.documentElement.setAttribute('data-theme','dark');`,
           }}
         />
       </head>
