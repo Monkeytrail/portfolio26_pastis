@@ -1,7 +1,8 @@
 'use client';
 
-import { useEffect, useRef } from 'react';
+import { useRef } from 'react';
 import { usePathname } from 'next/navigation';
+import { useCustomElementProps } from '@/hooks/useCustomElementProps';
 
 interface NavProps {
   brand?: string;
@@ -26,22 +27,7 @@ export default function Nav({ brand, contactEmail }: NavProps) {
     { id: 'contact', label: 'Contact', href: `mailto:${contactEmail ?? 'coffee@jeroenvanginneken.be'}` },
   ];
 
-  useEffect(() => {
-    if (typeof window === 'undefined') return;
-
-    const setup = () => {
-      const el = ref.current;
-      if (!el) return;
-      (el as any).items = NAV_ITEMS;
-      (el as any).active = activeId;
-    };
-
-    if (customElements.get('pastis-nav')) {
-      setup();
-    } else {
-      customElements.whenDefined('pastis-nav').then(setup);
-    }
-  }, [activeId]);
+  useCustomElementProps(ref, 'pastis-nav', { items: NAV_ITEMS, active: activeId }, [activeId]);
 
   return (
     <pastis-nav ref={ref} brand={brand ?? 'JvG'} sticky="">

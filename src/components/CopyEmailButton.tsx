@@ -15,9 +15,7 @@ export default function CopyEmailButton({ email, className }: Props) {
       await navigator.clipboard.writeText(email);
       setCopied(true);
       setTimeout(() => setCopied(false), 2000);
-    } catch {
-      // fallback: select text manually
-    }
+    } catch { }
   };
 
   return (

@@ -1,6 +1,7 @@
 'use client';
 
-import { useEffect, useRef } from 'react';
+import { useRef } from 'react';
+import { useCustomElementProps } from '@/hooks/useCustomElementProps';
 
 interface SocialLink {
   label: string;
@@ -47,22 +48,7 @@ export default function Footer({ brand, tagline, copyright, contactEmail, social
     },
   ];
 
-  useEffect(() => {
-    if (typeof window === 'undefined') return;
-
-    const setup = () => {
-      const el = ref.current;
-      if (!el) return;
-      (el as any).links = links;
-      (el as any).socials = resolvedSocials;
-    };
-
-    if (customElements.get('pastis-footer')) {
-      setup();
-    } else {
-      customElements.whenDefined('pastis-footer').then(setup);
-    }
-  }, [resolvedEmail, resolvedSocials]);
+  useCustomElementProps(ref, 'pastis-footer', { links, socials: resolvedSocials }, [resolvedEmail, resolvedSocials]);
 
   return (
     <pastis-footer

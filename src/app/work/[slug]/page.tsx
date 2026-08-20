@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
-import { client } from '@/sanity/lib/client';
+import { client, safeFetch } from '@/sanity/lib/client';
 import { projectBySlugQuery, projectSlugsQuery, siteSettingsQuery } from '@/sanity/lib/queries';
 import { urlForImage } from '@/sanity/lib/image';
 
@@ -10,25 +10,19 @@ interface PageProps {
 }
 
 export async function generateStaticParams() {
-  try {
-    const slugs = await client.fetch(projectSlugsQuery);
-    return slugs.map((s: { slug: string }) => ({ slug: s.slug }));
-  } catch {
-    return [];
-  }
+  const slugs = (await safeFetch<{ slug: string }[]>(projectSlugsQuery)) ?? [];
+  return slugs.map((s) => ({ slug: s.slug }));
 }
 
 export async function generateMetadata({ params }: PageProps) {
   const { slug } = await params;
-  try {
-    const project = await client.fetch(projectBySlugQuery, { slug });
-    if (project) {
-      return {
-        title: `${project.title} — Jeroen van Ginneken`,
-        description: project.shortDescription ?? project.description,
-      };
-    }
-  } catch { }
+  const project = await safeFetch<any>(projectBySlugQuery, { slug });
+  if (project) {
+    return {
+      title: `${project.title} — Jeroen van Ginneken`,
+      description: project.shortDescription ?? project.description,
+    };
+  }
   return { title: 'Project — Jeroen van Ginneken' };
 }
 

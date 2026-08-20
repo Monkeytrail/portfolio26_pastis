@@ -2,14 +2,11 @@ import type { Metadata } from 'next';
 import Script from 'next/script';
 import './globals.css';
 import { ThemeProvider } from '@/context/ThemeContext';
-import { client } from '@/sanity/lib/client';
+import { safeFetch } from '@/sanity/lib/client';
 import { siteSettingsQuery } from '@/sanity/lib/queries';
 
 export async function generateMetadata(): Promise<Metadata> {
-  let settings: any = null;
-  try {
-    settings = await client.fetch(siteSettingsQuery);
-  } catch { }
+  const settings = await safeFetch<any>(siteSettingsQuery);
   return {
     title: settings?.siteTitle ?? 'Jeroen van Ginneken — UX/UI Designer',
     description:

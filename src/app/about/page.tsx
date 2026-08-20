@@ -1,11 +1,10 @@
 import type { Metadata } from 'next';
 import { PortableText } from '@portabletext/react';
-import { client } from '@/sanity/lib/client';
+import { safeFetch } from '@/sanity/lib/client';
 import { aboutQuery, siteSettingsQuery } from '@/sanity/lib/queries';
 
 export async function generateMetadata(): Promise<Metadata> {
-  let settings: any = null;
-  try { settings = await client.fetch(siteSettingsQuery); } catch { }
+  const settings = await safeFetch<any>(siteSettingsQuery);
   return {
     title: settings?.aboutPageTitle,
     description: settings?.aboutPageDescription,
@@ -13,13 +12,12 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 export default async function AboutPage() {
-  let about: any = null;
-  try { about = await client.fetch(aboutQuery); } catch { }
+  const about = await safeFetch<any>(aboutQuery);
 
-  const skills     = Array.isArray(about?.skills) && about.skills.every((v: any) => typeof v === 'string')
+  const skills = Array.isArray(about?.skills) && about.skills.every((v: any) => typeof v === 'string')
     ? about.skills : [];
   const experience = Array.isArray(about?.experience) ? about.experience : [];
-  const education  = Array.isArray(about?.education)  ? about.education  : [];
+  const education = Array.isArray(about?.education) ? about.education : [];
   const introIsBlocks = Array.isArray(about?.intro);
 
   return (
