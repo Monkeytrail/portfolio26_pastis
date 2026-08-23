@@ -54,6 +54,7 @@ declare global {
         };
         'pastis-tag': React.HTMLAttributes<HTMLElement> & {
           variant?: string;
+          size?: string;
           ref?: React.Ref<HTMLElement>;
         };
         'pastis-avatar': React.HTMLAttributes<HTMLElement> & {

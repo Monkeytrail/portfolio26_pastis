@@ -38,6 +38,7 @@
 
   --transition-fast: 120ms ease;
   --transition-base: 200ms ease;
+  --transition-bounce: 320ms cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
 /* ============================================================
@@ -119,8 +120,8 @@ img {
   }
 }
 
-.prose--home h1 {
-  font-size: 1rem;
+.prose--home {
+  max-width: 1120px;
 }
 
 .prose h1 {
@@ -163,14 +164,104 @@ img {
 }
 
 /* ============================================================
-   HOME — HERO ACTIONS
+   SHARED — EYEBROW / LEDE / CTA ROW
+   (used on the hero and reused on about + project-detail headers)
    ============================================================ */
+.eyebrow {
+  font-family: var(--font-family-mono, 'Fira Code', monospace);
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: var(--letter-spacing-wide);
+  color: var(--action-secondary);
+  margin-bottom: 1rem;
+}
+
+.lede {
+  font-size: 1.125rem;
+  color: var(--text-secondary);
+  max-width: 44ch;
+  margin-bottom: 0;
+}
+
+.cta-row {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-top: 2rem;
+}
+
+/* ============================================================
+   HOME — HERO
+   ============================================================ */
+h1.hero-headline {
+  font-size: clamp(2.75rem, 8vw, 5.5rem);
+  font-weight: 800;
+  line-height: 0.98;
+  letter-spacing: -0.02em;
+  color: var(--text-primary);
+  margin-bottom: 1.5rem;
+}
+
+.highlight-chip {
+  display: inline-block;
+  background: var(--action-primary);
+  color: var(--action-primary-text);
+  padding: 0 0.15em;
+  transform: rotate(-2deg);
+  box-shadow: var(--shadow-lg);
+}
+
+.cta-btn {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.875rem 1.5rem;
+  font-size: 0.9375rem;
+  font-weight: 700;
+  border: 2px solid var(--action-primary);
+  border-radius: var(--radius-full);
+  transition: box-shadow var(--transition-bounce), transform var(--transition-bounce);
+}
+
+.cta-btn--primary {
+  background: var(--action-primary);
+  color: var(--action-primary-text);
+}
+
+.cta-btn--primary:hover {
+  box-shadow: var(--shadow-xl);
+  transform: translate(-3px, -3px) rotate(-1deg);
+}
+
+.cta-btn--ghost {
+  background: transparent;
+  color: var(--text-primary);
+  border-color: var(--border-default);
+}
+
+.cta-btn--ghost:hover {
+  border-color: var(--action-primary);
+  box-shadow: var(--shadow-md);
+  transform: translate(-3px, -3px) rotate(1deg);
+}
+
+.cta-btn:active {
+  transform: translate(2px, 2px);
+  box-shadow: none;
+}
+
+.cta-btn--sm {
+  padding: 0.5rem 1rem;
+  font-size: 0.8125rem;
+  border-width: 1px;
+}
+
 .hero-actions {
   display: flex;
   gap: 0.75rem;
   flex-wrap: wrap;
-  margin-top: 40px;
-  margin-bottom: 3rem;
+  margin-top: 1.25rem;
+  margin-bottom: 0;
 }
 
 .hero-btn {
@@ -205,76 +296,172 @@ img {
 }
 
 /* ============================================================
-   HOME — SECTION TITLE
+   SHARED — SECTION LABEL
+   (bold uppercase label with an accent underline stroke;
+   the quieter counterpart to the homepage marquee)
    ============================================================ */
-.work-section-title {
-  font-size: 0.75rem;
-  font-weight: 500;
-  letter-spacing: var(--letter-spacing-wide);
+.section-label {
+  position: relative;
+  display: inline-block;
+  font-family: var(--font-family-mono, 'Fira Code', monospace);
+  font-size: 0.8125rem;
+  font-weight: 700;
   text-transform: uppercase;
-  color: var(--text-tertiary);
-  margin-top: 40px;
-  margin-bottom: 0;
+  letter-spacing: var(--letter-spacing-wide);
+  color: var(--text-primary);
+  margin-top: 4rem;
+  margin-bottom: 1.75rem;
+  padding-bottom: 0.625rem;
+}
+
+.section-label::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 40px;
+  height: 3px;
+  background: var(--action-primary);
 }
 
 /* ============================================================
-   HOME — WORK LIST
+   HOME — MARQUEE
    ============================================================ */
-.work-list {
-  list-style: none;
-  margin-top: 1rem;
-}
-
-.work-list li {
-  border-top: 1px solid var(--border-default);
+.marquee {
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  margin-top: 3.5rem;
+  margin-bottom: 3.5rem;
+  overflow: hidden;
+  background: var(--action-primary);
+  border-top: 2px solid var(--text-primary);
+  border-bottom: 2px solid var(--text-primary);
   padding: 0.875rem 0;
-  transition: opacity var(--transition-fast);
+  transform: rotate(-1deg) scale(1.03);
 }
 
-.work-list:has(li:hover) li {
-  opacity: 0.5;
-}
-
-.work-list:has(li:hover) li:hover {
-  opacity: 1;
-}
-
-.work-list li:hover .work-title {
-  color: var(--action-primary);
-}
-
-.work-list li:first-child {
-  border-top: none;
-}
-
-.work-list li:last-child {
-  border-bottom: none;
-}
-
-.work-row {
+.marquee-track {
   display: flex;
-  justify-content: space-between;
-  align-items: baseline;
-  gap: 1rem;
+  width: max-content;
+  animation: marquee 22s linear infinite;
 }
 
-.work-title {
-  font-size: 0.9375rem;
+.marquee-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-family: var(--font-family-mono, 'Fira Code', monospace);
+  font-size: 1.125rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: var(--letter-spacing-wide);
+  color: var(--action-primary-text);
+  padding: 0 1.25rem;
+  white-space: nowrap;
+}
+
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track {
+    animation: none;
+  }
+}
+
+/* ============================================================
+   HOME — WORK SECTION HEADING
+   ============================================================ */
+.work-section-heading {
+  font-size: 1.5rem;
+  font-weight: 700;
   color: var(--text-primary);
-  transition: color var(--transition-fast);
+  margin-bottom: 0.5rem;
 }
 
-.work-year {
-  font-size: 0.8125rem;
+.work-section-subheading {
+  font-size: 1rem;
   color: var(--text-tertiary);
-  flex-shrink: 0;
+  max-width: 52ch;
+  margin-bottom: 2.5rem;
 }
 
-.work-desc {
-  font-size: 0.8125rem;
+/* ============================================================
+   HOME — WORK GRID
+   ============================================================ */
+.work-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.75rem;
+  margin-top: 1.5rem;
+}
+
+@media (max-width: 760px) {
+  .work-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.work-card {
+  display: block;
+  transition: transform var(--transition-bounce);
+}
+
+.work-card:hover {
+  transform: rotate(var(--tilt, -1.5deg));
+}
+
+.work-card-media {
+  aspect-ratio: 4 / 3;
+  background: var(--bg-elevated);
+}
+
+.work-card-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top;
+  transition: transform var(--transition-bounce);
+}
+
+.work-card:hover .work-card-media img {
+  transform: scale(1.06);
+}
+
+.work-card-media--empty {
+  width: 100%;
+  height: 100%;
+  background: repeating-linear-gradient(
+    -45deg,
+    var(--action-primary),
+    var(--action-primary) 14px,
+    var(--action-secondary) 14px,
+    var(--action-secondary) 28px
+  );
+}
+
+.work-card-title {
+  font-size: 1.25rem;
+  font-weight: 800;
+}
+
+.work-card-desc {
+  font-size: 0.875rem;
   color: var(--text-tertiary);
   line-height: 1.6;
-  margin: 0.25rem 0 0;
+  margin-top: 0.5rem;
+}
+
+.work-card-footer {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
 }
 
 /* ============================================================
@@ -313,7 +500,17 @@ img {
 /* ============================================================
    ABOUT PAGE
    ============================================================ */
+h1.about-headline {
+  font-size: clamp(2rem, 5vw, 3.25rem);
+  font-weight: 800;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  color: var(--text-primary);
+  margin-bottom: 1.5rem;
+}
+
 .about-intro {
+  margin-top: 2rem;
   margin-bottom: 0.25rem;
 }
 
@@ -323,42 +520,87 @@ img {
   margin-bottom: 1.25rem;
 }
 
-.about-skills {
-  font-size: 0.875rem;
-  color: var(--text-tertiary);
-  line-height: 1.7;
-  margin-bottom: 0;
+.skills-list {
+  list-style: none;
+  margin-top: 1.5rem;
 }
 
-.about-exp-list,
+.skills-list li {
+  font-size: 0.9375rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  padding: 0.5rem 0 0.5rem 1.25rem;
+  border-top: 1px solid var(--border-default);
+  position: relative;
+}
+
+.skills-list li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 1.05rem;
+  width: 7px;
+  height: 7px;
+  background: var(--action-primary);
+}
+
+.skills-list li:last-child {
+  border-bottom: 1px solid var(--border-default);
+}
+
+.exp-list,
 .about-edu-list {
   list-style: none;
   margin-top: 0;
 }
 
-.about-exp-item,
+.exp-card {
+  border: var(--border-width) solid var(--border-default);
+  border-radius: var(--radius-md);
+  padding: 1.5rem;
+  margin-bottom: 1rem;
+  transition: box-shadow var(--transition-bounce), transform var(--transition-bounce), border-color var(--transition-fast);
+}
+
+.exp-card:hover {
+  border-color: var(--action-primary);
+  box-shadow: var(--shadow-md);
+  transform: translate(-3px, -3px) rotate(-0.5deg);
+}
+
+.exp-meta {
+  font-family: var(--font-family-mono, 'Fira Code', monospace);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: var(--letter-spacing-wide);
+  color: var(--text-tertiary);
+  margin-bottom: 0.375rem;
+}
+
+.exp-role {
+  font-size: 1.0625rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 0.5rem;
+}
+
+.exp-desc {
+  font-size: 0.875rem;
+  color: var(--text-tertiary);
+  line-height: 1.65;
+  margin: 0;
+}
+
 .about-edu-item {
-  padding: 1.25rem 0;
-  border-top: 1px solid var(--border-default);
+  padding: 0.875rem 0 0.875rem 1rem;
+  border-left: 3px solid var(--action-secondary);
+  margin-bottom: 0.75rem;
 }
 
-.about-exp-item:last-child,
-.about-edu-item:last-child {
-  border-bottom: 1px solid var(--border-default);
-}
-
-.about-exp-meta,
 .about-edu-meta {
   font-size: 0.8125rem;
   color: var(--text-tertiary);
   margin-bottom: 0.2rem;
-}
-
-.about-exp-role {
-  font-size: 0.9375rem;
-  font-weight: 500;
-  color: var(--text-primary);
-  margin-bottom: 0.5rem;
 }
 
 .about-edu-degree {
@@ -367,58 +609,26 @@ img {
   color: var(--text-primary);
 }
 
-.about-exp-desc {
-  font-size: 0.875rem;
-  color: var(--text-tertiary);
-  line-height: 1.65;
-  margin: 0;
-}
-
-.about-contact {
-  font-size: 0.9375rem;
-  color: var(--text-secondary);
-  margin-top: 3rem;
-  margin-bottom: 0;
-}
-
-.about-contact a {
-  text-decoration: underline;
-  text-decoration-color: var(--border-default);
-  text-underline-offset: 3px;
-  transition: color var(--transition-fast), text-decoration-color var(--transition-fast);
-}
-
-.about-contact a:hover {
-  color: var(--text-primary);
-  text-decoration-color: var(--action-primary);
-}
-
 /* ============================================================
    PROJECT DETAIL
    ============================================================ */
 .project-back-link {
-  display: inline-block;
-  font-size: 0.8125rem;
-  color: var(--text-tertiary);
-  text-decoration: none;
   margin-bottom: 2.5rem;
-  transition: color var(--transition-fast);
 }
 
-.project-back-link:hover {
+h1.project-headline {
+  font-size: clamp(2rem, 5vw, 3.25rem);
+  font-weight: 800;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
   color: var(--text-primary);
+  margin-bottom: 1.25rem;
 }
 
-.project-context {
-  font-size: 0.875rem;
-  color: var(--text-tertiary);
-  margin-top: -0.75rem;
-  margin-bottom: 0.5rem;
-}
-
-.project-tags {
-  font-size: 0.8125rem;
-  color: var(--text-tertiary);
+.project-meta-row {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
   margin-bottom: 2rem;
 }
 
@@ -430,6 +640,9 @@ img {
   position: relative;
   left: 50%;
   transform: translateX(-50%);
+  border: var(--border-width) solid var(--border-default);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-lg);
 }
 
 .project-description {
@@ -440,9 +653,11 @@ img {
 }
 
 .project-content-heading {
-  font-size: 1rem;
-  font-weight: 600;
+  font-size: 1.125rem;
+  font-weight: 800;
   color: var(--text-primary);
+  border-left: 3px solid var(--action-secondary);
+  padding-left: 0.75rem;
   margin-top: 2.5rem;
   margin-bottom: 0.75rem;
 }
@@ -455,9 +670,12 @@ img {
 }
 
 .project-content-quote {
-  border-left: 2px solid var(--action-primary);
-  padding: 0.375rem 0 0.375rem 1.25rem;
+  border-left: 3px solid var(--action-primary);
+  background: var(--bg-card);
+  border-radius: 0 var(--radius-md) var(--radius-md) 0;
+  padding: 1rem 1.25rem;
   font-style: italic;
+  font-size: 1.0625rem;
   color: var(--text-secondary);
   line-height: 1.7;
   margin: 2rem 0;
@@ -467,6 +685,8 @@ img {
   margin: 2rem 0;
   width: 100%;
   height: auto;
+  border: var(--border-width) solid var(--border-default);
+  border-radius: var(--radius-xl);
 }
 
 .project-content-gallery {
@@ -481,6 +701,13 @@ img {
   height: auto;
   aspect-ratio: 4 / 3;
   object-fit: cover;
+  border: var(--border-width) solid var(--border-default);
+  border-radius: var(--radius-md);
+  transition: transform var(--transition-bounce);
+}
+
+.project-content-gallery img:hover {
+  transform: scale(1.03);
 }
 
 .project-content-results {
@@ -490,10 +717,22 @@ img {
 
 .project-content-results li {
   font-size: 0.9375rem;
-  color: var(--text-secondary);
+  font-weight: 500;
+  color: var(--text-primary);
   line-height: 1.6;
-  padding: 0.5rem 0;
+  padding: 0.625rem 0 0.625rem 1.25rem;
   border-top: 1px solid var(--border-default);
+  position: relative;
+}
+
+.project-content-results li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 1.05rem;
+  width: 7px;
+  height: 7px;
+  background: var(--action-primary);
 }
 
 .project-content-results li:last-child {
@@ -502,23 +741,6 @@ img {
 
 .project-links {
   margin-top: 3rem;
-  display: flex;
-  gap: 1.5rem;
-  flex-wrap: wrap;
-}
-
-.project-links a {
-  font-size: 0.9375rem;
-  color: var(--text-tertiary);
-  text-decoration: underline;
-  text-decoration-color: var(--border-default);
-  text-underline-offset: 3px;
-  transition: color var(--transition-fast), text-decoration-color var(--transition-fast);
-}
-
-.project-links a:hover {
-  color: var(--text-primary);
-  text-decoration-color: var(--action-primary);
 }
 
 /* ============================================================

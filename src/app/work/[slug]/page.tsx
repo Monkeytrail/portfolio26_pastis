@@ -1,9 +1,11 @@
+import { Fragment } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { client, safeFetch } from '@/sanity/lib/client';
 import { projectBySlugQuery, projectSlugsQuery, siteSettingsQuery } from '@/sanity/lib/queries';
 import { urlForImage } from '@/sanity/lib/image';
+import HighlightLastWord from '@/components/HighlightLastWord';
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -103,21 +105,28 @@ export default async function ProjectPage({ params }: PageProps) {
 
   if (!project) notFound();
 
-  const context = [project.client, project.year].filter(Boolean).join(' · ');
   const coverImageUrl = project.coverImage ? urlForImage(project.coverImage) : null;
 
   return (
     <article className="prose">
-      <Link href="/" className="project-back-link">
+      <Link href="/" className="cta-btn cta-btn--ghost cta-btn--sm project-back-link">
         {settings?.projectBackLinkLabel ?? '← Work'}
       </Link>
 
-      <h1>{project.title}</h1>
+      <h1 className="project-headline">
+        <HighlightLastWord text={project.title} />
+      </h1>
 
-      {context && <p className="project-context">{context}</p>}
-
-      {project.tags?.length > 0 && (
-        <p className="project-tags">{project.tags.join(', ')}</p>
+      {(project.client || project.year || project.tags?.length > 0) && (
+        <div className="project-meta-row">
+          {project.year && <pastis-tag variant="solid" size="sm">{project.year}</pastis-tag>}
+          {project.client && <pastis-tag variant="outline" size="sm">{project.client}</pastis-tag>}
+          {project.tags?.map((tag: string) => (
+            <Fragment key={tag}>
+              <pastis-tag variant="outline" size="sm">{tag}</pastis-tag>
+            </Fragment>
+          ))}
+        </div>
       )}
 
       {coverImageUrl && (
@@ -140,13 +149,14 @@ export default async function ProjectPage({ params }: PageProps) {
       ))}
 
       {project.links?.length > 0 && (
-        <div className="project-links">
+        <div className="cta-row project-links">
           {project.links.map((link: { label: string; url: string }) => (
             <a
               key={link.url}
               href={link.url}
               target="_blank"
               rel="noopener noreferrer"
+              className="cta-btn cta-btn--ghost cta-btn--sm"
             >
               {link.label} ↗
             </a>

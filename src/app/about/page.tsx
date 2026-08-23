@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { PortableText } from '@portabletext/react';
 import { safeFetch } from '@/sanity/lib/client';
 import { aboutQuery, siteSettingsQuery } from '@/sanity/lib/queries';
+import HighlightLastWord from '@/components/HighlightLastWord';
 
 export async function generateMetadata(): Promise<Metadata> {
   const settings = await safeFetch<any>(siteSettingsQuery);
@@ -22,7 +23,13 @@ export default async function AboutPage() {
 
   return (
     <div className="prose">
-      <h1>{about?.headline}</h1>
+      {about?.eyebrow && <p className="eyebrow">{about.eyebrow}</p>}
+
+      <h1 className="about-headline">
+        <HighlightLastWord text={about?.headline} />
+      </h1>
+
+      {about?.subheadline && <p className="lede">{about.subheadline}</p>}
 
       <div className="about-intro">
         {introIsBlocks
@@ -32,18 +39,22 @@ export default async function AboutPage() {
       </div>
 
       {skills.length > 0 && (
-        <p className="about-skills">{skills.join(', ')}</p>
+        <ul className="skills-list">
+          {skills.map((skill: string) => (
+            <li key={skill}>{skill}</li>
+          ))}
+        </ul>
       )}
 
       {experience.length > 0 && (
         <>
-          <h2>Experience</h2>
-          <ul className="about-exp-list">
+          <h2 className="section-label">Experience</h2>
+          <ul className="exp-list">
             {experience.map((item: any, i: number) => (
-              <li key={i} className="about-exp-item">
-                <div className="about-exp-meta">{item.company} · {item.period}</div>
-                <div className="about-exp-role">{item.role}</div>
-                {item.description && <p className="about-exp-desc">{item.description}</p>}
+              <li key={i} className="exp-card">
+                <div className="exp-meta">{item.company} · {item.period}</div>
+                <div className="exp-role">{item.role}</div>
+                {item.description && <p className="exp-desc">{item.description}</p>}
               </li>
             ))}
           </ul>
@@ -52,7 +63,7 @@ export default async function AboutPage() {
 
       {education.length > 0 && (
         <>
-          <h2>Education</h2>
+          <h2 className="section-label">Education</h2>
           <ul className="about-edu-list">
             {education.map((item: any, i: number) => (
               <li key={i} className="about-edu-item">
@@ -67,13 +78,16 @@ export default async function AboutPage() {
       )}
 
       {(about?.email || about?.linkedinUrl) && (
-        <p className="about-contact">
-          {about.email && <a href={`mailto:${about.email}`}>Email</a>}
-          {about.email && about.linkedinUrl && <>{' · '}</>}
-          {about.linkedinUrl && (
-            <a href={about.linkedinUrl} target="_blank" rel="noopener noreferrer">LinkedIn</a>
+        <div className="cta-row">
+          {about.email && (
+            <a href={`mailto:${about.email}`} className="cta-btn cta-btn--primary">Email</a>
           )}
-        </p>
+          {about.linkedinUrl && (
+            <a href={about.linkedinUrl} target="_blank" rel="noopener noreferrer" className="cta-btn cta-btn--ghost">
+              LinkedIn ↗
+            </a>
+          )}
+        </div>
       )}
     </div>
   );
