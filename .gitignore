@@ -9,6 +9,9 @@ out/
 dist/
 build/
 
+# Vendored from pastis-design-system via postinstall (scripts/sync-pastis.mjs)
+public/pastis.js
+
 # Environment variables
 .env
 .env.local
