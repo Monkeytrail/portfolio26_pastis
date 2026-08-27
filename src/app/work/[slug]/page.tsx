@@ -5,7 +5,7 @@ import { notFound } from 'next/navigation';
 import { client, safeFetch } from '@/sanity/lib/client';
 import { projectBySlugQuery, projectSlugsQuery, siteSettingsQuery } from '@/sanity/lib/queries';
 import { urlForImage } from '@/sanity/lib/image';
-import HighlightLastWord from '@/components/HighlightLastWord';
+import RansomHeadline from '@/components/RansomHeadline';
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -114,7 +114,7 @@ export default async function ProjectPage({ params }: PageProps) {
       </Link>
 
       <h1 className="project-headline">
-        <HighlightLastWord text={project.title} />
+        <RansomHeadline text={project.title} />
       </h1>
 
       {(project.client || project.year || project.tags?.length > 0) && (

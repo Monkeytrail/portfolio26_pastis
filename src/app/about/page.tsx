@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import { PortableText } from '@portabletext/react';
 import { safeFetch } from '@/sanity/lib/client';
 import { aboutQuery, siteSettingsQuery } from '@/sanity/lib/queries';
-import HighlightLastWord from '@/components/HighlightLastWord';
+import RansomHeadline from '@/components/RansomHeadline';
 
 export async function generateMetadata(): Promise<Metadata> {
   const settings = await safeFetch<any>(siteSettingsQuery);
@@ -26,7 +26,7 @@ export default async function AboutPage() {
       {about?.eyebrow && <p className="eyebrow">{about.eyebrow}</p>}
 
       <h1 className="about-headline">
-        <HighlightLastWord text={about?.headline} />
+        <RansomHeadline text={about?.headline} />
       </h1>
 
       {about?.subheadline && <p className="lede">{about.subheadline}</p>}

@@ -5,7 +5,9 @@ import { client } from '@/sanity/lib/client';
 import { projectsQuery, siteSettingsQuery } from '@/sanity/lib/queries';
 import { urlForImage } from '@/sanity/lib/image';
 import CopyEmailButton from '@/components/CopyEmailButton';
-import HighlightLastWord from '@/components/HighlightLastWord';
+import RansomHeadline from '@/components/RansomHeadline';
+
+const TILTS = [-3, 2, -5, 4, 3, -2];
 
 export default async function HomePage() {
   let projects: any[] = [];
@@ -30,7 +32,7 @@ export default async function HomePage() {
       {settings?.heroEyebrow && <p className="eyebrow">{settings.heroEyebrow}</p>}
 
       <h1 className="hero-headline">
-        <HighlightLastWord text={settings?.heroHeadline} />
+        <RansomHeadline text={settings?.heroHeadline} />
       </h1>
 
       {settings?.heroSubheadline && <p className="lede">{settings.heroSubheadline}</p>}
@@ -61,6 +63,12 @@ export default async function HomePage() {
           {marqueeItems}
         </div>
       </div>
+      <div className="marquee marquee--alt" aria-hidden="true">
+        <div className="marquee-track">
+          {marqueeItems}
+          {marqueeItems}
+        </div>
+      </div>
 
       <section id="work" aria-labelledby="work-heading">
         <h2 id="work-heading" className="sr-only">{marqueeLabel}</h2>
@@ -80,7 +88,7 @@ export default async function HomePage() {
                 key={project._id}
                 href={`/work/${project.slug.current}`}
                 className="work-card"
-                style={{ '--tilt': i % 2 === 0 ? '-1.5deg' : '1.5deg' } as React.CSSProperties}
+                style={{ '--tilt': `${TILTS[i % TILTS.length]}deg` } as React.CSSProperties}
               >
                 <pastis-card hoverable="" padding="md">
                   <div slot="media" className="work-card-media">

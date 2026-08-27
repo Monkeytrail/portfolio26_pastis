@@ -1,7 +1,7 @@
 /* ============================================================
    GOOGLE FONTS
    ============================================================ */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Archivo+Black&family=Bungee&family=Permanent+Marker&family=Space+Mono:wght@400;700&display=swap');
 
 /* ============================================================
    PASTIS DESIGN TOKENS — DARK (DEFAULT)
@@ -23,6 +23,12 @@
   --action-primary-text: #0d0d0d;
   --action-secondary: #fc7428;
 
+  /* Riot palette — punk zine multicolor accents */
+  --riot-pink: #ff2f92;
+  --riot-blue: #17b6ff;
+  --riot-green: #b4ff2f;
+  --riot-purple: #a259ff;
+
   --shadow-md: 5px 5px 0 #231f20;
   --shadow-lg: 5px 5px 0 #fcba28;
   --shadow-xl: 5px 5px 0 #fc7428;
@@ -35,6 +41,13 @@
   --letter-spacing-wide: 0.05em;
 
   --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-family-body: var(--font-sans);
+  --font-family-mono: 'Space Mono', 'Fira Code', monospace;
+  --font-display-1: 'Archivo Black', var(--font-sans);
+  --font-display-2: 'Bungee', var(--font-sans);
+  --font-display-3: 'Permanent Marker', cursive;
+
+  --texture-dot: rgba(255, 255, 255, 0.035);
 
   --transition-fast: 120ms ease;
   --transition-base: 200ms ease;
@@ -76,11 +89,14 @@ html {
   scroll-behavior: smooth;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
 }
 
 body {
   font-family: var(--font-sans);
   background-color: var(--bg-primary);
+  background-image: radial-gradient(var(--texture-dot) 1px, transparent 1px);
+  background-size: 22px 22px;
   color: var(--text-primary);
   line-height: 1.6;
   transition: background-color var(--transition-base), color var(--transition-base);
@@ -197,19 +213,38 @@ img {
 h1.hero-headline {
   font-size: clamp(2.75rem, 8vw, 5.5rem);
   font-weight: 800;
-  line-height: 0.98;
+  line-height: 1.08;
   letter-spacing: -0.02em;
   color: var(--text-primary);
   margin-bottom: 1.5rem;
 }
 
+.ransom-word {
+  display: inline-block;
+  margin: 0 0.18em;
+  transform: rotate(var(--rot, 0deg));
+  animation: word-wiggle 3.2s ease-in-out infinite;
+  animation-delay: var(--delay, 0s);
+}
+
+.ransom-word:first-child {
+  margin-left: 0;
+}
+
+@keyframes word-wiggle {
+  0%, 100% { transform: rotate(var(--rot, 0deg)); }
+  50% { transform: rotate(calc(var(--rot, 0deg) * -1)); }
+}
+
 .highlight-chip {
   display: inline-block;
+  font-family: var(--font-display-1);
   background: var(--action-primary);
   color: var(--action-primary-text);
-  padding: 0 0.15em;
-  transform: rotate(-2deg);
-  box-shadow: var(--shadow-lg);
+  margin-left: 0.18em;
+  padding: 0 0.2em;
+  transform: rotate(-3deg);
+  box-shadow: 4px 4px 0 var(--riot-pink), 8px 8px 0 var(--riot-blue);
 }
 
 .cta-btn {
@@ -229,8 +264,8 @@ h1.hero-headline {
 }
 
 .cta-btn--primary:hover {
-  box-shadow: var(--shadow-xl);
-  transform: translate(-3px, -3px) rotate(-1deg);
+  box-shadow: 4px 4px 0 var(--riot-blue), 8px 8px 0 var(--riot-pink);
+  transform: translate(-4px, -4px) rotate(-2deg);
 }
 
 .cta-btn--ghost {
@@ -240,9 +275,9 @@ h1.hero-headline {
 }
 
 .cta-btn--ghost:hover {
-  border-color: var(--action-primary);
-  box-shadow: var(--shadow-md);
-  transform: translate(-3px, -3px) rotate(1deg);
+  border-color: var(--riot-green);
+  box-shadow: 4px 4px 0 var(--riot-green), 8px 8px 0 var(--riot-purple);
+  transform: translate(-4px, -4px) rotate(2deg);
 }
 
 .cta-btn:active {
@@ -319,9 +354,9 @@ h1.hero-headline {
   position: absolute;
   left: 0;
   bottom: 0;
-  width: 40px;
-  height: 3px;
-  background: var(--action-primary);
+  width: 48px;
+  height: 4px;
+  background: linear-gradient(90deg, var(--riot-pink), var(--action-primary), var(--riot-blue), var(--riot-green));
 }
 
 /* ============================================================
@@ -334,27 +369,38 @@ h1.hero-headline {
   right: 50%;
   margin-left: -50vw;
   margin-right: -50vw;
-  margin-top: 3.5rem;
-  margin-bottom: 3.5rem;
+  margin-top: 1.25rem;
   overflow: hidden;
   background: var(--action-primary);
   border-top: 2px solid var(--text-primary);
   border-bottom: 2px solid var(--text-primary);
   padding: 0.875rem 0;
-  transform: rotate(-1deg) scale(1.03);
+  transform: rotate(-1.5deg) scale(1.04);
+}
+
+.marquee--alt {
+  margin-top: -0.5rem;
+  margin-bottom: 3.5rem;
+  background: var(--bg-elevated);
+  transform: rotate(1.5deg) scale(1.04);
 }
 
 .marquee-track {
   display: flex;
   width: max-content;
-  animation: marquee 22s linear infinite;
+  animation: marquee 14s linear infinite;
+}
+
+.marquee--alt .marquee-track {
+  animation-direction: reverse;
+  animation-duration: 17s;
 }
 
 .marquee-item {
   display: inline-flex;
   align-items: center;
   gap: 0.75rem;
-  font-family: var(--font-family-mono, 'Fira Code', monospace);
+  font-family: var(--font-family-mono);
   font-size: 1.125rem;
   font-weight: 800;
   text-transform: uppercase;
@@ -364,13 +410,22 @@ h1.hero-headline {
   white-space: nowrap;
 }
 
+.marquee-item:nth-child(4n+2) { font-family: var(--font-display-1); }
+.marquee-item:nth-child(4n+3) { font-family: var(--font-display-2); }
+
+.marquee--alt .marquee-item { color: var(--riot-pink); }
+.marquee--alt .marquee-item:nth-child(4n+2) { color: var(--riot-blue); }
+.marquee--alt .marquee-item:nth-child(4n+3) { color: var(--riot-green); }
+.marquee--alt .marquee-item:nth-child(4n+4) { color: var(--riot-purple); }
+
 @keyframes marquee {
   from { transform: translateX(0); }
   to { transform: translateX(-50%); }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .marquee-track {
+  .marquee-track,
+  .ransom-word {
     animation: none;
   }
 }
@@ -379,8 +434,10 @@ h1.hero-headline {
    HOME — WORK SECTION HEADING
    ============================================================ */
 .work-section-heading {
+  font-family: var(--font-display-1);
   font-size: 1.5rem;
-  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: -0.01em;
   color: var(--text-primary);
   margin-bottom: 0.5rem;
 }
@@ -446,9 +503,30 @@ h1.hero-headline {
   );
 }
 
+/* Riot color cycling per card */
+.work-grid a:nth-child(4n+1) pastis-card::part(card) { box-shadow: 5px 5px 0 var(--riot-pink); }
+.work-grid a:nth-child(4n+2) pastis-card::part(card) { box-shadow: 5px 5px 0 var(--riot-blue); }
+.work-grid a:nth-child(4n+3) pastis-card::part(card) { box-shadow: 5px 5px 0 var(--riot-green); }
+.work-grid a:nth-child(4n+4) pastis-card::part(card) { box-shadow: 5px 5px 0 var(--riot-purple); }
+
+.work-grid a:nth-child(4n+1):hover pastis-card::part(card) { box-shadow: 8px 8px 0 var(--riot-pink); }
+.work-grid a:nth-child(4n+2):hover pastis-card::part(card) { box-shadow: 8px 8px 0 var(--riot-blue); }
+.work-grid a:nth-child(4n+3):hover pastis-card::part(card) { box-shadow: 8px 8px 0 var(--riot-green); }
+.work-grid a:nth-child(4n+4):hover pastis-card::part(card) { box-shadow: 8px 8px 0 var(--riot-purple); }
+
+.work-grid a:nth-child(4n+1) .work-card-media--empty {
+  background: repeating-linear-gradient(-45deg, var(--riot-pink), var(--riot-pink) 14px, var(--bg-primary) 14px, var(--bg-primary) 28px);
+}
+.work-grid a:nth-child(4n+2) .work-card-media--empty {
+  background: repeating-linear-gradient(-45deg, var(--riot-blue), var(--riot-blue) 14px, var(--bg-primary) 14px, var(--bg-primary) 28px);
+}
+.work-grid a:nth-child(4n+3) .work-card-media--empty {
+  background: repeating-linear-gradient(-45deg, var(--riot-green), var(--riot-green) 14px, var(--bg-primary) 14px, var(--bg-primary) 28px);
+}
+
 .work-card-title {
-  font-size: 1.25rem;
-  font-weight: 800;
+  font-family: var(--font-display-1);
+  font-size: 1.125rem;
 }
 
 .work-card-desc {
