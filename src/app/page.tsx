@@ -25,8 +25,7 @@ export default async function HomePage() {
   const yearsActive = new Date().getFullYear() - startYear;
   const projectCount = projects?.length ?? 0;
   const currentJob = getCurrentJob(about?.experience);
-  const marqueeItems = about?.skillCards?.map((c: any) => c.title) ?? [];
-  const skills = about?.skillCards?.map((c: any) => c.title) ?? [];
+  const skillTitles = about?.skillCards?.map((c: any) => c.title) ?? [];
   const email = about?.email ?? settings?.contactEmail;
   const socials = settings?.socialLinks ?? {};
   const socialRows = [
@@ -34,6 +33,9 @@ export default async function HomePage() {
     socials.github && { label: 'GitHub', href: socials.github },
     socials.dribbble && { label: 'Dribbble', href: socials.dribbble },
   ].filter(Boolean) as { label: string; href: string }[];
+
+  const [quoteLead, ...quoteRestParts] = (about?.quote ?? '').split('.');
+  const quoteRest = quoteRestParts.join('.').trim();
 
   return (
     <>
@@ -44,7 +46,7 @@ export default async function HomePage() {
         yearsActive={yearsActive}
         projectCount={projectCount}
         startYear={startYear}
-        marqueeItems={marqueeItems}
+        marqueeItems={skillTitles}
       />
 
       <section id="work" className="container">
@@ -72,15 +74,15 @@ export default async function HomePage() {
           <div className="about">
             {about.quote && (
               <h3 className="about-lead">
-                {about.quote.split('.')[0]}.{' '}
-                <em>{about.quote.split('.').slice(1).join('.').trim()}</em>
+                {quoteLead}.{' '}
+                <em>{quoteRest}</em>
               </h3>
             )}
             <div className="about-right">
               {Array.isArray(about.intro) && <PortableText value={about.intro} />}
-              {skills.length > 0 && (
+              {skillTitles.length > 0 && (
                 <div className="skills">
-                  {skills.map((s: string) => <span key={s} className="skill">{s}</span>)}
+                  {skillTitles.map((s: string) => <span key={s} className="skill">{s}</span>)}
                 </div>
               )}
             </div>

@@ -1,13 +1,14 @@
+import { Fragment } from 'react';
 import Link from 'next/link';
 
 export function Breadcrumb({ items }: { items: { label: string; href?: string }[] }) {
   return (
     <div className="breadcrumb">
       {items.map((item, i) => (
-        <span key={i} style={{ display: 'contents' }}>
+        <Fragment key={i}>
           {i > 0 && <span className="sep">/</span>}
           {item.href ? <Link href={item.href}>{item.label}</Link> : <span className="current">{item.label}</span>}
-        </span>
+        </Fragment>
       ))}
     </div>
   );

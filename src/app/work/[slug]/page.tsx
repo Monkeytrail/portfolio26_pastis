@@ -101,7 +101,7 @@ export default async function ProjectPage({ params }: PageProps) {
         )}
 
         {project.links?.length > 0 && (
-          <div className="cta-row" style={{ display: 'flex', gap: 12, flexWrap: 'wrap', padding: '32px 0', borderTop: '1px solid var(--border-default)' }}>
+          <div className="cta-row cta-row--bordered">
             {project.links.map((link: { label: string; url: string }) => (
               <a key={link.url} href={link.url} target="_blank" rel="noopener noreferrer" className="nf-btn">
                 {link.label} ↗

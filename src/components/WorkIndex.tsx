@@ -18,7 +18,8 @@ interface Project {
 
 export default function WorkIndex({ projects }: { projects: Project[] }) {
   const [activeFilter, setActiveFilter] = useState('All');
-  const tags = ['All', ...Array.from(new Set(projects.map((p) => p.tag).filter(Boolean)))] as string[];
+  const projectTags = projects.map((p) => p.tag).filter((tag): tag is string => Boolean(tag));
+  const tags = ['All', ...new Set(projectTags)];
   const visible = activeFilter === 'All' ? projects : projects.filter((p) => p.tag === activeFilter);
 
   return (

@@ -798,6 +798,14 @@ h1, h2, h3, h4, h5, h6 {
 }
 .footer .dot { color: var(--accent); }
 .footer--bordered { border-top: 1px solid var(--border-default); padding-top: 24px; }
+
+.cta-row {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  padding: 32px 0;
+}
+.cta-row--bordered { border-top: 1px solid var(--border-default); }
 .footer-link {
   color: var(--accent);
   text-decoration: none;

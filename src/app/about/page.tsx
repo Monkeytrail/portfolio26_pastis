@@ -138,7 +138,7 @@ export default async function AboutPage() {
       )}
 
       {(about?.email || about?.linkedinUrl) && (
-        <div className="cta-row" style={{ display: 'flex', gap: 12, flexWrap: 'wrap', padding: '32px 0' }}>
+        <div className="cta-row">
           {about.email && <a href={`mailto:${about.email}`} className="nf-btn primary">Email</a>}
           {about.linkedinUrl && (
             <a href={about.linkedinUrl} target="_blank" rel="noopener noreferrer" className="nf-btn">LinkedIn ↗</a>
