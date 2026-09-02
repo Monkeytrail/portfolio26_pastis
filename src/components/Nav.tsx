@@ -19,7 +19,6 @@ function getActiveId(pathname: string): string {
 const NAV_ITEMS = [
   { id: 'work', label: 'Work', href: '/work' },
   { id: 'about', label: 'About', href: '/about' },
-  { id: 'home', label: 'Home', href: '/' },
 ];
 
 export default function Nav({ brand = 'JvG', name = 'Jeroen van Ginneken', statusLabel }: NavProps) {
