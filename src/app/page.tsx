@@ -1,127 +1,152 @@
-import { Fragment } from 'react';
-import Image from 'next/image';
-import Link from 'next/link';
+import { PortableText } from '@portabletext/react';
 import { client } from '@/sanity/lib/client';
-import { projectsQuery, siteSettingsQuery } from '@/sanity/lib/queries';
-import { urlForImage } from '@/sanity/lib/image';
+import { projectsQuery, siteSettingsQuery, aboutQuery } from '@/sanity/lib/queries';
+import { getEarliestYear, getCurrentJob } from '@/lib/deriveStats';
+import Hero from '@/components/Hero';
+import WorkGrid from '@/components/WorkGrid';
+import ExperienceTimeline from '@/components/ExperienceTimeline';
 import CopyEmailButton from '@/components/CopyEmailButton';
-import RansomHeadline from '@/components/RansomHeadline';
-
-const TILTS = [-3, 2, -5, 4, 3, -2];
+import SiteFooter from '@/components/SiteFooter';
 
 export default async function HomePage() {
   let projects: any[] = [];
   let settings: any = null;
+  let about: any = null;
 
   try {
-    [projects, settings] = await Promise.all([
+    [projects, settings, about] = await Promise.all([
       client.fetch(projectsQuery),
       client.fetch(siteSettingsQuery),
+      client.fetch(aboutQuery),
     ]);
   } catch { }
 
-  const marqueeLabel = settings?.workSectionLabel ?? 'Selected work';
-  const marqueeItems = Array.from({ length: 8 }, (_, i) => (
-    <span key={i} className="marquee-item">
-      {marqueeLabel} <span aria-hidden="true">✦</span>
-    </span>
-  ));
+  const startYear = getEarliestYear(about?.experience) ?? new Date().getFullYear();
+  const yearsActive = new Date().getFullYear() - startYear;
+  const projectCount = projects?.length ?? 0;
+  const currentJob = getCurrentJob(about?.experience);
+  const marqueeItems = about?.skillCards?.map((c: any) => c.title) ?? [];
+  const skills = about?.skillCards?.map((c: any) => c.title) ?? [];
+  const email = about?.email ?? settings?.contactEmail;
+  const socials = settings?.socialLinks ?? {};
+  const socialRows = [
+    socials.linkedin && { label: 'LinkedIn', href: socials.linkedin },
+    socials.github && { label: 'GitHub', href: socials.github },
+    socials.dribbble && { label: 'Dribbble', href: socials.dribbble },
+  ].filter(Boolean) as { label: string; href: string }[];
 
   return (
-    <div className="prose prose--home">
-      {settings?.heroEyebrow && <p className="eyebrow">{settings.heroEyebrow}</p>}
+    <>
+      <Hero
+        fullName={settings?.heroHeadline ?? 'Jeroen van Ginneken'}
+        role="UX/UI Designer"
+        blurb={settings?.heroSubheadline?.split('\n\n')[0]}
+        yearsActive={yearsActive}
+        projectCount={projectCount}
+        startYear={startYear}
+        marqueeItems={marqueeItems}
+      />
 
-      <h1 className="hero-headline">
-        <RansomHeadline text={settings?.heroHeadline} />
-      </h1>
-
-      {settings?.heroSubheadline && <p className="lede">{settings.heroSubheadline}</p>}
-
-      <div className="cta-row">
-        <a href="#work" className="cta-btn cta-btn--primary">
-          {settings?.homeHeroCtaLabel ?? 'View work ↓'}
-        </a>
-        <Link href="/about" className="cta-btn cta-btn--ghost">
-          {settings?.homeAboutCtaLabel ?? 'About me →'}
-        </Link>
-      </div>
-
-      <div className="hero-actions">
-        {settings?.socialLinks?.linkedin && (
-          <a href={settings.socialLinks.linkedin} target="_blank" rel="noopener noreferrer" className="hero-btn">
-            LinkedIn ↗
-          </a>
-        )}
-        {settings?.contactEmail && (
-          <CopyEmailButton email={settings.contactEmail} className="hero-btn" />
-        )}
-      </div>
-
-      <div className="marquee" aria-hidden="true">
-        <div className="marquee-track">
-          {marqueeItems}
-          {marqueeItems}
+      <section id="work" className="container">
+        <div className="section-rule">
+          <span className="dot">▶</span>
+          <span>01 · Selected Work</span>
+          <span className="line" />
+          <span>{startYear} — Now</span>
         </div>
-      </div>
-      <div className="marquee marquee--alt" aria-hidden="true">
-        <div className="marquee-track">
-          {marqueeItems}
-          {marqueeItems}
+        <div className="work-head">
+          <h2>Work I&apos;m <span>proud</span><br />to put my name on.</h2>
+          <div className="work-count">// {projectCount} PROJECTS SHOWN</div>
         </div>
-      </div>
-
-      <section id="work" aria-labelledby="work-heading">
-        <h2 id="work-heading" className="sr-only">{marqueeLabel}</h2>
-        {settings?.workSectionHeading && (
-          <p className="work-section-heading">{settings.workSectionHeading}</p>
-        )}
-        {settings?.workSectionSubheading && (
-          <p className="work-section-subheading">{settings.workSectionSubheading}</p>
-        )}
-
-        <div className="work-grid">
-          {projects?.map((project: any, i: number) => {
-            const coverUrl = project.coverImage ? urlForImage(project.coverImage) : null;
-
-            return (
-              <Link
-                key={project._id}
-                href={`/work/${project.slug.current}`}
-                className="work-card"
-                style={{ '--tilt': `${TILTS[i % TILTS.length]}deg` } as React.CSSProperties}
-              >
-                <pastis-card hoverable="" padding="md">
-                  <div slot="media" className="work-card-media">
-                    {coverUrl ? (
-                      <Image
-                        src={coverUrl}
-                        alt=""
-                        width={600}
-                        height={450}
-                        sizes="(max-width: 640px) 100vw, 50vw"
-                      />
-                    ) : (
-                      <div className="work-card-media--empty" />
-                    )}
-                  </div>
-                  <span slot="header" className="work-card-title">{project.title}</span>
-                  {project.shortDescription && <p className="work-card-desc">{project.shortDescription}</p>}
-                  <div slot="footer" className="work-card-footer">
-                    {project.year && (
-                      <pastis-tag variant="solid" size="sm">{project.year}</pastis-tag>
-                    )}
-                    {project.tags?.slice(0, 2).map((tag: string) => (
-                      <Fragment key={tag}>
-                        <pastis-tag variant="outline" size="sm">{tag}</pastis-tag>
-                      </Fragment>
-                    ))}
-                  </div>
-                </pastis-card>
-              </Link>
-            );
-          })}
-        </div>
+        <WorkGrid projects={projects} />
       </section>
-    </div>
+
+      {about && (
+        <section id="about" className="container">
+          <div className="section-rule">
+            <span className="dot">▶</span>
+            <span>02 · About</span>
+            <span className="line" />
+            <span>The short version</span>
+          </div>
+          <div className="about">
+            {about.quote && (
+              <h3 className="about-lead">
+                {about.quote.split('.')[0]}.{' '}
+                <em>{about.quote.split('.').slice(1).join('.').trim()}</em>
+              </h3>
+            )}
+            <div className="about-right">
+              {Array.isArray(about.intro) && <PortableText value={about.intro} />}
+              {skills.length > 0 && (
+                <div className="skills">
+                  {skills.map((s: string) => <span key={s} className="skill">{s}</span>)}
+                </div>
+              )}
+            </div>
+          </div>
+        </section>
+      )}
+
+      {about?.experience?.length > 0 && (
+        <section id="timeline" className="container">
+          <div className="section-rule">
+            <span className="dot">▶</span>
+            <span>03 · Experience</span>
+            <span className="line" />
+            <span>{yearsActive} years · {about.experience.length} places</span>
+          </div>
+          <div className="timeline">
+            <div className="timeline-head">
+              <h3>Where<br />I&apos;ve been.</h3>
+              <div className="sub">// A long-form log</div>
+            </div>
+            <ExperienceTimeline items={about.experience} />
+          </div>
+        </section>
+      )}
+
+      <section id="contact" className="container contact">
+        <div className="section-rule">
+          <span className="dot">▶</span>
+          <span>04 · Contact</span>
+          <span className="line" />
+          <span>Let&apos;s talk</span>
+        </div>
+        <h2 className="contact-title">
+          <span className="row">Have a <span className="on">thing</span></span>
+          <span className="row"><span className="stroke">worth</span> shipping?</span>
+        </h2>
+        <div className="contact-grid">
+          <div className="contact-info">
+            {email && (
+              <div>
+                <div className="contact-label">// Primary channel</div>
+                <CopyEmailButton email={email} className="contact-email" />
+              </div>
+            )}
+            <div>
+              <div className="contact-label">// Currently</div>
+              <p className="contact-body">
+                {currentJob
+                  ? `${currentJob.role ?? 'Working'} at ${currentJob.company}. Open to hearing about interesting design-systems and product work.`
+                  : 'Open to hearing about interesting design and product work.'}
+              </p>
+            </div>
+          </div>
+          {socialRows.length > 0 && (
+            <div className="social-list">
+              {socialRows.map((s) => (
+                <a key={s.label} className="social-row" href={s.href} target="_blank" rel="noopener noreferrer">
+                  <span>{s.label}</span>
+                  <span className="arrow">→</span>
+                </a>
+              ))}
+            </div>
+          )}
+        </div>
+        <SiteFooter copyright={`© ${startYear}—${new Date().getFullYear()} · Jeroen van Ginneken`} note={<span><span className="dot">●</span> Built with Pastis</span>} />
+      </section>
+    </>
   );
 }

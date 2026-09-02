@@ -96,6 +96,68 @@ export const about = defineType({
       ],
     }),
 
+    // ── Values section ──
+    defineField({ name: 'valuesSectionLabel', title: 'Values Section — Label', type: 'string' }),
+    defineField({ name: 'valuesSectionHeading', title: 'Values Section — Heading', type: 'string' }),
+    defineField({
+      name: 'values',
+      title: 'Values',
+      type: 'array',
+      description: 'Short design-philosophy statements (e.g. "Less, but better")',
+      of: [
+        {
+          type: 'object',
+          name: 'value',
+          fields: [
+            { name: 'heading', title: 'Heading', type: 'string' },
+            { name: 'body', title: 'Body', type: 'text', rows: 2 },
+          ],
+          preview: { select: { title: 'heading', subtitle: 'body' } },
+        },
+      ],
+    }),
+
+    // ── Process section ──
+    defineField({ name: 'processSectionLabel', title: 'Process Section — Label', type: 'string' }),
+    defineField({ name: 'processSectionHeading', title: 'Process Section — Heading', type: 'string' }),
+    defineField({
+      name: 'process',
+      title: 'Process steps',
+      type: 'array',
+      description: 'Numbered steps describing how you work',
+      of: [
+        {
+          type: 'object',
+          name: 'processStep',
+          fields: [
+            { name: 'heading', title: 'Heading', type: 'string' },
+            { name: 'body', title: 'Body', type: 'text', rows: 2 },
+          ],
+          preview: { select: { title: 'heading', subtitle: 'body' } },
+        },
+      ],
+    }),
+
+    // ── Testimonials — only real, verified quotes. Leave empty otherwise. ──
+    defineField({
+      name: 'testimonials',
+      title: 'Testimonials',
+      type: 'array',
+      description: 'Only add real quotes you have permission to publish, attributed to a real person. Leave empty rather than inventing one — the section is hidden when empty.',
+      of: [
+        {
+          type: 'object',
+          name: 'testimonial',
+          fields: [
+            { name: 'quote', title: 'Quote', type: 'text', rows: 3 },
+            { name: 'who', title: 'Who', type: 'string' },
+            { name: 'role', title: 'Role / company', type: 'string' },
+          ],
+          preview: { select: { title: 'who', subtitle: 'quote' } },
+        },
+      ],
+    }),
+
     // ── Contact CTA section ──
     defineField({ name: 'contactSectionLabel', title: 'Contact Section — Label', type: 'string' }),
     defineField({ name: 'contactSectionHeading', title: 'Contact Section — Heading', type: 'string' }),

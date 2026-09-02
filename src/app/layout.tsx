@@ -1,9 +1,10 @@
 import type { Metadata } from 'next';
-import Script from 'next/script';
 import './globals.css';
 import { ThemeProvider } from '@/context/ThemeContext';
 import { safeFetch } from '@/sanity/lib/client';
-import { siteSettingsQuery } from '@/sanity/lib/queries';
+import { siteSettingsQuery, aboutQuery } from '@/sanity/lib/queries';
+import Nav from '@/components/Nav';
+import { getCurrentJob } from '@/lib/deriveStats';
 
 export async function generateMetadata(): Promise<Metadata> {
   const settings = await safeFetch<any>(siteSettingsQuery);
@@ -20,6 +21,16 @@ export default async function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
+  const [settings, about] = await Promise.all([
+    safeFetch<any>(siteSettingsQuery),
+    safeFetch<any>(aboutQuery),
+  ]);
+
+  const currentJob = getCurrentJob(about?.experience);
+  const statusLabel = currentJob
+    ? `${currentJob.role ?? 'Working'} · ${currentJob.company}`
+    : undefined;
+
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
@@ -33,9 +44,9 @@ export default async function RootLayout({
         />
       </head>
       <body>
-        <Script src="/pastis.js" strategy="afterInteractive" />
         <ThemeProvider>
-          <main>{children}</main>
+          <Nav brand={settings?.brand} name={settings?.heroHeadline} statusLabel={statusLabel} />
+          <main className="page">{children}</main>
         </ThemeProvider>
       </body>
     </html>

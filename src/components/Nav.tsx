@@ -1,37 +1,69 @@
 'use client';
 
-import { useRef } from 'react';
+import { useEffect, useState } from 'react';
+import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { useCustomElementProps } from '@/hooks/useCustomElementProps';
 
 interface NavProps {
   brand?: string;
-  contactEmail?: string;
+  name?: string;
+  statusLabel?: string;
 }
 
 function getActiveId(pathname: string): string {
-  if (pathname === '/') return 'work';
-  if (pathname.startsWith('/about')) return 'about';
   if (pathname.startsWith('/work')) return 'work';
-  return 'work';
+  if (pathname.startsWith('/about')) return 'about';
+  return 'home';
 }
 
-export default function Nav({ brand, contactEmail }: NavProps) {
-  const ref = useRef<HTMLElement>(null);
+const NAV_ITEMS = [
+  { id: 'work', label: 'Work', href: '/work' },
+  { id: 'about', label: 'About', href: '/about' },
+  { id: 'home', label: 'Home', href: '/' },
+];
+
+export default function Nav({ brand = 'JvG', name = 'Jeroen van Ginneken', statusLabel }: NavProps) {
   const pathname = usePathname();
   const activeId = getActiveId(pathname);
+  const [pct, setPct] = useState(0);
 
-  const NAV_ITEMS = [
-    { id: 'work', label: 'Work', href: '/' },
-    { id: 'about', label: 'About', href: '/about' },
-    { id: 'contact', label: 'Contact', href: `mailto:${contactEmail ?? 'coffee@jeroenvanginneken.be'}` },
-  ];
-
-  useCustomElementProps(ref, 'pastis-nav', { items: NAV_ITEMS, active: activeId }, [activeId]);
+  useEffect(() => {
+    const onScroll = () => {
+      const h = document.documentElement;
+      const max = h.scrollHeight - h.clientHeight;
+      setPct(max > 0 ? h.scrollTop / max : 0);
+    };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+    return () => window.removeEventListener('scroll', onScroll);
+  }, [pathname]);
 
   return (
-    <pastis-nav ref={ref} brand={brand ?? 'JvG'} sticky="">
-      {/* Light mode temporarily disabled — restore when re-enabling: <pastis-theme-toggle slot="actions" /> */}
-    </pastis-nav>
+    <>
+      <nav className="nav">
+        <Link className="nav-brand" href="/">
+          <span className="mark">{brand}</span>
+          <span>{name}</span>
+        </Link>
+        <div className="nav-links">
+          {NAV_ITEMS.map((item) => (
+            <Link key={item.id} href={item.href} className={activeId === item.id ? 'active' : ''}>
+              {item.label}
+            </Link>
+          ))}
+        </div>
+        {statusLabel && (
+          <div className="nav-actions">
+            <span className="status-pill">
+              <span className="ping" />
+              {statusLabel}
+            </span>
+          </div>
+        )}
+      </nav>
+      <div className="scroll-progress">
+        <span style={{ transform: `scaleX(${pct})` }} />
+      </div>
+    </>
   );
 }

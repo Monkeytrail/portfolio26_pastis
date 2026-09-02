@@ -1,11 +1,12 @@
-import { Fragment } from 'react';
 import Image from 'next/image';
-import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { client, safeFetch } from '@/sanity/lib/client';
-import { projectBySlugQuery, projectSlugsQuery, siteSettingsQuery } from '@/sanity/lib/queries';
+import { projectBySlugQuery, projectSlugsQuery, allProjectsQuery } from '@/sanity/lib/queries';
 import { urlForImage } from '@/sanity/lib/image';
-import RansomHeadline from '@/components/RansomHeadline';
+import { splitTitleRows } from '@/lib/splitTitle';
+import { Breadcrumb, MetricStrip, PrevNext } from '@/components/CaseStudyBits';
+import Chapter from '@/components/CaseChapters';
+import SiteFooter from '@/components/SiteFooter';
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -21,148 +22,98 @@ export async function generateMetadata({ params }: PageProps) {
   const project = await safeFetch<any>(projectBySlugQuery, { slug });
   if (project) {
     return {
-      title: `${project.title} — Jeroen van Ginneken`,
+      title: `${project.title} — Case Study — JvG`,
       description: project.shortDescription ?? project.description,
     };
   }
   return { title: 'Project — Jeroen van Ginneken' };
 }
 
-function ContentBlock({ block }: { block: any }) {
-  switch (block.contentType) {
-    case 'heading':
-      return <h2 className="project-content-heading">{block.text}</h2>;
-
-    case 'text':
-      return <p className="project-content-text">{block.text}</p>;
-
-    case 'quote':
-      return <blockquote className="project-content-quote">{block.text}</blockquote>;
-
-    case 'image': {
-      const imgUrl = block.image ? urlForImage(block.image) : null;
-      if (!imgUrl) return null;
-      return (
-        <Image
-          src={imgUrl}
-          alt="Project image"
-          width={660}
-          height={440}
-          className="project-content-image"
-          style={{ width: '100%', height: 'auto' }}
-        />
-      );
-    }
-
-    case 'gallery': {
-      if (!block.images?.length) return null;
-      return (
-        <div className="project-content-gallery">
-          {block.images.map((img: any, i: number) => {
-            const url = urlForImage(img);
-            if (!url) return null;
-            return (
-              <Image
-                key={i}
-                src={url}
-                alt={`Gallery image ${i + 1}`}
-                width={320}
-                height={240}
-                style={{ width: '100%', height: 'auto' }}
-              />
-            );
-          })}
-        </div>
-      );
-    }
-
-    case 'results':
-      return (
-        <ul className="project-content-results">
-          {block.items?.map((item: string, i: number) => (
-            <li key={i}>{item}</li>
-          ))}
-        </ul>
-      );
-
-    default:
-      return null;
-  }
-}
-
 export default async function ProjectPage({ params }: PageProps) {
   const { slug } = await params;
 
   let project: any = null;
-  let settings: any = null;
+  let allProjects: any[] = [];
 
   try {
-    [project, settings] = await Promise.all([
+    [project, allProjects] = await Promise.all([
       client.fetch(projectBySlugQuery, { slug }),
-      client.fetch(siteSettingsQuery),
+      client.fetch(allProjectsQuery),
     ]);
   } catch { }
 
   if (!project) notFound();
 
   const coverImageUrl = project.coverImage ? urlForImage(project.coverImage) : null;
+  const { row1, accent, outline } = splitTitleRows(project.title);
+
+  const gallery = project.detailedContent?.find((b: any) => b.contentType === 'gallery')?.gallery ?? [];
+
+  const order = allProjects.map((p) => p.slug.current);
+  const idx = order.indexOf(slug);
+  const prev = idx >= 0 ? allProjects[(idx - 1 + allProjects.length) % allProjects.length] : null;
+  const next = idx >= 0 ? allProjects[(idx + 1) % allProjects.length] : null;
 
   return (
-    <article className="prose">
-      <Link href="/" className="cta-btn cta-btn--ghost cta-btn--sm project-back-link">
-        {settings?.projectBackLinkLabel ?? '← Work'}
-      </Link>
-
-      <h1 className="project-headline">
-        <RansomHeadline text={project.title} />
-      </h1>
-
-      {(project.client || project.year || project.tags?.length > 0) && (
-        <div className="project-meta-row">
-          {project.year && <pastis-tag variant="solid" size="sm">{project.year}</pastis-tag>}
-          {project.client && <pastis-tag variant="outline" size="sm">{project.client}</pastis-tag>}
-          {project.tags?.map((tag: string) => (
-            <Fragment key={tag}>
-              <pastis-tag variant="outline" size="sm">{tag}</pastis-tag>
-            </Fragment>
-          ))}
+    <>
+      <div className="container">
+        <Breadcrumb items={[{ label: 'Work', href: '/work' }, { label: project.title }]} />
+        <div className="page-hero">
+          <div className="eyebrow">{project.tag ?? project.client} · {project.year}</div>
+          <h1>
+            {row1}<br /><span className="accent">{accent}</span>
+            {outline && <><br /><span className="outline">{outline}</span></>}
+            <span className="slash">.</span>
+          </h1>
+          <p className="lede">{project.description ?? project.shortDescription}</p>
         </div>
-      )}
+      </div>
+      <div className="container">
+        {(project.role || project.team || project.duration || project.client) && (
+          <div className="case-meta">
+            {project.role && <div className="cell"><div className="k">Role</div><div className="v">{project.role}</div></div>}
+            {project.team && <div className="cell"><div className="k">Team</div><div className="v">{project.team}</div></div>}
+            {project.duration && <div className="cell"><div className="k">Duration</div><div className="v">{project.duration}</div></div>}
+            {project.client && <div className="cell"><div className="k">Client</div><div className="v">{project.client}</div></div>}
+          </div>
+        )}
 
-      {coverImageUrl && (
-        <Image
-          src={coverImageUrl}
-          alt={project.title}
-          width={660}
-          height={440}
-          className="project-cover-image"
-          priority
-        />
-      )}
+        {coverImageUrl && (
+          <div className="case-cover">
+            <Image src={coverImageUrl} alt={project.title} fill sizes="100vw" style={{ objectFit: 'cover' }} priority />
+          </div>
+        )}
 
-      {project.description && (
-        <p className="project-description">{project.description}</p>
-      )}
+        {project.metrics?.length > 0 && <MetricStrip metrics={project.metrics} />}
 
-      {project.detailedContent?.map((block: any, i: number) => (
-        <ContentBlock key={i} block={block} />
-      ))}
+        {project.chapters?.map((ch: any, i: number) => (
+          <Chapter key={i} num={i + 1} label={ch.label} body={ch.body} />
+        ))}
 
-      {project.links?.length > 0 && (
-        <div className="cta-row project-links">
-          {project.links.map((link: { label: string; url: string }) => (
-            <a
-              key={link.url}
-              href={link.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="cta-btn cta-btn--ghost cta-btn--sm"
-            >
-              {link.label} ↗
-            </a>
-          ))}
-        </div>
-      )}
-    </article>
+        {gallery.length > 0 && (
+          <div className="case-gallery">
+            {gallery.map((img: any, i: number) => {
+              const url = urlForImage(img);
+              if (!url) return null;
+              return <Image key={i} src={url} alt={`${project.title} — image ${i + 1}`} width={640} height={480} style={{ width: '100%', height: 'auto' }} />;
+            })}
+          </div>
+        )}
+
+        {project.links?.length > 0 && (
+          <div className="cta-row" style={{ display: 'flex', gap: 12, flexWrap: 'wrap', padding: '32px 0', borderTop: '1px solid var(--border-default)' }}>
+            {project.links.map((link: { label: string; url: string }) => (
+              <a key={link.url} href={link.url} target="_blank" rel="noopener noreferrer" className="nf-btn">
+                {link.label} ↗
+              </a>
+            ))}
+          </div>
+        )}
+
+        {prev && next && prev.slug.current !== next.slug.current && <PrevNext prev={prev} next={next} />}
+
+        <SiteFooter bordered copyright="© Jeroen van Ginneken" />
+      </div>
+    </>
   );
 }

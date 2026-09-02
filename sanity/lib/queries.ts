@@ -1,13 +1,16 @@
-export const projectsQuery = `*[_type == "project" && featured == true] | order(year desc) {
-  _id, title, slug { current }, shortDescription, description, year, client, coverImage, coverImageLight, tags
+export const projectsQuery = `*[_type == "project" && featured == true] | order(order asc) {
+  _id, title, slug { current }, shortDescription, description, year, client, coverImage, coverImageLight, tags,
+  tag, span, role, team, duration, metrics
 }`;
 
 export const allProjectsQuery = `*[_type == "project"] | order(order asc) {
-  _id, title, slug { current }, shortDescription, description, year, client, coverImage, tags
+  _id, title, slug { current }, shortDescription, description, year, client, coverImage, tags,
+  tag, span, role, team, duration, metrics
 }`;
 
 export const projectBySlugQuery = `*[_type == "project" && slug.current == $slug][0] {
-  _id, title, slug { current }, shortDescription, description, client, year, coverImage, detailedContent, links
+  _id, title, slug { current }, shortDescription, description, client, year, coverImage, detailedContent, links,
+  tag, tags, role, team, duration, metrics, chapters
 }`;
 
 export const projectSlugsQuery = `*[_type == "project"]{ "slug": slug.current }`;
@@ -18,6 +21,9 @@ export const aboutQuery = `*[_type == "about"][0] {
   skillsSectionLabel, skillsSectionHeading, skillsSectionSubheading,
   experienceSectionLabel, experienceSectionHeading, experienceSectionSubheading, experience,
   educationSectionLabel, educationSectionHeading, education,
+  valuesSectionLabel, valuesSectionHeading, values,
+  processSectionLabel, processSectionHeading, process,
+  testimonials,
   contactSectionLabel, contactSectionHeading, quote, email, linkedinUrl
 }`;
 
