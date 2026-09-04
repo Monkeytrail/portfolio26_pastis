@@ -43,8 +43,6 @@ export default async function HomePage() {
         fullName={settings?.heroHeadline ?? 'Jeroen van Ginneken'}
         role="UX/UI Designer"
         blurb={settings?.heroSubheadline?.split('\n\n')[0]}
-        yearsActive={yearsActive}
-        projectCount={projectCount}
         startYear={startYear}
         marqueeItems={skillTitles}
       />

@@ -2,8 +2,6 @@ interface HeroProps {
   fullName: string;
   role: string;
   blurb?: string;
-  yearsActive: number;
-  projectCount: number;
   startYear: number;
   marqueeItems: string[];
 }
@@ -20,7 +18,7 @@ function Marquee({ items }: { items: string[] }) {
   );
 }
 
-export default function Hero({ fullName, role, blurb, yearsActive, projectCount, startYear, marqueeItems }: HeroProps) {
+export default function Hero({ fullName, role, blurb, startYear, marqueeItems }: HeroProps) {
   const words = fullName.trim().split(' ');
   const first = words[0];
   const last = words.length > 1 ? words[words.length - 1] : '';
@@ -33,7 +31,6 @@ export default function Hero({ fullName, role, blurb, yearsActive, projectCount,
           <span>// Portfolio · v2026.1</span>
           <span><span className="tick">●</span> Antwerp, BE · UTC+1</span>
           <span>Design → Product · {startYear}—Now</span>
-          <span>{yearsActive}+ Years / {projectCount} Shipped</span>
         </div>
 
         <h1 className="hero-title">
@@ -47,10 +44,6 @@ export default function Hero({ fullName, role, blurb, yearsActive, projectCount,
 
         <div className="hero-bottom">
           {blurb && <p className="hero-blurb">{blurb}</p>}
-          <div className="hero-stack">
-            <div className="stat"><div className="n">{yearsActive}+</div><div className="l">Years shipping</div></div>
-            <div className="stat"><div className="n">{projectCount}</div><div className="l">Products shipped</div></div>
-          </div>
         </div>
       </div>
 

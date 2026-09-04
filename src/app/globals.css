@@ -303,6 +303,7 @@ h1, h2, h3, h4, h5, h6 {
 .hero-title .outline {
   -webkit-text-stroke: 2px var(--text-primary);
   color: transparent;
+  margin-right: -0.2em;
 }
 .hero-title .slash {
   color: var(--accent);
@@ -311,7 +312,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 .hero-bottom {
   display: grid;
-  grid-template-columns: 1.3fr 1fr;
+  grid-template-columns: 1fr;
   gap: 40px;
   align-items: end;
   margin-top: 40px;
@@ -329,28 +330,6 @@ h1, h2, h3, h4, h5, h6 {
   color: var(--accent-ink);
   padding: 0 6px;
   font-weight: 700;
-}
-.hero-stack {
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
-  align-items: flex-end;
-  justify-self: end;
-}
-.hero-stack .stat { font-family: var(--font-family-mono); text-align: right; }
-.hero-stack .stat .n {
-  font-size: 48px;
-  font-weight: 700;
-  color: var(--accent);
-  line-height: 1;
-  letter-spacing: -0.02em;
-}
-.hero-stack .stat .l {
-  font-size: 11px;
-  color: var(--text-tertiary);
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  margin-top: 6px;
 }
 .hero-marquee {
   position: absolute;
@@ -381,12 +360,6 @@ h1, h2, h3, h4, h5, h6 {
 }
 @media (prefers-reduced-motion: reduce) {
   .hero-marquee .track { animation: none; }
-}
-
-@media (max-width: 900px) {
-  .hero-bottom { grid-template-columns: 1fr; }
-  .hero-stack { align-items: flex-start; justify-self: start; }
-  .hero-stack .stat { text-align: left; }
 }
 
 /* ============================================================
