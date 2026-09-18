@@ -3,7 +3,7 @@ import { notFound } from 'next/navigation';
 import { PortableText } from '@portabletext/react';
 import { safeFetch } from '@/sanity/lib/client';
 import { aboutQuery, siteSettingsQuery } from '@/sanity/lib/queries';
-import { getEarliestYear, getCurrentJob } from '@/lib/deriveStats';
+import { getEarliestYear, getCurrentJob, getFooterCopyright } from '@/lib/deriveStats';
 import { splitHeadingRows } from '@/lib/headingParts';
 import { SECONDARY_PAGES_ENABLED } from '@/lib/siteConfig';
 import SiteFooter from '@/components/SiteFooter';
@@ -165,7 +165,7 @@ export default async function AboutPage() {
 
       <SiteFooter
         bordered
-        copyright={settings?.footerCopyright || `© ${startYear}—${new Date().getFullYear()} · ${settings?.heroHeadline ?? 'Jeroen van Ginneken'}`}
+        copyright={getFooterCopyright(settings, startYear)}
         note={<a href="/" className="footer-link">← Back home</a>}
       />
     </div>

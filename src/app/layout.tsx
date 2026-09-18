@@ -45,7 +45,7 @@ export default async function RootLayout({
       </head>
       <body>
         <ThemeProvider>
-          <Nav brand={settings?.brand} name={settings?.heroHeadline} statusLabel={statusLabel} />
+          <Nav name={settings?.heroHeadline} statusLabel={statusLabel} />
           <main className="page">{children}</main>
         </ThemeProvider>
       </body>

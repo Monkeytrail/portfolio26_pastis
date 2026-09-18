@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { safeFetch } from '@/sanity/lib/client';
 import { allProjectsQuery, aboutQuery, siteSettingsQuery } from '@/sanity/lib/queries';
-import { getEarliestYear } from '@/lib/deriveStats';
+import { getEarliestYear, getFooterCopyright } from '@/lib/deriveStats';
 import { accentLastWord } from '@/lib/headingParts';
 import { SECONDARY_PAGES_ENABLED } from '@/lib/siteConfig';
 import WorkIndex from '@/components/WorkIndex';
@@ -39,7 +39,7 @@ export default async function WorkPage() {
       <WorkIndex projects={list} />
       <SiteFooter
         bordered
-        copyright={settings?.footerCopyright || `© ${startYear}—${new Date().getFullYear()} · ${settings?.heroHeadline ?? 'Jeroen van Ginneken'}`}
+        copyright={getFooterCopyright(settings, startYear)}
       />
     </div>
   );

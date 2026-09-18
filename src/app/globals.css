@@ -666,6 +666,10 @@ h1, h2, h3, h4, h5, h6 {
   border-top: 1px solid var(--border-default);
   margin-top: 48px;
 }
+.contact--flush {
+  border-top: none;
+  margin-top: 0;
+}
 .contact-title {
   font-family: var(--font-family-mono);
   font-weight: 700;

@@ -1,19 +1,13 @@
-interface HeadingParts {
-  before: string;
-  match: string;
-  after: string;
-}
-
 /** Splits `text` around the last space, isolating the final word for accent styling. */
-export function accentLastWord(text: string): HeadingParts {
+export function accentLastWord(text: string): { before: string; match: string } {
   const trimmed = text.trim();
   const idx = trimmed.lastIndexOf(' ');
-  if (idx === -1) return { before: '', match: trimmed, after: '' };
-  return { before: trimmed.slice(0, idx + 1), match: trimmed.slice(idx + 1), after: '' };
+  if (idx === -1) return { before: '', match: trimmed };
+  return { before: trimmed.slice(0, idx + 1), match: trimmed.slice(idx + 1) };
 }
 
 /** Splits `text` around the first occurrence of `word`, for highlighting a specific word/phrase. */
-export function splitAroundWord(text: string, word?: string): HeadingParts | null {
+export function splitAroundWord(text: string, word?: string): { before: string; match: string; after: string } | null {
   if (!word) return null;
   const idx = text.indexOf(word);
   if (idx === -1) return null;

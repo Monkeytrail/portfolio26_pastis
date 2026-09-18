@@ -17,3 +17,15 @@ export function getEarliestYear(experience: ExperienceItem[] | undefined): numbe
 export function getCurrentJob(experience: ExperienceItem[] | undefined): ExperienceItem | undefined {
   return experience?.find((job) => job.period === 'Current');
 }
+
+interface FooterSettings {
+  footerCopyright?: string;
+  heroHeadline?: string;
+}
+
+/** Site's custom copyright string if set, otherwise "© {startYear}—{currentYear} · {name}". */
+export function getFooterCopyright(settings: FooterSettings | null | undefined, startYear: number): string {
+  if (settings?.footerCopyright) return settings.footerCopyright;
+  const name = settings?.heroHeadline ?? 'Jeroen van Ginneken';
+  return `© ${startYear}—${new Date().getFullYear()} · ${name}`;
+}

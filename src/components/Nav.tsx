@@ -6,7 +6,6 @@ import { usePathname } from 'next/navigation';
 import { SECONDARY_PAGES_ENABLED } from '@/lib/siteConfig';
 
 interface NavProps {
-  brand?: string;
   name?: string;
   statusLabel?: string;
 }
@@ -24,7 +23,7 @@ const NAV_ITEMS = SECONDARY_PAGES_ENABLED
     ]
   : [];
 
-export default function Nav({ brand = 'JvG', name = 'Jeroen van Ginneken', statusLabel }: NavProps) {
+export default function Nav({ name = 'Jeroen van Ginneken', statusLabel }: NavProps) {
   const pathname = usePathname();
   const activeId = getActiveId(pathname);
   const [pct, setPct] = useState(0);
@@ -44,7 +43,7 @@ export default function Nav({ brand = 'JvG', name = 'Jeroen van Ginneken', statu
     <>
       <nav className="nav">
         <Link className="nav-brand" href="/">
-          <span className="mark">{brand}</span>
+          <span className="mark">J</span>
           <span>{name}</span>
         </Link>
         <div className="nav-links">

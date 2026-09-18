@@ -1,7 +1,7 @@
 import { PortableText } from '@portabletext/react';
 import { client } from '@/sanity/lib/client';
 import { projectsQuery, siteSettingsQuery, aboutQuery } from '@/sanity/lib/queries';
-import { getEarliestYear } from '@/lib/deriveStats';
+import { getEarliestYear, getFooterCopyright } from '@/lib/deriveStats';
 import { accentLastWord, splitAroundWord } from '@/lib/headingParts';
 import { SECONDARY_PAGES_ENABLED } from '@/lib/siteConfig';
 import Hero from '@/components/Hero';
@@ -47,8 +47,8 @@ export default async function HomePage() {
   const contactHeading = about?.contactSectionHeading ?? "Let's work together";
   const contactHeadingParts = accentLastWord(contactHeading);
 
-  const timelineNum = SECONDARY_PAGES_ENABLED ? '03' : '01';
-  const contactNum = SECONDARY_PAGES_ENABLED ? '04' : '02';
+  const contactNum = SECONDARY_PAGES_ENABLED ? '04' : '01';
+  const contactClassName = SECONDARY_PAGES_ENABLED ? 'container contact' : 'container contact contact--flush';
 
   return (
     <>
@@ -110,11 +110,11 @@ export default async function HomePage() {
         </section>
       )}
 
-      {about?.experience?.length > 0 && (
+      {SECONDARY_PAGES_ENABLED && about?.experience?.length > 0 && (
         <section id="timeline" className="container">
           <div className="section-rule">
             <span className="dot">▶</span>
-            <span>{timelineNum} · {about.experienceSectionLabel ?? 'Experience'}</span>
+            <span>03 · {about.experienceSectionLabel ?? 'Experience'}</span>
             <span className="line" />
             <span>{yearsActive} years · {about.experience.length} places</span>
           </div>
@@ -128,7 +128,7 @@ export default async function HomePage() {
         </section>
       )}
 
-      <section id="contact" className="container contact">
+      <section id="contact" className={contactClassName}>
         <div className="section-rule">
           <span className="dot">▶</span>
           <span>{contactNum} · Contact</span>
@@ -159,7 +159,7 @@ export default async function HomePage() {
           )}
         </div>
         <SiteFooter
-          copyright={settings?.footerCopyright || `© ${startYear}—${new Date().getFullYear()} · ${settings?.heroHeadline ?? 'Jeroen van Ginneken'}`}
+          copyright={getFooterCopyright(settings, startYear)}
           note={<span><span className="dot">●</span> Built with Pastis</span>}
         />
       </section>
