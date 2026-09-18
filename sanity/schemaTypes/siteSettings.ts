@@ -49,6 +49,24 @@ export const siteSettings = defineType({
       rows: 3,
     }),
     defineField({
+      name: 'heroVersionLabel',
+      title: 'Hero — Meta Line 1',
+      type: 'string',
+      description: 'Small decorative line above the hero title (e.g. "// Portfolio · v2026.1")',
+    }),
+    defineField({
+      name: 'heroLocationLabel',
+      title: 'Hero — Meta Line 2',
+      type: 'string',
+      description: 'e.g. "Antwerp, BE · UTC+1"',
+    }),
+    defineField({
+      name: 'heroTrackLabel',
+      title: 'Hero — Meta Line 3',
+      type: 'string',
+      description: 'Prefix shown before "· {start year}—Now" (e.g. "Design → Product")',
+    }),
+    defineField({
       name: 'homeHeroCtaLabel',
       title: 'Hero — Primary CTA Label',
       type: 'string',
@@ -72,12 +90,26 @@ export const siteSettings = defineType({
       name: 'workSectionHeading',
       title: 'Work Section — Heading',
       type: 'string',
+      description: 'e.g. "Work I\'m proud to put my name on."',
+    }),
+    defineField({
+      name: 'workSectionHeadingAccent',
+      title: 'Work Section — Heading Accent Word',
+      type: 'string',
+      description: 'A word or phrase from the heading above to highlight (e.g. "proud"). The line breaks right after it.',
     }),
     defineField({
       name: 'workSectionSubheading',
       title: 'Work Section — Subheading',
       type: 'text',
       rows: 2,
+      description: 'Reused on the /work index page lede, e.g. "across product, government, and design-systems work"',
+    }),
+    defineField({
+      name: 'workListHeading',
+      title: 'Work Index Page — Heading',
+      type: 'string',
+      description: 'Big heading on the /work page (e.g. "Selected Work"). Last word is highlighted.',
     }),
 
     // ── About page meta ──

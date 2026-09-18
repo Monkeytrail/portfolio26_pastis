@@ -1,7 +1,9 @@
 import { PortableText } from '@portabletext/react';
 import { client } from '@/sanity/lib/client';
 import { projectsQuery, siteSettingsQuery, aboutQuery } from '@/sanity/lib/queries';
-import { getEarliestYear, getCurrentJob } from '@/lib/deriveStats';
+import { getEarliestYear } from '@/lib/deriveStats';
+import { accentLastWord, splitAroundWord } from '@/lib/headingParts';
+import { SECONDARY_PAGES_ENABLED } from '@/lib/siteConfig';
 import Hero from '@/components/Hero';
 import WorkGrid from '@/components/WorkGrid';
 import ExperienceTimeline from '@/components/ExperienceTimeline';
@@ -24,7 +26,6 @@ export default async function HomePage() {
   const startYear = getEarliestYear(about?.experience) ?? new Date().getFullYear();
   const yearsActive = new Date().getFullYear() - startYear;
   const projectCount = projects?.length ?? 0;
-  const currentJob = getCurrentJob(about?.experience);
   const skillTitles = about?.skillCards?.map((c: any) => c.title) ?? [];
   const email = about?.email ?? settings?.contactEmail;
   const socials = settings?.socialLinks ?? {};
@@ -37,37 +38,58 @@ export default async function HomePage() {
   const [quoteLead, ...quoteRestParts] = (about?.quote ?? '').split('.');
   const quoteRest = quoteRestParts.join('.').trim();
 
+  const workHeading = settings?.workSectionHeading ?? "Work I'm proud to put my name on.";
+  const workHeadingParts = splitAroundWord(workHeading, settings?.workSectionHeadingAccent ?? 'proud');
+
+  const timelineHeading = about?.experienceSectionHeading ?? "Where I've been.";
+  const timelineParts = accentLastWord(timelineHeading);
+
+  const contactHeading = about?.contactSectionHeading ?? "Let's work together";
+  const contactHeadingParts = accentLastWord(contactHeading);
+
+  const timelineNum = SECONDARY_PAGES_ENABLED ? '03' : '01';
+  const contactNum = SECONDARY_PAGES_ENABLED ? '04' : '02';
+
   return (
     <>
       <Hero
         fullName={settings?.heroHeadline ?? 'Jeroen van Ginneken'}
-        role="UX/UI Designer"
+        role={settings?.heroEyebrow ?? 'UX/UI Designer'}
         blurb={settings?.heroSubheadline?.split('\n\n')[0]}
         startYear={startYear}
         marqueeItems={skillTitles}
+        versionLabel={settings?.heroVersionLabel}
+        locationLabel={settings?.heroLocationLabel}
+        trackLabel={settings?.heroTrackLabel}
       />
 
-      <section id="work" className="container">
-        <div className="section-rule">
-          <span className="dot">▶</span>
-          <span>01 · Selected Work</span>
-          <span className="line" />
-          <span>{startYear} — Now</span>
-        </div>
-        <div className="work-head">
-          <h2>Work I&apos;m <span>proud</span><br />to put my name on.</h2>
-          <div className="work-count">// {projectCount} PROJECTS SHOWN</div>
-        </div>
-        <WorkGrid projects={projects} />
-      </section>
+      {SECONDARY_PAGES_ENABLED && (
+        <section id="work" className="container">
+          <div className="section-rule">
+            <span className="dot">▶</span>
+            <span>01 · {settings?.workSectionLabel ?? 'Selected Work'}</span>
+            <span className="line" />
+            <span>{startYear} — Now</span>
+          </div>
+          <div className="work-head">
+            <h2>
+              {workHeadingParts
+                ? <>{workHeadingParts.before}<span>{workHeadingParts.match}</span><br />{workHeadingParts.after.trimStart()}</>
+                : workHeading}
+            </h2>
+            <div className="work-count">// {projectCount} PROJECTS SHOWN</div>
+          </div>
+          <WorkGrid projects={projects} />
+        </section>
+      )}
 
-      {about && (
+      {SECONDARY_PAGES_ENABLED && about && (
         <section id="about" className="container">
           <div className="section-rule">
             <span className="dot">▶</span>
-            <span>02 · About</span>
+            <span>02 · {about.eyebrow ?? 'About'}</span>
             <span className="line" />
-            <span>The short version</span>
+            <span>{about.subheadline ?? 'The short version'}</span>
           </div>
           <div className="about">
             {about.quote && (
@@ -92,14 +114,14 @@ export default async function HomePage() {
         <section id="timeline" className="container">
           <div className="section-rule">
             <span className="dot">▶</span>
-            <span>03 · Experience</span>
+            <span>{timelineNum} · {about.experienceSectionLabel ?? 'Experience'}</span>
             <span className="line" />
             <span>{yearsActive} years · {about.experience.length} places</span>
           </div>
           <div className="timeline">
             <div className="timeline-head">
-              <h3>Where<br />I&apos;ve been.</h3>
-              <div className="sub">// A long-form log</div>
+              <h3>{timelineParts.before && <>{timelineParts.before}<br /></>}{timelineParts.match}</h3>
+              <div className="sub">// {about.experienceSectionSubheading ?? 'A long-form log'}</div>
             </div>
             <ExperienceTimeline items={about.experience} />
           </div>
@@ -109,13 +131,12 @@ export default async function HomePage() {
       <section id="contact" className="container contact">
         <div className="section-rule">
           <span className="dot">▶</span>
-          <span>04 · Contact</span>
+          <span>{contactNum} · Contact</span>
           <span className="line" />
-          <span>Let&apos;s talk</span>
+          <span>{about?.contactSectionLabel ?? "Let's talk"}</span>
         </div>
         <h2 className="contact-title">
-          <span className="row">Have a <span className="on">thing</span></span>
-          <span className="row"><span className="stroke">worth</span> shipping?</span>
+          {contactHeadingParts.before && <>{contactHeadingParts.before}<br /></>}<span className="on">{contactHeadingParts.match}</span>
         </h2>
         <div className="contact-grid">
           <div className="contact-info">
@@ -125,14 +146,6 @@ export default async function HomePage() {
                 <CopyEmailButton email={email} className="contact-email" />
               </div>
             )}
-            <div>
-              <div className="contact-label">// Currently</div>
-              <p className="contact-body">
-                {currentJob
-                  ? `${currentJob.role ?? 'Working'} at ${currentJob.company}. Open to hearing about interesting design-systems and product work.`
-                  : 'Open to hearing about interesting design and product work.'}
-              </p>
-            </div>
           </div>
           {socialRows.length > 0 && (
             <div className="social-list">
@@ -145,7 +158,10 @@ export default async function HomePage() {
             </div>
           )}
         </div>
-        <SiteFooter copyright={`© ${startYear}—${new Date().getFullYear()} · Jeroen van Ginneken`} note={<span><span className="dot">●</span> Built with Pastis</span>} />
+        <SiteFooter
+          copyright={settings?.footerCopyright || `© ${startYear}—${new Date().getFullYear()} · ${settings?.heroHeadline ?? 'Jeroen van Ginneken'}`}
+          note={<span><span className="dot">●</span> Built with Pastis</span>}
+        />
       </section>
     </>
   );

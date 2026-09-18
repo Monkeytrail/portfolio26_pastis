@@ -16,21 +16,22 @@ export const projectBySlugQuery = `*[_type == "project" && slug.current == $slug
 export const projectSlugsQuery = `*[_type == "project"]{ "slug": slug.current }`;
 
 export const aboutQuery = `*[_type == "about"][0] {
-  eyebrow, headline, subheadline, profileImage, intro, getInTouchLabel,
+  eyebrow, headline, subheadline, location, profileImage, intro, bioDescription, availabilityNote, getInTouchLabel,
   skills, whatILove, skillCards,
   skillsSectionLabel, skillsSectionHeading, skillsSectionSubheading,
   experienceSectionLabel, experienceSectionHeading, experienceSectionSubheading, experience,
   educationSectionLabel, educationSectionHeading, education,
   valuesSectionLabel, valuesSectionHeading, values,
   processSectionLabel, processSectionHeading, process,
-  testimonials,
+  testimonialsSectionLabel, testimonials,
   contactSectionLabel, contactSectionHeading, quote, email, linkedinUrl
 }`;
 
 export const siteSettingsQuery = `*[_type == "siteSettings"][0] {
   siteTitle, siteDescription, logo, brand,
-  heroHeadline, heroEyebrow, heroSubheadline, homeHeroCtaLabel, homeAboutCtaLabel,
-  workSectionLabel, workSectionHeading, workSectionSubheading,
+  heroHeadline, heroEyebrow, heroSubheadline, heroVersionLabel, heroLocationLabel, heroTrackLabel,
+  homeHeroCtaLabel, homeAboutCtaLabel,
+  workSectionLabel, workSectionHeading, workSectionHeadingAccent, workSectionSubheading, workListHeading,
   aboutPageTitle, aboutPageDescription,
   projectBackLinkLabel,
   contactEmail, footerTagline, footerCopyright, socialLinks

@@ -9,8 +9,11 @@ export const about = defineType({
     defineField({ name: 'eyebrow', title: 'Eyebrow', type: 'string', description: 'Small label above headline (e.g. "About")' }),
     defineField({ name: 'headline', title: 'Headline', type: 'string' }),
     defineField({ name: 'subheadline', title: 'Subheadline', type: 'string' }),
+    defineField({ name: 'location', title: 'Location', type: 'string', description: 'Shown on the About page quick-facts card (e.g. "Antwerp, Belgium")' }),
     defineField({ name: 'profileImage', title: 'Profile Image', type: 'image', options: { hotspot: true } }),
     defineField({ name: 'intro', title: 'Introduction', type: 'array', of: [{ type: 'block' }] }),
+    defineField({ name: 'bioDescription', title: 'Bio — Lede Description', type: 'text', rows: 2, description: 'Finishes the About page intro sentence, after "{job title}, N+ years in."' }),
+    defineField({ name: 'availabilityNote', title: 'Availability Note', type: 'text', rows: 2, description: 'Shown on the homepage contact section, after "{role} at {company}."' }),
     defineField({ name: 'getInTouchLabel', title: 'CTA — Get in Touch Label', type: 'string', description: 'e.g. "Get in touch →"' }),
     defineField({ name: 'skills', title: 'Skills', type: 'array', of: [{ type: 'string' }] }),
     defineField({ name: 'whatILove', title: 'What I Love', type: 'array', of: [{ type: 'string' }], description: 'List of things/skills you are passionate about' }),
@@ -139,6 +142,7 @@ export const about = defineType({
     }),
 
     // ── Testimonials — only real, verified quotes. Leave empty otherwise. ──
+    defineField({ name: 'testimonialsSectionLabel', title: 'Testimonials Section — Label', type: 'string' }),
     defineField({
       name: 'testimonials',
       title: 'Testimonials',

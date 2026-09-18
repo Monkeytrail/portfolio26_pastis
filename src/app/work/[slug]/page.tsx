@@ -1,9 +1,10 @@
 import Image from 'next/image';
 import { notFound } from 'next/navigation';
 import { client, safeFetch } from '@/sanity/lib/client';
-import { projectBySlugQuery, projectSlugsQuery, allProjectsQuery } from '@/sanity/lib/queries';
+import { projectBySlugQuery, projectSlugsQuery, allProjectsQuery, siteSettingsQuery } from '@/sanity/lib/queries';
 import { urlForImage } from '@/sanity/lib/image';
 import { splitTitleRows } from '@/lib/splitTitle';
+import { SECONDARY_PAGES_ENABLED } from '@/lib/siteConfig';
 import { Breadcrumb, MetricStrip, PrevNext } from '@/components/CaseStudyBits';
 import Chapter from '@/components/CaseChapters';
 import SiteFooter from '@/components/SiteFooter';
@@ -19,10 +20,13 @@ export async function generateStaticParams() {
 
 export async function generateMetadata({ params }: PageProps) {
   const { slug } = await params;
-  const project = await safeFetch<any>(projectBySlugQuery, { slug });
+  const [project, settings] = await Promise.all([
+    safeFetch<any>(projectBySlugQuery, { slug }),
+    safeFetch<any>(siteSettingsQuery),
+  ]);
   if (project) {
     return {
-      title: `${project.title} — Case Study — JvG`,
+      title: `${project.title} — Case Study — ${settings?.brand ?? 'JvG'}`,
       description: project.shortDescription ?? project.description,
     };
   }
@@ -30,6 +34,8 @@ export async function generateMetadata({ params }: PageProps) {
 }
 
 export default async function ProjectPage({ params }: PageProps) {
+  if (!SECONDARY_PAGES_ENABLED) notFound();
+
   const { slug } = await params;
 
   let project: any = null;

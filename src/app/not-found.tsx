@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { SECONDARY_PAGES_ENABLED } from '@/lib/siteConfig';
 
 export default function NotFound() {
   return (
@@ -8,8 +9,8 @@ export default function NotFound() {
         <p className="notfound-msg">// Page not found · This path does not exist · Check the URL</p>
         <div className="notfound-actions">
           <Link href="/" className="nf-btn primary">← Back home</Link>
-          <Link href="/work" className="nf-btn">View work</Link>
-          <Link href="/about" className="nf-btn">About</Link>
+          {SECONDARY_PAGES_ENABLED && <Link href="/work" className="nf-btn">View work</Link>}
+          {SECONDARY_PAGES_ENABLED && <Link href="/about" className="nf-btn">About</Link>}
         </div>
         <pre className="notfound-ascii">{`
    ____
@@ -19,7 +20,7 @@ export default function NotFound() {
   \\___\\_\\  404
 
   // trace: no route matched
-  // try: / or /work
+  // try: /${SECONDARY_PAGES_ENABLED ? ' or /work' : ''}
         `}</pre>
       </div>
     </div>

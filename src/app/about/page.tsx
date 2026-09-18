@@ -1,8 +1,11 @@
 import type { Metadata } from 'next';
+import { notFound } from 'next/navigation';
 import { PortableText } from '@portabletext/react';
 import { safeFetch } from '@/sanity/lib/client';
 import { aboutQuery, siteSettingsQuery } from '@/sanity/lib/queries';
 import { getEarliestYear, getCurrentJob } from '@/lib/deriveStats';
+import { splitHeadingRows } from '@/lib/headingParts';
+import { SECONDARY_PAGES_ENABLED } from '@/lib/siteConfig';
 import SiteFooter from '@/components/SiteFooter';
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -14,7 +17,12 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 export default async function AboutPage() {
-  const about = await safeFetch<any>(aboutQuery);
+  if (!SECONDARY_PAGES_ENABLED) notFound();
+
+  const [about, settings] = await Promise.all([
+    safeFetch<any>(aboutQuery),
+    safeFetch<any>(siteSettingsQuery),
+  ]);
 
   const skills = Array.isArray(about?.skills) ? about.skills : [];
   const experience = Array.isArray(about?.experience) ? about.experience : [];
@@ -27,13 +35,22 @@ export default async function AboutPage() {
   const yearsActive = new Date().getFullYear() - startYear;
   const currentJob = getCurrentJob(experience);
 
+  const heroHeading = about?.headline ?? 'Designer';
+  const { rows: heroHeadingRows, accentWord: heroHeadingAccent } = splitHeadingRows(heroHeading);
+  const jobTitle = settings?.heroEyebrow ?? 'UX/UI designer';
+
   return (
     <div className="container">
       <div className="page-hero">
-        <div className="eyebrow">// About · {about?.headline ?? 'Jeroen van Ginneken'}</div>
-        <h1><span className="outline">About</span><br /><span className="accent">The</span><br />Designer<span className="slash">.</span></h1>
+        <div className="eyebrow">// {about?.eyebrow ?? 'About'}</div>
+        <h1>
+          {heroHeadingRows.map((row, i) => (
+            <span key={i} className={i === 0 ? 'outline' : undefined}>{row}<br /></span>
+          ))}
+          <span className="accent">{heroHeadingAccent}</span><span className="slash">.</span>
+        </h1>
         <p className="lede">
-          Senior UX/UI designer, {yearsActive}+ years in. I work at the intersection of product, craft, and accessibility.
+          {jobTitle}, {yearsActive}+ years in. {about?.bioDescription ?? 'I work at the intersection of product, craft, and accessibility.'}
         </p>
       </div>
 
@@ -49,7 +66,7 @@ export default async function AboutPage() {
         <div className="about-side">
           <div className="info-card">
             <h4>// Quick facts</h4>
-            <div className="row"><span className="k">Based</span><span className="v">Antwerp, Belgium</span></div>
+            <div className="row"><span className="k">Based</span><span className="v">{about?.location ?? 'Antwerp, Belgium'}</span></div>
             <div className="row"><span className="k">Years active</span><span className="v">{startYear} — Now</span></div>
             {currentJob && (
               <div className="row"><span className="k">Currently</span><span className="v">{currentJob.company}</span></div>
@@ -102,7 +119,7 @@ export default async function AboutPage() {
         <>
           <div className="section-rule">
             <span className="dot">▶</span>
-            <span>Experience</span>
+            <span>{about?.experienceSectionLabel ?? 'Experience'}</span>
             <span className="line" />
             <span>{yearsActive} years · {experience.length} places</span>
           </div>
@@ -122,7 +139,7 @@ export default async function AboutPage() {
         <>
           <div className="section-rule">
             <span className="dot">▶</span>
-            <span>What people say</span>
+            <span>{about?.testimonialsSectionLabel ?? 'What people say'}</span>
             <span className="line" />
           </div>
           <div className="testimonials">
@@ -148,7 +165,7 @@ export default async function AboutPage() {
 
       <SiteFooter
         bordered
-        copyright={`© ${startYear}—${new Date().getFullYear()} · Jeroen van Ginneken`}
+        copyright={settings?.footerCopyright || `© ${startYear}—${new Date().getFullYear()} · ${settings?.heroHeadline ?? 'Jeroen van Ginneken'}`}
         note={<a href="/" className="footer-link">← Back home</a>}
       />
     </div>

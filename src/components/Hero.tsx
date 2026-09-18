@@ -4,6 +4,9 @@ interface HeroProps {
   blurb?: string;
   startYear: number;
   marqueeItems: string[];
+  versionLabel?: string;
+  locationLabel?: string;
+  trackLabel?: string;
 }
 
 function Marquee({ items }: { items: string[] }) {
@@ -18,7 +21,16 @@ function Marquee({ items }: { items: string[] }) {
   );
 }
 
-export default function Hero({ fullName, role, blurb, startYear, marqueeItems }: HeroProps) {
+export default function Hero({
+  fullName,
+  role,
+  blurb,
+  startYear,
+  marqueeItems,
+  versionLabel = '// Portfolio · v2026.1',
+  locationLabel = 'Antwerp, BE · UTC+1',
+  trackLabel = 'Design → Product',
+}: HeroProps) {
   const words = fullName.trim().split(' ');
   const first = words[0];
   const last = words.length > 1 ? words[words.length - 1] : '';
@@ -28,9 +40,9 @@ export default function Hero({ fullName, role, blurb, startYear, marqueeItems }:
     <section id="top" className="hero">
       <div className="container">
         <div className="hero-meta">
-          <span>// Portfolio · v2026.1</span>
-          <span><span className="tick">●</span> Antwerp, BE · UTC+1</span>
-          <span>Design → Product · {startYear}—Now</span>
+          <span>{versionLabel}</span>
+          <span><span className="tick">●</span> {locationLabel}</span>
+          <span>{trackLabel} · {startYear}—Now</span>
         </div>
 
         <h1 className="hero-title">

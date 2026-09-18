@@ -3,6 +3,7 @@
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import { SECONDARY_PAGES_ENABLED } from '@/lib/siteConfig';
 
 interface NavProps {
   brand?: string;
@@ -16,10 +17,12 @@ function getActiveId(pathname: string): string {
   return 'home';
 }
 
-const NAV_ITEMS = [
-  { id: 'work', label: 'Work', href: '/work' },
-  { id: 'about', label: 'About', href: '/about' },
-];
+const NAV_ITEMS = SECONDARY_PAGES_ENABLED
+  ? [
+      { id: 'work', label: 'Work', href: '/work' },
+      { id: 'about', label: 'About', href: '/about' },
+    ]
+  : [];
 
 export default function Nav({ brand = 'JvG', name = 'Jeroen van Ginneken', statusLabel }: NavProps) {
   const pathname = usePathname();

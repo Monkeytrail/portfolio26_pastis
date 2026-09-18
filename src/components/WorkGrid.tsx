@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { urlForImage } from '@/sanity/lib/image';
+import { SECONDARY_PAGES_ENABLED } from '@/lib/siteConfig';
 
 interface Project {
   _id: string;
@@ -14,12 +15,11 @@ interface Project {
   coverImage?: any;
 }
 
-function WorkCard({ item, i, total }: { item: Project; i: number; total: number }) {
+function WorkCardContent({ item, i, total }: { item: Project; i: number; total: number }) {
   const coverUrl = item.coverImage ? urlForImage(item.coverImage) : null;
-  const span = item.span ?? 'half';
 
   return (
-    <Link href={`/work/${item.slug.current}`} className={`work-card peek-on ${span}`}>
+    <>
       <div className="work-visual">
         {coverUrl && (
           <Image src={coverUrl} alt="" fill sizes="(max-width: 900px) 100vw, 50vw" style={{ objectFit: 'cover' }} />
@@ -32,9 +32,28 @@ function WorkCard({ item, i, total }: { item: Project; i: number; total: number 
           <div className="t">{item.title}</div>
           <div className="m">{item.client}{item.year ? ` · ${item.year}` : ''}</div>
         </div>
-        <div className="arrow">→</div>
+        {SECONDARY_PAGES_ENABLED && <div className="arrow">→</div>}
       </div>
       {item.shortDescription && <div className="peek">&ldquo;{item.shortDescription}&rdquo;</div>}
+    </>
+  );
+}
+
+function WorkCard({ item, i, total }: { item: Project; i: number; total: number }) {
+  const span = item.span ?? 'half';
+  const className = `work-card peek-on ${span}`;
+
+  if (!SECONDARY_PAGES_ENABLED) {
+    return (
+      <div className={className}>
+        <WorkCardContent item={item} i={i} total={total} />
+      </div>
+    );
+  }
+
+  return (
+    <Link href={`/work/${item.slug.current}`} className={className}>
+      <WorkCardContent item={item} i={i} total={total} />
     </Link>
   );
 }
