@@ -43,13 +43,14 @@ export default async function RootLayout({
         <ThemeProvider>
           <RevealObserver />
           <a href="#main" className="skip-link">Skip to content</a>
-          <Nav brand={settings?.brand} contactEmail={settings?.contactEmail} />
+          <Nav brand={settings?.brand} contactEmail={settings?.contactEmail} cvUrl={settings?.cvUrl} />
           <main id="main">{children}</main>
           <Footer
             brand={settings?.brand}
             tagline={settings?.footerTagline}
             copyright={settings?.footerCopyright}
             contactEmail={settings?.contactEmail}
+            cvUrl={settings?.cvUrl}
             socialLinks={settings?.socialLinks}
           />
         </ThemeProvider>

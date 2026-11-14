@@ -2,8 +2,9 @@ import type { Metadata } from 'next';
 import Image from 'next/image';
 import { PortableText } from '@portabletext/react';
 import { safeFetch } from '@/sanity/lib/client';
-import { aboutQuery, siteSettingsQuery } from '@/sanity/lib/queries';
+import { aboutQuery, featuredTestimonialsQuery, siteSettingsQuery } from '@/sanity/lib/queries';
 import { urlForImage } from '@/sanity/lib/image';
+import Testimonials from '@/components/Testimonials';
 
 export async function generateMetadata(): Promise<Metadata> {
   const settings = await safeFetch<any>(siteSettingsQuery);
@@ -17,7 +18,11 @@ const isStringList = (v: unknown): v is string[] =>
   Array.isArray(v) && v.every((x) => typeof x === 'string');
 
 export default async function AboutPage() {
-  const about = await safeFetch<any>(aboutQuery);
+  const [about, settings, testimonials] = await Promise.all([
+    safeFetch<any>(aboutQuery),
+    safeFetch<any>(siteSettingsQuery),
+    safeFetch<any[]>(featuredTestimonialsQuery),
+  ]);
 
   const skills: string[] = isStringList(about?.skills) ? about.skills : [];
   const tools: string[] = isStringList(about?.tools) ? about.tools : [];
@@ -34,6 +39,14 @@ export default async function AboutPage() {
             <h1>{about?.headline}</h1>
           </pastis-statement>
           {about?.subheadline && <p className="lede">{about.subheadline}</p>}
+          {(settings?.cvUrl || about?.linkedinUrl) && (
+            <div className="hero-actions">
+              {settings?.cvUrl && <a href={settings.cvUrl} className="btn btn--primary">CV (PDF) ↓</a>}
+              {about?.linkedinUrl && (
+                <a href={about.linkedinUrl} target="_blank" rel="noopener noreferrer" className="btn">LinkedIn ↗</a>
+              )}
+            </div>
+          )}
         </div>
         {portrait && (
           <div className="about-portrait">
@@ -132,6 +145,8 @@ export default async function AboutPage() {
           </ul>
         </section>
       )}
+
+      <Testimonials items={testimonials ?? undefined} />
 
       {(about?.email || about?.linkedinUrl) && (
         <section className="container contact-cta" aria-label="Contact">

@@ -5,6 +5,8 @@ import { safeFetch } from '@/sanity/lib/client';
 import { projectBySlugQuery, projectNavQuery, projectSlugsQuery, siteSettingsQuery } from '@/sanity/lib/queries';
 import { urlForImage } from '@/sanity/lib/image';
 import { disciplineLabels } from '@/lib/disciplines';
+import CaseToc from '@/components/CaseToc';
+import Testimonials from '@/components/Testimonials';
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -29,6 +31,10 @@ export async function generateMetadata({ params }: PageProps) {
   return { title: 'Project — Jeroen van Ginneken' };
 }
 
+function headingId(text: string) {
+  return text.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
+}
+
 function figmaEmbedUrl(url: string) {
   return `https://www.figma.com/embed?embed_host=share&url=${encodeURIComponent(url)}`;
 }
@@ -47,7 +53,7 @@ function Figure({ image, caption, sizes }: { image: any; caption?: string; sizes
 function ContentBlock({ block }: { block: any }) {
   switch (block.contentType) {
     case 'heading':
-      return <h2 className="block-heading">{block.text}</h2>;
+      return <h2 id={headingId(block.text ?? '')} className="block-heading">{block.text}</h2>;
 
     case 'text':
       return <p className="block-text">{block.text}</p>;
@@ -166,16 +172,21 @@ export default async function ProjectPage({ params }: PageProps) {
   const meta = [
     ['Role', project.role],
     ['Client', project.client],
-    ['Year', project.year],
+    ['Timeline', project.timeline ?? project.year],
+    ['Team', project.team],
     ['Discipline', disciplineLabels(project.disciplines).join(', ')],
     ['Tools', project.tools?.join(', ')],
   ].filter(([, value]) => value);
 
+  const sections = (project.detailedContent ?? [])
+    .filter((block: any) => block.contentType === 'heading' && block.text)
+    .map((block: any) => ({ id: headingId(block.text), label: block.text }));
+
   return (
     <article>
       <header className="container project-hero">
-        <Link href="/#work" className="back-link">
-          {settings?.projectBackLinkLabel ?? '← All work'}
+        <Link href="/work" className="back-link">
+          {settings?.projectBackLinkLabel ?? '← All case studies'}
         </Link>
 
         <pastis-statement size="lg" eyebrow={[project.client, project.year].filter(Boolean).join(' · ')}>
@@ -183,6 +194,13 @@ export default async function ProjectPage({ params }: PageProps) {
         </pastis-statement>
 
         {project.shortDescription && <p className="lede">{project.shortDescription}</p>}
+
+        {project.outcome && (
+          <p className="outcome">
+            <span className="meta-text">Outcome</span>
+            <span>{project.outcome}</span>
+          </p>
+        )}
 
         {meta.length > 0 && (
           <dl className="project-meta">
@@ -193,6 +211,11 @@ export default async function ProjectPage({ params }: PageProps) {
               </div>
             ))}
           </dl>
+        )}
+        {project.nda && (
+          <p className="nda-note meta-text">
+            Under NDA — visuals and figures are abstracted. Happy to walk through details in conversation.
+          </p>
         )}
       </header>
 
@@ -230,6 +253,8 @@ export default async function ProjectPage({ params }: PageProps) {
         </div>
       )}
 
+      {sections.length > 1 && <CaseToc sections={sections} />}
+
       <div className="project-body">
         {project.description && <p className="block-description">{project.description}</p>}
 
@@ -247,6 +272,8 @@ export default async function ProjectPage({ params }: PageProps) {
           </div>
         )}
       </div>
+
+      <Testimonials items={project.testimonials} label="From the team" />
 
       {next && next.slug !== slug && (
         <nav className="container next-project" aria-label="Next project">

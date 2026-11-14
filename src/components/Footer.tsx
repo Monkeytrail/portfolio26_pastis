@@ -15,6 +15,7 @@ interface FooterProps {
   tagline?: string;
   copyright?: string;
   contactEmail?: string;
+  cvUrl?: string;
   socialLinks?: SocialLinks;
 }
 
@@ -25,7 +26,7 @@ const SOCIAL_META: { key: keyof SocialLinks; label: string; icon: string }[] = [
   { key: 'dribbble', label: 'Dribbble', icon: 'db' },
 ];
 
-export default function Footer({ brand, tagline, copyright, contactEmail, socialLinks }: FooterProps) {
+export default function Footer({ brand, tagline, copyright, contactEmail, cvUrl, socialLinks }: FooterProps) {
   const ref = useRef<HTMLElement>(null);
 
   const email = contactEmail ?? 'coffee@jeroenvanginneken.be';
@@ -40,15 +41,17 @@ export default function Footer({ brand, tagline, copyright, contactEmail, social
     {
       heading: 'Navigation',
       items: [
-        { label: 'Work', href: '/' },
+        { label: 'Work', href: '/work' },
         { label: 'System', href: '/system' },
+        { label: 'Lab', href: '/lab' },
         { label: 'About', href: '/about' },
         { label: 'Contact', href: `mailto:${email}` },
+        ...(cvUrl ? [{ label: 'CV (PDF)', href: cvUrl }] : []),
       ],
     },
   ];
 
-  useCustomElementProps(ref, 'pastis-footer', { links, socials }, [email, socials]);
+  useCustomElementProps(ref, 'pastis-footer', { links, socials }, [email, cvUrl, socials]);
 
   return (
     <pastis-footer
