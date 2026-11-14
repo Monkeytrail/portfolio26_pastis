@@ -11,6 +11,7 @@ build/
 
 # Vendored from pastis-design-system via postinstall (scripts/sync-pastis.mjs)
 public/pastis.js
+public/pastis-tokens.css
 
 # Environment variables
 .env
