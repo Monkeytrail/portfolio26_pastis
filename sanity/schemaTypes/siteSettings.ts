@@ -58,7 +58,25 @@ export const siteSettings = defineType({
       name: 'homeAboutCtaLabel',
       title: 'Hero — Secondary CTA Label',
       type: 'string',
-      description: 'e.g. "About me →"',
+      description: 'Links to the design system page (/system), e.g. "Design system →"',
+    }),
+
+    // ── What I do ──
+    defineField({
+      name: 'pillars',
+      title: 'What I Do — Pillars',
+      type: 'array',
+      of: [
+        {
+          type: 'object',
+          fields: [
+            { name: 'title', title: 'Title', type: 'string' },
+            { name: 'desc', title: 'Description', type: 'text', rows: 3 },
+          ],
+          preview: { select: { title: 'title', subtitle: 'desc' } },
+        },
+      ],
+      validation: (Rule) => Rule.max(4),
     }),
 
     // ── Work section ──
@@ -78,6 +96,26 @@ export const siteSettings = defineType({
       title: 'Work Section — Subheading',
       type: 'text',
       rows: 2,
+    }),
+
+    // ── Design system teaser ──
+    defineField({
+      name: 'systemTeaser',
+      title: 'Design System Teaser',
+      type: 'object',
+      fields: [
+        { name: 'label', title: 'Label', type: 'string' },
+        { name: 'heading', title: 'Heading', type: 'string' },
+        { name: 'text', title: 'Text', type: 'text', rows: 3 },
+        { name: 'ctaLabel', title: 'CTA Label', type: 'string' },
+      ],
+    }),
+
+    // ── Contact CTA ──
+    defineField({
+      name: 'contactHeading',
+      title: 'Contact CTA — Heading',
+      type: 'string',
     }),
 
     // ── About page meta ──
@@ -129,6 +167,7 @@ export const siteSettings = defineType({
         { name: 'linkedin', title: 'LinkedIn URL', type: 'url' },
         { name: 'github', title: 'GitHub URL', type: 'url' },
         { name: 'dribbble', title: 'Dribbble URL', type: 'url' },
+        { name: 'figma', title: 'Figma Community URL', type: 'url' },
       ],
     }),
   ],

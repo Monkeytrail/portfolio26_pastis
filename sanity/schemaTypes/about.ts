@@ -13,6 +13,7 @@ export const about = defineType({
     defineField({ name: 'intro', title: 'Introduction', type: 'array', of: [{ type: 'block' }] }),
     defineField({ name: 'getInTouchLabel', title: 'CTA — Get in Touch Label', type: 'string', description: 'e.g. "Get in touch →"' }),
     defineField({ name: 'skills', title: 'Skills', type: 'array', of: [{ type: 'string' }] }),
+    defineField({ name: 'tools', title: 'Tools', type: 'array', of: [{ type: 'string' }], options: { layout: 'tags' } }),
     defineField({ name: 'whatILove', title: 'What I Love', type: 'array', of: [{ type: 'string' }], description: 'List of things/skills you are passionate about' }),
 
     // ── Skills & Expertise section ──
