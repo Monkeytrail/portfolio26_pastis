@@ -4,10 +4,11 @@ import { useState } from 'react';
 
 interface Props {
   email: string;
+  label?: string;
   className?: string;
 }
 
-export default function CopyEmailButton({ email, className }: Props) {
+export default function CopyEmailButton({ email, label, className }: Props) {
   const [copied, setCopied] = useState(false);
 
   const handleCopy = async () => {
@@ -20,7 +21,7 @@ export default function CopyEmailButton({ email, className }: Props) {
 
   return (
     <button onClick={handleCopy} className={className} type="button">
-      {email}
+      {label ?? email}
       <span className="copy-icon" aria-hidden="true">
         {copied ? (
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">

@@ -10,18 +10,20 @@ interface ThemeContextValue {
   toggleTheme: () => void;
 }
 
+// The inline script in layout.tsx resolves localStorage / prefers-color-scheme
+// before paint and writes data-theme; adopt that as the initial state.
+function getInitialTheme(): Theme {
+  if (typeof document === 'undefined') return 'dark';
+  return document.documentElement.getAttribute('data-theme') === 'light' ? 'light' : 'dark';
+}
+
 const ThemeContext = createContext<ThemeContextValue>({
   theme: 'dark',
   toggleTheme: () => {},
 });
 
 export function ThemeProvider({ children }: { children: ReactNode }) {
-  // Light mode temporarily disabled — always use dark.
-  // To re-enable: restore localStorage/matchMedia logic:
-  //   const stored = localStorage.getItem('theme') as Theme | null;
-  //   const preferred = window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
-  //   return stored || preferred;
-  const [theme, setTheme] = useState<Theme>('dark');
+  const [theme, setTheme] = useState<Theme>(getInitialTheme);
 
   const pathname = usePathname();
 

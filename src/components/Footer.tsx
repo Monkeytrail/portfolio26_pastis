@@ -1,12 +1,13 @@
 'use client';
 
-import { useRef } from 'react';
+import { useMemo, useRef } from 'react';
 import { useCustomElementProps } from '@/hooks/useCustomElementProps';
 
-interface SocialLink {
-  label: string;
-  href: string;
-  icon: string;
+interface SocialLinks {
+  linkedin?: string;
+  github?: string;
+  dribbble?: string;
+  figma?: string;
 }
 
 interface FooterProps {
@@ -14,50 +15,47 @@ interface FooterProps {
   tagline?: string;
   copyright?: string;
   contactEmail?: string;
-  socials?: SocialLink[];
+  socialLinks?: SocialLinks;
 }
 
-const FALLBACK: Required<FooterProps> = {
-  brand: 'JvG',
-  tagline: 'UX/UI Designer · Antwerp',
-  copyright: `© ${new Date().getFullYear()} Jeroen van Ginneken`,
-  contactEmail: 'coffee@jeroenvanginneken.be',
-  socials: [
-    { label: 'LinkedIn', href: 'https://linkedin.com/in/jeroenvanginneken', icon: 'in' },
-    { label: 'Dribbble', href: 'https://dribbble.com/jeroenvanginneken', icon: 'db' },
-  ],
-};
+const SOCIAL_META: { key: keyof SocialLinks; label: string; icon: string }[] = [
+  { key: 'linkedin', label: 'LinkedIn', icon: 'in' },
+  { key: 'github', label: 'GitHub', icon: 'gh' },
+  { key: 'figma', label: 'Figma', icon: 'fg' },
+  { key: 'dribbble', label: 'Dribbble', icon: 'db' },
+];
 
-export default function Footer({ brand, tagline, copyright, contactEmail, socials }: FooterProps) {
+export default function Footer({ brand, tagline, copyright, contactEmail, socialLinks }: FooterProps) {
   const ref = useRef<HTMLElement>(null);
 
-  const resolvedBrand = brand ?? FALLBACK.brand;
-  const resolvedTagline = tagline ?? FALLBACK.tagline;
-  const resolvedCopyright = copyright ?? FALLBACK.copyright;
-  const resolvedEmail = contactEmail ?? FALLBACK.contactEmail;
-  const resolvedSocials = socials ?? FALLBACK.socials;
+  const email = contactEmail ?? 'coffee@jeroenvanginneken.be';
+  const socials = useMemo(
+    () => SOCIAL_META
+      .filter(({ key }) => socialLinks?.[key])
+      .map(({ key, label, icon }) => ({ label, href: socialLinks![key]!, icon })),
+    [socialLinks],
+  );
 
   const links = [
     {
       heading: 'Navigation',
       items: [
         { label: 'Work', href: '/' },
+        { label: 'System', href: '/system' },
         { label: 'About', href: '/about' },
-        { label: 'Contact', href: `mailto:${resolvedEmail}` },
+        { label: 'Contact', href: `mailto:${email}` },
       ],
     },
   ];
 
-  useCustomElementProps(ref, 'pastis-footer', { links, socials: resolvedSocials }, [resolvedEmail, resolvedSocials]);
+  useCustomElementProps(ref, 'pastis-footer', { links, socials }, [email, socials]);
 
   return (
     <pastis-footer
       ref={ref}
-      brand={resolvedBrand}
-      tagline={resolvedTagline}
-      copyright={resolvedCopyright}
-    >
-      <pastis-theme-toggle slot="actions" />
-    </pastis-footer>
+      brand={brand ?? 'JvG'}
+      tagline={tagline ?? 'UX Engineer · Antwerp'}
+      copyright={copyright ?? `© ${new Date().getFullYear()} Jeroen van Ginneken`}
+    />
   );
 }
