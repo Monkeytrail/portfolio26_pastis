@@ -47,6 +47,31 @@ export const project = defineType({
       description: 'Your role on the project (e.g. "UX engineer — design system lead")',
     }),
     defineField({
+      name: 'team',
+      title: 'Team',
+      type: 'string',
+      description: 'Who you worked with (e.g. "2 designers, 6 engineers, 1 PM")',
+    }),
+    defineField({
+      name: 'timeline',
+      title: 'Timeline',
+      type: 'string',
+      description: 'e.g. "2023 — 2024 · 14 months"',
+    }),
+    defineField({
+      name: 'outcome',
+      title: 'Outcome (one line)',
+      type: 'string',
+      description: 'The headline result recruiters should remember (e.g. "Cut screen build time by 60%")',
+    }),
+    defineField({
+      name: 'nda',
+      title: 'Under NDA',
+      type: 'boolean',
+      initialValue: false,
+      description: 'Shows a note that visuals and numbers are abstracted',
+    }),
+    defineField({
       name: 'disciplines',
       title: 'Disciplines',
       type: 'array',

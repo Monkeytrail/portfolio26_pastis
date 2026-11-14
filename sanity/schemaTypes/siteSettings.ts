@@ -61,6 +61,43 @@ export const siteSettings = defineType({
       description: 'Links to the design system page (/system), e.g. "Design system →"',
     }),
 
+    // ── Proof ──
+    defineField({
+      name: 'availability',
+      title: 'Availability',
+      type: 'string',
+      description: 'Shown as a status badge in the hero, e.g. "Open to UX engineer roles". Leave empty to hide.',
+    }),
+    defineField({
+      name: 'proofStats',
+      title: 'Proof — Stats',
+      type: 'array',
+      of: [
+        {
+          type: 'object',
+          fields: [
+            { name: 'value', title: 'Value', type: 'string' },
+            { name: 'label', title: 'Label', type: 'string' },
+          ],
+          preview: { select: { title: 'value', subtitle: 'label' } },
+        },
+      ],
+      validation: (Rule) => Rule.max(4),
+    }),
+    defineField({
+      name: 'proofCompanies',
+      title: 'Proof — Companies',
+      type: 'array',
+      of: [{ type: 'string' }],
+      description: 'Companies and clients, shown as a strip under the hero',
+    }),
+    defineField({
+      name: 'cv',
+      title: 'CV (PDF)',
+      type: 'file',
+      options: { accept: 'application/pdf' },
+    }),
+
     // ── What I do ──
     defineField({
       name: 'pillars',
