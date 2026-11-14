@@ -48,8 +48,8 @@ export default async function HomePage() {
         </section>
       )}
 
-      <section className="container section" id="work" aria-labelledby="work-heading">
-        <header className="section-head">
+      <section className="section" id="work" aria-labelledby="work-heading">
+        <header className="container section-head">
           <span className="section-label">{settings?.workSectionLabel ?? 'Selected work'}</span>
           {settings?.workSectionHeading
             ? <h2 id="work-heading" className="section-heading">{settings.workSectionHeading}</h2>
@@ -57,11 +57,11 @@ export default async function HomePage() {
           {settings?.workSectionSubheading && <p className="section-sub">{settings.workSectionSubheading}</p>}
         </header>
 
-        <div className="work-grid">
+        <pastis-shelf className="work-shelf" label="Selected work">
           {projects?.map((project, i) => (
             <ProjectCard key={project._id} project={project} index={i} />
           ))}
-        </div>
+        </pastis-shelf>
       </section>
 
       {teaser?.heading && (

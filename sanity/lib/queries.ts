@@ -1,5 +1,5 @@
 const projectCardFields = `
-  _id, title, slug { current }, shortDescription, year, client, tags, disciplines, gridSize,
+  _id, title, slug { current }, shortDescription, year, client, tags, disciplines,
   coverImage, coverImageLight, "coverVideoUrl": coverVideo.asset->url
 `;
 

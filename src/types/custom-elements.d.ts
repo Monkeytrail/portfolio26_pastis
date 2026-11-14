@@ -71,7 +71,12 @@ declare global {
           tags?: string;
           index?: string;
           size?: string;
+          reveal?: boolean;
           ref?: React.Ref<HTMLElement>;
+        };
+        'pastis-shelf': React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement> & {
+          label?: string;
+          stagger?: number;
         };
         'pastis-statement': React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement> & {
           eyebrow?: string;

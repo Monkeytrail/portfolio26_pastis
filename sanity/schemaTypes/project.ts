@@ -78,6 +78,7 @@ export const project = defineType({
       title: 'Cover Image (Dark)',
       type: 'image',
       options: { hotspot: true },
+      description: 'Cropped to portrait/square cards on the home shelf — set the hotspot on the area that must stay visible.',
       fields: [{ name: 'alt', title: 'Alt text', type: 'string' }],
     }),
     defineField({
@@ -93,20 +94,6 @@ export const project = defineType({
       type: 'file',
       options: { accept: 'video/mp4,video/webm' },
       description: 'Optional short muted loop shown instead of the cover image on the work grid.',
-    }),
-    defineField({
-      name: 'gridSize',
-      title: 'Grid Shape',
-      type: 'string',
-      options: {
-        list: [
-          { title: 'Wide (16:9)', value: 'wide' },
-          { title: 'Tall (4:5)', value: 'tall' },
-          { title: 'Square (1:1)', value: 'square' },
-        ],
-        layout: 'radio',
-      },
-      description: 'Aspect ratio of the cover on the home grid. Leave empty to follow the grid rhythm.',
     }),
     defineField({
       name: 'metrics',

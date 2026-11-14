@@ -348,29 +348,40 @@ pastis-statement:not(:defined) > * { font: inherit; letter-spacing: inherit; }
 }
 
 /* ============================================================
-   HOME — WORK GRID
+   HOME — WORK SHELF
    ============================================================ */
-.work-grid {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr);
-  gap: var(--space-3xl) var(--grid-gutter);
+.work-shelf {
+  /* Full-bleed scroller whose first card lines up with .container content */
+  --pastis-shelf-inset: max(var(--layout-gutter), calc((100% - var(--container-wide)) / 2));
+  --pastis-shelf-item-width: clamp(260px, 27vw, 380px);
+  --pastis-shelf-gap: var(--grid-gutter);
+  /* Equal text blocks keep the bottom-aligned covers level across the row */
+  --pastis-project-card-title-lines: 2;
+  --pastis-project-card-summary-lines: 2;
+  margin-top: calc(-1 * var(--space-xl));
 }
 
-@media (min-width: 900px) {
-  .work-grid {
-    grid-template-columns: repeat(12, minmax(0, 1fr));
-    align-items: start;
-  }
+/* Heights cycle tall → medium → short; the shelf bottom-aligns them.
+   Kept moderate because covers are landscape UI; set the crop with the Sanity hotspot. */
+.work-shelf > :nth-child(3n + 1) { --pastis-project-card-ratio: 3 / 4; }
+.work-shelf > :nth-child(3n + 2) { --pastis-project-card-ratio: 5 / 6; }
+.work-shelf > :nth-child(3n + 3) { --pastis-project-card-ratio: 1 / 1; }
 
-  /* Editorial rhythm: 7/5, 5/7 — the narrow column drops for a staggered edge */
-  .work-item:nth-child(4n + 1),
-  .work-item:nth-child(4n + 4) { grid-column: span 7; }
+.work-shelf img {
+  -webkit-user-drag: none;
+  user-select: none;
+}
 
-  .work-item:nth-child(4n + 2),
-  .work-item:nth-child(4n + 3) { grid-column: span 5; }
+/* Undefined custom elements: lay cards out in a row until pastis.js upgrades them */
+pastis-shelf:not(:defined) {
+  display: flex;
+  gap: var(--grid-gutter);
+  overflow: hidden;
+  padding-inline: max(var(--layout-gutter), calc((100% - var(--container-wide)) / 2));
+}
 
-  .work-item:nth-child(4n + 2) { margin-top: var(--space-4xl); }
-  .work-item:nth-child(4n + 4) { margin-top: calc(-1 * var(--space-2xl)); }
+pastis-shelf:not(:defined) > * {
+  flex: 0 0 clamp(260px, 27vw, 380px);
 }
 
 /* Light-mode cover variants: hide whichever doesn't match the theme */
