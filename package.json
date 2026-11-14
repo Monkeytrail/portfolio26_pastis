@@ -15,7 +15,7 @@
     "@sanity/vision": "^5.2.0",
     "next": "^16.1.4",
     "next-sanity": "^12.0.10",
-    "pastis-design-system": "github:Monkeytrail/pastis-design-system#v2.0.0",
+    "pastis-design-system": "github:Monkeytrail/pastis-design-system#v2.1.0",
     "react": "19.2.3",
     "react-dom": "19.2.3",
     "sanity": "^5.2.0"
