@@ -2,6 +2,7 @@ import Link from 'next/link';
 import { safeFetch } from '@/sanity/lib/client';
 import { featuredTestimonialsQuery, projectsQuery, siteSettingsQuery } from '@/sanity/lib/queries';
 import CopyEmailButton from '@/components/CopyEmailButton';
+import HeroStage from '@/components/HeroStage';
 import ProjectCard from '@/components/ProjectCard';
 import Testimonials from '@/components/Testimonials';
 
@@ -21,33 +22,37 @@ export default async function HomePage() {
 
   return (
     <>
-      <section className="container hero">
-        {settings?.availability && (
-          <p className="availability">
-            <span className="status-dot" aria-hidden="true" />
-            {settings.availability}
-          </p>
-        )}
+      <div className="hero-wrap">
+        <section className="container hero hero--center">
+          {settings?.availability && (
+            <p className="availability">
+              <span className="status-dot" aria-hidden="true" />
+              {settings.availability}
+            </p>
+          )}
 
-        <pastis-statement eyebrow={settings?.heroEyebrow} size="xl">
-          <h1>{settings?.heroHeadline ?? 'Jeroen van Ginneken'}</h1>
-        </pastis-statement>
+          <pastis-statement eyebrow={settings?.heroEyebrow} size="xl">
+            <h1>{settings?.heroHeadline ?? 'Jeroen van Ginneken'}</h1>
+          </pastis-statement>
 
-        <div className="hero-foot">
-          {settings?.heroSubheadline && <p className="lede">{settings.heroSubheadline}</p>}
-          <div className="hero-actions">
-            <a href="#work" className="btn btn--primary">
-              {settings?.homeHeroCtaLabel ?? 'Selected work ↓'}
-            </a>
-            {settings?.cvUrl && (
-              <a href={settings.cvUrl} className="btn">CV (PDF) ↓</a>
-            )}
-            {settings?.contactEmail && (
-              <CopyEmailButton email={settings.contactEmail} label="Copy email" className="btn" />
-            )}
+          <div className="hero-foot">
+            {settings?.heroSubheadline && <p className="lede">{settings.heroSubheadline}</p>}
+            <div className="hero-actions">
+              <a href="#work" className="btn btn--primary">
+                {settings?.homeHeroCtaLabel ?? 'Selected work ↓'}
+              </a>
+              {settings?.cvUrl && (
+                <a href={settings.cvUrl} className="btn">CV (PDF) ↓</a>
+              )}
+              {settings?.contactEmail && (
+                <CopyEmailButton email={settings.contactEmail} label="Copy email" className="btn" />
+              )}
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
+
+        <HeroStage projects={projects ?? undefined} />
+      </div>
 
       {(proofStats.length > 0 || proofCompanies.length > 0) && (
         <section className="container proof" aria-label="Experience at a glance">
