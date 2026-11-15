@@ -121,6 +121,9 @@ declare global {
         'pastis-filter-chip': React.HTMLAttributes<HTMLElement> & {
           label?: string; value?: string; selected?: boolean; removable?: boolean; count?: number;
         };
+        'pastis-filter-bar': React.HTMLAttributes<HTMLElement> & {
+          label?: string; ref?: React.Ref<HTMLElement>;
+        };
         'pastis-pagination': React.HTMLAttributes<HTMLElement> & {
           total?: number; page?: number; 'page-size'?: number; variant?: string;
         };
