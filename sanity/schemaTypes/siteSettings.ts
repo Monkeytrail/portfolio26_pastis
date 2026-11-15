@@ -131,5 +131,18 @@ export const siteSettings = defineType({
         { name: 'dribbble', title: 'Dribbble URL', type: 'url' },
       ],
     }),
+    defineField({
+      name: 'proofItems',
+      title: 'Proof Strip — Items',
+      description: 'Company names or proof points shown as a strip below the hero (e.g. "Dematic", "City of Antwerp")',
+      type: 'array',
+      of: [{ type: 'string' }],
+    }),
+    defineField({
+      name: 'cvUrl',
+      title: 'CV — Download URL',
+      description: 'Link to a downloadable PDF CV',
+      type: 'string',
+    }),
   ],
 });

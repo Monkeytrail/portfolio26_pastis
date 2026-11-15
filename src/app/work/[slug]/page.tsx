@@ -44,10 +44,9 @@ function ContentBlock({ block }: { block: any }) {
         <Image
           src={imgUrl}
           alt="Project image"
-          width={660}
-          height={440}
-          className="project-content-image"
-          style={{ width: '100%', height: 'auto' }}
+          width={1920}
+          height={1080}
+          style={{ width: '100%', height: 'auto', display: 'block' }}
         />
       );
     }
@@ -64,8 +63,8 @@ function ContentBlock({ block }: { block: any }) {
                 key={i}
                 src={url}
                 alt={`Gallery image ${i + 1}`}
-                width={320}
-                height={240}
+                width={960}
+                height={640}
                 style={{ width: '100%', height: 'auto' }}
               />
             );
@@ -103,51 +102,78 @@ export default async function ProjectPage({ params }: PageProps) {
 
   if (!project) notFound();
 
-  const context = [project.client, project.year].filter(Boolean).join(' · ');
+  const metaParts = [project.client, project.year, ...(project.tags ?? [])].filter(Boolean);
   const coverImageUrl = project.coverImage ? urlForImage(project.coverImage) : null;
+  const sb = project.summaryBox;
+  const hasSummary = sb && (sb.role || sb.team || sb.timeline || sb.tools?.length || sb.outcome);
 
   return (
-    <article className="prose">
-      <Link href="/" className="project-back-link">
-        {settings?.projectBackLinkLabel ?? '← Work'}
-      </Link>
+    <article className="project-page">
+      <div className="project-page-header">
+        <Link href="/" className="project-back-link">
+          {settings?.projectBackLinkLabel ?? '← Work'}
+        </Link>
+        <h1 className="project-title">{project.title}</h1>
+        {metaParts.length > 0 && (
+          <p className="project-meta">{metaParts.join(' · ')}</p>
+        )}
+        {project.description && (
+          <p className="project-description">{project.description}</p>
+        )}
+      </div>
 
-      <h1>{project.title}</h1>
-
-      {context && <p className="project-context">{context}</p>}
-
-      {project.tags?.length > 0 && (
-        <p className="project-tags">{project.tags.join(', ')}</p>
+      {hasSummary && (
+        <div className="project-summary-box">
+          <div className="project-summary-box-inner">
+            {sb.role && <div className="summary-row"><span className="summary-key">Role</span><span className="summary-val">{sb.role}</span></div>}
+            {sb.team && <div className="summary-row"><span className="summary-key">Team</span><span className="summary-val">{sb.team}</span></div>}
+            {sb.timeline && <div className="summary-row"><span className="summary-key">Timeline</span><span className="summary-val">{sb.timeline}</span></div>}
+            {sb.tools?.length > 0 && <div className="summary-row"><span className="summary-key">Tools</span><span className="summary-val">{sb.tools.join(', ')}</span></div>}
+            {sb.outcome && <div className="summary-row"><span className="summary-key">Outcome</span><span className="summary-val">{sb.outcome}</span></div>}
+          </div>
+        </div>
       )}
 
       {coverImageUrl && (
         <Image
           src={coverImageUrl}
           alt={project.title}
-          width={660}
-          height={440}
-          className="project-cover-image"
+          width={1920}
+          height={1080}
+          className="project-img-full"
           priority
+          style={{ width: '100%', height: 'auto' }}
         />
       )}
 
-      {project.description && (
-        <p className="project-description">{project.description}</p>
+      {project.detailedContent?.map((block: any, i: number) => {
+        const isMedia = block.contentType === 'image' || block.contentType === 'gallery';
+        if (isMedia) {
+          return <ContentBlock key={i} block={block} />;
+        }
+        return (
+          <div key={i} className="project-body-text">
+            <ContentBlock block={block} />
+          </div>
+        );
+      })}
+
+      {project.testimonial?.quote && (
+        <div className="project-body-text">
+          <div className="project-testimonial">
+            <blockquote>"{project.testimonial.quote}"</blockquote>
+            <cite>
+              {project.testimonial.author}
+              {project.testimonial.authorRole && ` · ${project.testimonial.authorRole}`}
+            </cite>
+          </div>
+        </div>
       )}
 
-      {project.detailedContent?.map((block: any, i: number) => (
-        <ContentBlock key={i} block={block} />
-      ))}
-
       {project.links?.length > 0 && (
-        <div className="project-links">
+        <div className="project-page-footer">
           {project.links.map((link: { label: string; url: string }) => (
-            <a
-              key={link.url}
-              href={link.url}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
+            <a key={link.url} href={link.url} target="_blank" rel="noopener noreferrer">
               {link.label} ↗
             </a>
           ))}

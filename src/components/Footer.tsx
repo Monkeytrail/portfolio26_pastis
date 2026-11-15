@@ -42,6 +42,7 @@ export default function Footer({ brand, tagline, copyright, contactEmail, social
       heading: 'Navigation',
       items: [
         { label: 'Work', href: '/' },
+        { label: 'System', href: '/system' },
         { label: 'About', href: '/about' },
         { label: 'Contact', href: `mailto:${resolvedEmail}` },
       ],
@@ -53,11 +54,10 @@ export default function Footer({ brand, tagline, copyright, contactEmail, social
   return (
     <pastis-footer
       ref={ref}
+      variant="minimal"
       brand={resolvedBrand}
       tagline={resolvedTagline}
       copyright={resolvedCopyright}
-    >
-      <pastis-theme-toggle slot="actions" />
-    </pastis-footer>
+    />
   );
 }

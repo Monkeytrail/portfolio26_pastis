@@ -7,7 +7,8 @@ export const allProjectsQuery = `*[_type == "project"] | order(order asc) {
 }`;
 
 export const projectBySlugQuery = `*[_type == "project" && slug.current == $slug][0] {
-  _id, title, slug { current }, shortDescription, description, client, year, coverImage, detailedContent, links
+  _id, title, slug { current }, shortDescription, description, client, year, coverImage, detailedContent, links,
+  summaryBox, testimonial
 }`;
 
 export const projectSlugsQuery = `*[_type == "project"]{ "slug": slug.current }`;
@@ -27,5 +28,6 @@ export const siteSettingsQuery = `*[_type == "siteSettings"][0] {
   workSectionLabel, workSectionHeading, workSectionSubheading,
   aboutPageTitle, aboutPageDescription,
   projectBackLinkLabel,
-  contactEmail, footerTagline, footerCopyright, socialLinks
+  contactEmail, footerTagline, footerCopyright, socialLinks,
+  proofItems, cvUrl
 }`;
