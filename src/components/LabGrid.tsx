@@ -1,4 +1,5 @@
 import TokenPlayground from '@/components/lab/TokenPlayground';
+import RssReaderDemo from '@/components/lab/RssReaderDemo';
 
 export function LabGrid() {
   return (
@@ -9,6 +10,13 @@ export function LabGrid() {
           <p className="lab-experiment-desc">Change the accent — every Pastis component follows live.</p>
         </header>
         <TokenPlayground />
+      </div>
+      <div className="lab-experiment">
+        <header>
+          <h3 className="lab-experiment-title">RSS Reader</h3>
+          <p className="lab-experiment-desc">A demo of my personal feed reader, rebuilt from Pastis components. Filter, save and read.</p>
+        </header>
+        <RssReaderDemo />
       </div>
     </div>
   );

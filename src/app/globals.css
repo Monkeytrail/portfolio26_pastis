@@ -1170,6 +1170,60 @@ img {
   clip: rect(0,0,0,0); white-space: nowrap; border: 0;
 }
 
+/* RSS reader demo */
+.rss-demo-stats { display: flex; gap: 0.5rem; }
+
+.rss-demo-built { display: flex; flex-direction: column; gap: 0.625rem; }
+.rss-demo-built p,
+.rss-demo-built .chip-list { margin: 0; }
+
+.rss-demo-feed { gap: 1.5rem; }
+
+.rss-demo-day { display: flex; flex-direction: column; gap: 0.75rem; }
+.rss-demo-day h4 { margin: 0; }
+
+.rss-demo-article {
+  display: flex;
+  flex-direction: column;
+  gap: 0.375rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid var(--border-default);
+  transition: opacity 0.2s ease;
+}
+
+.rss-demo-article[data-read] { opacity: 0.45; }
+
+.rss-demo-source {
+  margin: 0;
+  font-family: var(--font-family-mono, monospace);
+  font-size: 11px;
+  letter-spacing: 0.05em;
+  color: var(--text-tertiary);
+}
+
+.rss-demo-title {
+  padding: 0;
+  border: 0;
+  background: none;
+  text-align: left;
+  font: inherit;
+  font-size: 1.0625rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  cursor: pointer;
+}
+
+.rss-demo-title:hover { text-decoration: underline; }
+
+.rss-demo-title:focus-visible {
+  outline: 2px solid var(--border-focus);
+  outline-offset: 2px;
+}
+
+.rss-demo-summary { margin: 0; font-size: 0.875rem; color: var(--text-secondary); }
+
+.rss-demo-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 0.5rem; }
+
 /* Colour swatches (design system playground) */
 .swatches { display: flex; flex-wrap: wrap; gap: 10px; }
 
@@ -1365,7 +1419,7 @@ img {
 /* Chip list (lab page) */
 .chip-list { list-style: none; display: flex; flex-wrap: wrap; gap: 0.5rem; padding: 0; margin: 0.75rem 0 0; }
 
-/* DS card (homepage) */
+/* Explore system link (playground) */
 .lab-ds-link {
   font-family: var(--font-family-mono, monospace);
   font-size: 11px;

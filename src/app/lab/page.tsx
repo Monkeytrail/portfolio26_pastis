@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import TokenPlayground from '@/components/lab/TokenPlayground';
+import RssReaderDemo from '@/components/lab/RssReaderDemo';
 
 export const metadata: Metadata = {
   title: 'Lab — Jeroen van Ginneken',
@@ -8,6 +9,7 @@ export const metadata: Metadata = {
 };
 
 const TAGS = ['Design tokens', 'Web components', 'Theming'];
+const RSS_TAGS = ['Astro', 'Design system', 'Offline-first'];
 
 export default function LabPage() {
   return (
@@ -30,6 +32,19 @@ export default function LabPage() {
           </ul>
         </header>
         <TokenPlayground />
+      </section>
+
+      <section id="rss-reader" className="lab-full-experiment" aria-labelledby="rss-reader-heading">
+        <header>
+          <h2 id="rss-reader-heading" className="lab-experiment-title">RSS Reader</h2>
+          <p className="lab-experiment-desc">
+            My personal feed reader, built in Astro and styled with Pastis tokens. It pulls feeds at build time, suggests new sources from Hacker News, Lobsters and dev.to, and keeps read and saved state local-first. The real app is private, so this demo rebuilds its core flow from Pastis components with sample articles.
+          </p>
+          <ul className="chip-list">
+            {RSS_TAGS.map((t) => <li key={t}><pastis-tag size="sm">{t}</pastis-tag></li>)}
+          </ul>
+        </header>
+        <RssReaderDemo />
       </section>
     </div>
   );
