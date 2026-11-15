@@ -11,6 +11,8 @@ interface NavProps {
 
 function getActiveId(pathname: string): string {
   if (pathname === '/') return 'work';
+  if (pathname.startsWith('/system')) return 'system';
+  if (pathname.startsWith('/lab')) return 'lab';
   if (pathname.startsWith('/about')) return 'about';
   if (pathname.startsWith('/work')) return 'work';
   return 'work';
@@ -23,6 +25,7 @@ export default function Nav({ brand, contactEmail }: NavProps) {
 
   const NAV_ITEMS = [
     { id: 'work', label: 'Work', href: '/' },
+    { id: 'system', label: 'System', href: '/system' },
     { id: 'about', label: 'About', href: '/about' },
     { id: 'contact', label: 'Contact', href: `mailto:${contactEmail ?? 'coffee@jeroenvanginneken.be'}` },
   ];

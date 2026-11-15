@@ -144,6 +144,28 @@ export const project = defineType({
         },
       ],
     }),
+    defineField({
+      name: 'summaryBox',
+      title: 'Summary Box',
+      type: 'object',
+      fields: [
+        { name: 'role', title: 'Role', type: 'string' },
+        { name: 'team', title: 'Team', type: 'string' },
+        { name: 'timeline', title: 'Timeline', type: 'string' },
+        { name: 'tools', title: 'Tools', type: 'array', of: [{ type: 'string' }] },
+        { name: 'outcome', title: 'Outcome', type: 'text', rows: 3 },
+      ],
+    }),
+    defineField({
+      name: 'testimonial',
+      title: 'Testimonial',
+      type: 'object',
+      fields: [
+        { name: 'quote', title: 'Quote', type: 'text', rows: 3 },
+        { name: 'author', title: 'Author', type: 'string' },
+        { name: 'authorRole', title: 'Author Role', type: 'string' },
+      ],
+    }),
   ],
   preview: {
     select: { title: 'title', subtitle: 'client', media: 'coverImage' },

@@ -1,49 +1,100 @@
+import Link from 'next/link';
+import Image from 'next/image';
 import { client } from '@/sanity/lib/client';
-import { projectsQuery, siteSettingsQuery } from '@/sanity/lib/queries';
-import CopyEmailButton from '@/components/CopyEmailButton';
+import { projectsQuery, aboutQuery, siteSettingsQuery } from '@/sanity/lib/queries';
+import { urlForImage } from '@/sanity/lib/image';
+import { DragScroll } from '@/components/DragScroll';
+import { ScrollTheme } from '@/components/ScrollTheme';
+import { CopyEmailButton } from '@/components/CopyEmailButton';
+import { LabGrid } from '@/components/LabGrid';
 
 export default async function HomePage() {
   let projects: any[] = [];
+  let about: any = null;
   let settings: any = null;
 
   try {
-    [projects, settings] = await Promise.all([
+    [projects, about, settings] = await Promise.all([
       client.fetch(projectsQuery),
+      client.fetch(aboutQuery),
       client.fetch(siteSettingsQuery),
     ]);
   } catch { }
 
+  const experience: any[] = Array.isArray(about?.experience) ? about.experience : [];
+
   return (
-    <div className="prose prose--home">
-      <h1>{settings?.heroHeadline}</h1>
-      <p>{settings?.heroSubheadline}</p>
+    <div className="hp">
+      <ScrollTheme />
+      <DragScroll selector=".hp-grid" />
 
-      <h2 className="work-section-title">Selected work</h2>
+      {/* Hero */}
+      <section className="hp-hero" data-scroll-theme="light">
+        <p className="hp-eyebrow">{settings?.heroEyebrow}</p>
+        {settings?.heroHeadline && <h1 className="hp-heading">{settings.heroHeadline}</h1>}
+        <p className="hp-bio" style={{ whiteSpace: 'pre-line' }}>{settings?.heroSubheadline}</p>
+        <div className="hp-cta-row">
+          {settings?.contactEmail && (
+            <CopyEmailButton email={settings.contactEmail} />
+          )}
+          {settings?.socialLinks?.linkedin && (
+            <a href={settings.socialLinks.linkedin} target="_blank" rel="noopener noreferrer" style={{ display: 'inline-block' }}>
+              <pastis-button variant="ghost">LinkedIn ↗</pastis-button>
+            </a>
+          )}
+        </div>
+      </section>
 
-      <ul className="work-list">
-        {projects?.map((project: any) => (
-          <li key={project._id}>
-            <div className="work-row">
-              <span className="work-title">{project.title}</span>
-              {project.year && <span className="work-year">{project.year}</span>}
-            </div>
-            {project.shortDescription && (
-              <p className="work-desc">{project.shortDescription}</p>
-            )}
-          </li>
-        ))}
-      </ul>
+      {/* Work — full-width carousel */}
+      {projects.length > 0 && (
+        <section className="hp-section hp-work-section" data-scroll-theme="light">
+          <p className="hp-section-label">Selected work</p>
+          <div className="hp-grid">
+            {projects.map((project: any) => {
+              const imageUrl = project.coverImage ? urlForImage(project.coverImage) : null;
+              return (
+                // Cards temporarily not clickable — restore as <Link href={`/work/${project.slug?.current}`}> to re-enable
+                <div key={project._id} className="hp-card">
+                  <div className="hp-card-inner">
+                    {imageUrl
+                      ? <Image src={imageUrl} alt={project.title} fill sizes="(max-width:768px) 100vw, 70vw" style={{ objectFit: 'cover' }} />
+                      : <div className="hp-card-bg" />
+                    }
+                  </div>
+                  <div className="hp-card-info">
+                    <span className="hp-card-title">{project.title}</span>
+                    {project.year && <span className="hp-card-year">{project.year}</span>}
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </section>
+      )}
 
-      <div className="hero-actions">
-        {settings?.socialLinks?.linkedin && (
-          <a href={settings.socialLinks.linkedin} target="_blank" rel="noopener noreferrer" className="hero-btn">
-            LinkedIn ↗
-          </a>
-        )}
-        {settings?.contactEmail && (
-          <CopyEmailButton email={settings.contactEmail} className="hero-btn" />
-        )}
-      </div>
+      {/* Experience */}
+      {experience.length > 0 && (
+        <section className="hp-section" data-scroll-theme="dark">
+          <p className="hp-section-label">Experience</p>
+          <ul className="hp-exp">
+            {experience.map((item: any, i: number) => (
+              <li key={i} className="hp-exp-row">
+                <span className="hp-exp-company">{item.company}</span>
+                <span className="hp-exp-desc">
+                  {item.role}{item.period ? ` · ${item.period}` : ''}
+                </span>
+              </li>
+            ))}
+          </ul>
+        </section>
+      )}
+
+      {/* Lab */}
+      <section className="hp-section" data-scroll-theme="dark">
+        <p className="hp-section-label">Lab</p>
+        <LabGrid />
+      </section>
+
     </div>
   );
 }

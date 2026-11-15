@@ -3,9 +3,9 @@ import { resolve, dirname } from 'path';
 import { fileURLToPath } from 'url';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
+const dist = resolve(__dirname, '../node_modules/pastis-design-system/dist');
+const pub  = resolve(__dirname, '../public');
 
-const src = resolve(__dirname, '../node_modules/pastis-design-system/dist/pastis.js');
-const dest = resolve(__dirname, '../public/pastis.js');
-
-copyFileSync(src, dest);
-console.log('Synced pastis.js from pastis-design-system into public/');
+copyFileSync(resolve(dist, 'pastis.js'),         resolve(pub, 'pastis.js'));
+copyFileSync(resolve(dist, 'pastis-tokens.css'), resolve(pub, 'pastis-tokens.css'));
+console.log('Synced pastis.js + pastis-tokens.css from pastis-design-system into public/');
