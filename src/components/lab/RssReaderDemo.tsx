@@ -64,7 +64,7 @@ export default function RssReaderDemo() {
         <pastis-filter-bar ref={filterBarRef} label="Topics" />
 
         <div className="rss-demo-stats">
-          <pastis-badge variant="primary">{unreadCount} unread</pastis-badge>
+          <pastis-badge>{unreadCount} unread</pastis-badge>
           <pastis-badge>{saved.size} saved</pastis-badge>
         </div>
 
@@ -79,7 +79,7 @@ export default function RssReaderDemo() {
       <div className="lab-preview rss-demo-feed">
         {days.map((day) => (
           <section key={day} className="rss-demo-day" aria-label={day}>
-            <h4 className="meta-text">{day}</h4>
+            <h3 className="meta-text">{day}</h3>
             {visible.filter((a) => a.day === day).map((a) => {
               const isRead = read.has(a.id);
               const isSaved = saved.has(a.id);

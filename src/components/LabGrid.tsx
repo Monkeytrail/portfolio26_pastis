@@ -6,14 +6,14 @@ export function LabGrid() {
     <div className="lab-experiments">
       <div className="lab-experiment">
         <header>
-          <h3 className="lab-experiment-title">Pastis Design System Playground</h3>
+          <h2 className="lab-experiment-title">Pastis Design System Playground</h2>
           <p className="lab-experiment-desc">Change the accent — every Pastis component follows live.</p>
         </header>
         <TokenPlayground />
       </div>
       <div className="lab-experiment">
         <header>
-          <h3 className="lab-experiment-title">RSS Reader</h3>
+          <h2 className="lab-experiment-title">RSS Reader</h2>
           <p className="lab-experiment-desc">A demo of my personal feed reader, rebuilt from Pastis components. Filter, save and read.</p>
         </header>
         <RssReaderDemo />

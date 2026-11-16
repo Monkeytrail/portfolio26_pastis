@@ -7,7 +7,12 @@ export const allProjectsQuery = `*[_type == "project"] | order(order asc) {
 }`;
 
 export const projectBySlugQuery = `*[_type == "project" && slug.current == $slug][0] {
-  _id, title, slug { current }, shortDescription, description, client, year, coverImage, detailedContent, links,
+  _id, title, slug { current }, shortDescription, description, client, year, coverImage, links,
+  detailedContent[] {
+    ...,
+    image { ..., "filename": asset->originalFilename },
+    images[] { ..., "filename": asset->originalFilename }
+  },
   summaryBox, testimonial
 }`;
 

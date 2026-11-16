@@ -30,7 +30,7 @@ export default async function HomePage() {
 
       {/* Hero */}
       <section className="hp-hero" data-scroll-theme="light">
-        <p className="hp-eyebrow">{settings?.heroEyebrow}</p>
+        {settings?.heroEyebrow && <p className="hp-eyebrow">{settings.heroEyebrow}</p>}
         {settings?.heroHeadline && <h1 className="hp-heading">{settings.heroHeadline}</h1>}
         <p className="hp-bio" style={{ whiteSpace: 'pre-line' }}>{settings?.heroSubheadline}</p>
         <div className="hp-cta-row">
@@ -38,9 +38,7 @@ export default async function HomePage() {
             <CopyEmailButton email={settings.contactEmail} />
           )}
           {settings?.socialLinks?.linkedin && (
-            <a href={settings.socialLinks.linkedin} target="_blank" rel="noopener noreferrer" style={{ display: 'inline-block' }}>
-              <pastis-button variant="ghost">LinkedIn ↗</pastis-button>
-            </a>
+            <pastis-button variant="ghost" href={settings.socialLinks.linkedin} target="_blank">LinkedIn ↗</pastis-button>
           )}
         </div>
       </section>
@@ -53,8 +51,7 @@ export default async function HomePage() {
             {projects.map((project: any) => {
               const imageUrl = project.coverImage ? urlForImage(project.coverImage) : null;
               return (
-                // Cards temporarily not clickable — restore as <Link href={`/work/${project.slug?.current}`}> to re-enable
-                <div key={project._id} className="hp-card">
+                <Link key={project._id} href={`/work/${project.slug?.current}`} className="hp-card">
                   <div className="hp-card-inner">
                     {imageUrl
                       ? <Image src={imageUrl} alt={project.title} fill sizes="(max-width:768px) 100vw, 70vw" style={{ objectFit: 'cover' }} />
@@ -65,7 +62,7 @@ export default async function HomePage() {
                     <span className="hp-card-title">{project.title}</span>
                     {project.year && <span className="hp-card-year">{project.year}</span>}
                   </div>
-                </div>
+                </Link>
               );
             })}
           </div>

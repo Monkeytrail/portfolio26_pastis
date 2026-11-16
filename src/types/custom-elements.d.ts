@@ -24,6 +24,7 @@ declare global {
           size?: string;
           disabled?: string;
           href?: string;
+          target?: string;
           copy?: string;
           ref?: React.Ref<HTMLElement>;
         };
