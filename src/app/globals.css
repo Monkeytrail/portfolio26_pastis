@@ -448,6 +448,19 @@ img {
   align-items: center;
 }
 
+/* Ghost buttons here hover like the primary email button (offset shadow) instead of filling. */
+.hp-cta-row pastis-button[variant="ghost"]::part(button):hover {
+  background: transparent;
+  color: var(--text-primary);
+  border-color: var(--action-ghost-border);
+  box-shadow: var(--shadow-xl);
+}
+
+.hp-cta-row pastis-button[variant="ghost"]::part(button):active {
+  transform: translate(2px, 2px);
+  box-shadow: var(--shadow-lg);
+}
+
 /* Section */
 .hp-section {
   margin-top: 64px;
@@ -635,10 +648,13 @@ img {
   box-shadow: 0 24px 64px rgba(0, 0, 0, 0.18);
 }
 
+/* Transparent PNGs are designed on white; keep the hero tint from showing through.
+   .project-media-img does the same for the content images. */
 .project-hero-window img {
   display: block;
   width: 100%;
   height: auto;
+  background: #fff;
 }
 
 .project-hero-bare {
@@ -731,6 +747,7 @@ img {
   height: auto;
   border-radius: 16px;
   border: 1px solid var(--border-default);
+  background: #fff;
 }
 
 .project-content-gallery {

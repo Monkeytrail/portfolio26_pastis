@@ -50,6 +50,9 @@ function altFor(img: any, projectTitle: string, index: number) {
   return `${projectTitle} — screen ${number}`;
 }
 
+// Shared by single images and gallery images in the content flow.
+const mediaImageSize = { width: 1440, height: 1800, sizes: '(max-width: 640px) 100vw, 912px' };
+
 function ContentBlock({ block, projectTitle }: { block: any; projectTitle: string }) {
   switch (block.contentType) {
     case 'heading':
@@ -68,9 +71,7 @@ function ContentBlock({ block, projectTitle }: { block: any; projectTitle: strin
         <Image
           src={imgUrl}
           alt={altFor(block.image, projectTitle, 0)}
-          width={1440}
-          height={1800}
-          sizes="(max-width: 640px) 100vw, 912px"
+          {...mediaImageSize}
           className="project-media-img"
         />
       );
@@ -89,9 +90,7 @@ function ContentBlock({ block, projectTitle }: { block: any; projectTitle: strin
                 key={i}
                 src={url}
                 alt={altFor(img, projectTitle, i)}
-                width={1440}
-                height={1800}
-                sizes="(max-width: 640px) 100vw, 912px"
+                {...mediaImageSize}
                 className={leadFull && i === 0 ? 'project-media-img is-full' : 'project-media-img'}
               />
             );
@@ -158,7 +157,14 @@ export default async function ProjectPage({ params }: PageProps) {
           <div className="project-hero">
             {backLink}
             <div className="project-hero-window">
-              <Image src={heroUrl} alt={altFor(blocks[heroIndex].image, project.title, 0)} width={1440} height={1800} sizes="(max-width: 640px) 90vw, 800px" priority />
+              <Image
+                src={heroUrl}
+                alt={altFor(blocks[heroIndex].image, project.title, 0)}
+                width={1440}
+                height={1800}
+                sizes="(max-width: 640px) 90vw, 800px"
+                priority
+              />
             </div>
           </div>
         ) : (
@@ -184,9 +190,14 @@ export default async function ProjectPage({ params }: PageProps) {
           <div className="project-media">
             {rest.map((block, i) => {
               const isMedia = block.contentType === 'image' || block.contentType === 'gallery';
-              return isMedia
-                ? <ContentBlock key={i} block={block} projectTitle={project.title} />
-                : <div key={i} className="project-narrow"><ContentBlock block={block} projectTitle={project.title} /></div>;
+              if (isMedia) {
+                return <ContentBlock key={i} block={block} projectTitle={project.title} />;
+              }
+              return (
+                <div key={i} className="project-narrow">
+                  <ContentBlock block={block} projectTitle={project.title} />
+                </div>
+              );
             })}
           </div>
         )}
