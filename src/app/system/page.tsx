@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import TokenTable from '@/components/TokenTable';
 
 export const metadata = {
   title: 'System — Jeroen van Ginneken',
@@ -6,25 +7,27 @@ export const metadata = {
 };
 
 const SWATCHES = [
-  { name: 'Background', token: '--bg-primary', hex: '#0d0d0d' },
-  { name: 'Surface', token: '--bg-card', hex: '#1e1e1e' },
-  { name: 'Elevated', token: '--bg-elevated', hex: '#262522' },
-  { name: 'Text', token: '--text-primary', hex: '#f9f4da' },
-  { name: 'Muted', token: '--text-tertiary', hex: '#909498' },
-  { name: 'Primary', token: '--action-primary', hex: '#fcba28' },
-  { name: 'Secondary', token: '--action-secondary', hex: '#fc7428' },
-  { name: 'Border', token: '--border-default', hex: '#383c44' },
+  { name: 'Background', token: '--bg-primary' },
+  { name: 'Surface', token: '--bg-card' },
+  { name: 'Elevated', token: '--bg-elevated' },
+  { name: 'Text', token: '--text-primary' },
+  { name: 'Muted', token: '--text-tertiary' },
+  { name: 'Primary', token: '--action-primary' },
+  { name: 'Secondary', token: '--action-secondary' },
+  { name: 'Border', token: '--border-default' },
 ];
 
+const TYPE_TOKENS = ['--font-size-display', '--font-size-body', '--font-size-body-sm', '--font-size-micro'];
+
 const TOKENS = [
-  { token: '--bg-primary', value: '#0d0d0d', desc: 'Page background' },
-  { token: '--text-primary', value: '#f9f4da', desc: 'Body text' },
-  { token: '--text-tertiary', value: '#909498', desc: 'Muted / metadata' },
-  { token: '--action-primary', value: '#fcba28', desc: 'Interactive highlight' },
-  { token: '--border-default', value: '#383c44', desc: 'Dividers' },
-  { token: '--radius-md', value: '6px', desc: 'Default border radius' },
-  { token: '--radius-full', value: '9999px', desc: 'Pills' },
-  { token: '--transition-base', value: '200ms ease', desc: 'Default transition' },
+  { token: '--bg-primary', usage: 'Page background' },
+  { token: '--text-primary', usage: 'Body text' },
+  { token: '--text-tertiary', usage: 'Muted / metadata' },
+  { token: '--action-primary', usage: 'Interactive highlight' },
+  { token: '--border-default', usage: 'Dividers' },
+  { token: '--radius-md', usage: 'Default border radius' },
+  { token: '--radius-full', usage: 'Pills' },
+  { token: '--transition-base', usage: 'Default transition' },
 ];
 
 export default function SystemPage() {
@@ -38,79 +41,51 @@ export default function SystemPage() {
         A Lit-based web component library that powers this portfolio — built to prove Figma-to-code
         parity in practice, not just in theory.{' '}
         <a href="https://github.com/Monkeytrail/pastis-design-system" target="_blank" rel="noopener noreferrer">
-          GitHub ↗
+          GitHub <span aria-hidden="true">↗</span>
         </a>
       </p>
 
-      <section className="system-section">
-        <h2 className="system-section-label">Colour</h2>
+      <section className="system-section" aria-labelledby="colour-heading">
+        <h2 id="colour-heading">Colour</h2>
+        {/* VIBE-KILLER GAP: no grid component in Pastis; layout-only rule in globals.css */}
         <div className="system-swatches">
           {SWATCHES.map((s) => (
-            <div key={s.token} className="swatch">
-              <div className="swatch-color" style={{ background: s.hex }} />
-              <span className="swatch-name">{s.name}</span>
-              <span className="swatch-hex">{s.hex}</span>
-            </div>
+            <pastis-token-swatch key={s.token} token={s.token} label={s.name} />
           ))}
         </div>
       </section>
 
-      <section className="system-section">
-        <h2 className="system-section-label">Typography</h2>
-        <div className="system-type-samples">
-          <div className="type-sample">
-            <span className="type-meta">Display · 2rem · 500</span>
-            <p className="type-preview type--display">The quick brown fox</p>
-          </div>
-          <div className="type-sample">
-            <span className="type-meta">Body · 1rem · 400</span>
-            <p className="type-preview type--body">The quick brown fox jumps over the lazy dog</p>
-          </div>
-          <div className="type-sample">
-            <span className="type-meta">Small · 0.8125rem · 400</span>
-            <p className="type-preview type--small">The quick brown fox jumps over the lazy dog</p>
-          </div>
-          <div className="type-sample">
-            <span className="type-meta">Label · 0.6875rem · 700 · caps</span>
-            <p className="type-preview type--label">Selected work</p>
-          </div>
-        </div>
+      <section className="system-section" aria-labelledby="typography-heading">
+        <h2 id="typography-heading">Typography</h2>
+        <pastis-spec-table
+          kind="type"
+          tokens={JSON.stringify(TYPE_TOKENS)}
+          sample="The quick brown fox"
+        />
       </section>
 
-      <section className="system-section">
-        <h2 className="system-section-label">Components</h2>
+      <section className="system-section" aria-labelledby="components-heading">
+        <h2 id="components-heading">Components</h2>
+        {/* VIBE-KILLER GAP: no button group in Pastis; layout-only rule in globals.css */}
         <div className="system-buttons">
-          <button className="system-btn system-btn--primary">Primary action</button>
-          <button className="system-btn system-btn--secondary">Secondary</button>
-          <span className="system-btn system-btn--secondary">
-            Link button ↗
-          </span>
+          <pastis-button variant="primary">Primary action</pastis-button>
+          <pastis-button variant="secondary">Secondary</pastis-button>
+          <pastis-button
+            variant="ghost"
+            href="https://github.com/Monkeytrail/pastis-design-system"
+            target="_blank"
+          >
+            Link button <span aria-hidden="true">↗</span>
+          </pastis-button>
         </div>
       </section>
 
-      <section className="system-section">
-        <h2 className="system-section-label">Tokens</h2>
-        <p style={{ fontSize: '0.875rem', color: 'var(--text-tertiary)', marginBottom: '1rem' }}>
+      <section className="system-section" aria-labelledby="tokens-heading">
+        <h2 id="tokens-heading">Tokens</h2>
+        <p>
           Distributed as CSS custom properties via <code>pastis-tokens.css</code>.
         </p>
-        <table className="system-token-table">
-          <thead>
-            <tr>
-              <th>Token</th>
-              <th>Value</th>
-              <th>Usage</th>
-            </tr>
-          </thead>
-          <tbody>
-            {TOKENS.map((t) => (
-              <tr key={t.token}>
-                <td>{t.token}</td>
-                <td>{t.value}</td>
-                <td>{t.desc}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
+        <TokenTable tokens={TOKENS} />
       </section>
     </div>
   );

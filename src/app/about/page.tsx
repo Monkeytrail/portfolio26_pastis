@@ -8,7 +8,7 @@ import { urlForImage } from '@/sanity/lib/image';
 export async function generateMetadata(): Promise<Metadata> {
   const settings = await safeFetch<any>(siteSettingsQuery);
   return {
-    title: settings?.aboutPageTitle,
+    title: settings?.aboutPageTitle || 'About — Jeroen van Ginneken',
     description: settings?.aboutPageDescription,
   };
 }

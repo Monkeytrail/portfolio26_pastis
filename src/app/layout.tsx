@@ -9,10 +9,10 @@ import SiteShell from '@/components/SiteShell';
 export async function generateMetadata(): Promise<Metadata> {
   const settings = await safeFetch<any>(siteSettingsQuery);
   return {
-    title: settings?.siteTitle ?? 'Jeroen van Ginneken — UX/UI Designer',
+    title: settings?.siteTitle ?? 'Jeroen van Ginneken — Senior UX Designer',
     description:
       settings?.siteDescription ??
-      'Portfolio of Jeroen van Ginneken, a UX/UI designer based in Antwerp.',
+      'Portfolio of Jeroen van Ginneken, a senior UX designer in Antwerp designing complex B2B software and design systems.',
   };
 }
 

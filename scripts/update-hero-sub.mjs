@@ -14,18 +14,22 @@ const client = createClient({
   useCdn: false,
 });
 
-const heroSubheadline = `I'm a UX designer from the Netherlands, now based in Belgium, with over 10 years of experience creating products that genuinely work for the people using them. I care deeply about the details — usability, accessibility, and finding the right balance between good design and technical reality.
+const heroSubheadline = `10+ years designing complex software that people rely on every day. Based in Antwerp.
 
-Right now I'm at Dematic, where I design warehouse management software for automated environments and help shape the design system that keeps everything consistent. Before that, I spent time at viaVictor crafting accessible digital experiences for governments, universities, and cultural institutions — and at Innomedio and Xsarus, building e-commerce platforms for brands like JBC and Omoda.
+At Dematic I design accessible warehouse management software for automated warehouses, working to WCAG 2.2 AA, and work on the design system behind it. I also built Pastis, the web-component design system that runs this site. Before that I created accessible services for governments and universities at viaVictor, and e-commerce platforms for JBC and Omoda.
 
-I love working closely with developers and use AI to get ideas into a prototype fast, so decisions are grounded in something tangible.`;
+I work closely with developers and prototype in code, with AI, so decisions rest on something real.
+
+Open to conversations about senior UX designer or UX engineer roles.`;
+
+const heroHeadline = 'Senior UX designer for complex B2B software and design systems';
 
 const existing = await client.fetch(`*[_type == "siteSettings"][0]{ _id }`);
 
 if (existing?._id) {
-  await client.patch(existing._id).set({ heroSubheadline }).commit();
-  console.log('Updated heroSubheadline on existing siteSettings document.');
+  await client.patch(existing._id).set({ heroHeadline, heroSubheadline }).commit();
+  console.log('Updated heroHeadline and heroSubheadline on existing siteSettings document.');
 } else {
-  await client.create({ _type: 'siteSettings', heroSubheadline });
-  console.log('Created siteSettings document with heroSubheadline.');
+  await client.create({ _type: 'siteSettings', heroHeadline, heroSubheadline });
+  console.log('Created siteSettings document with heroHeadline and heroSubheadline.');
 }

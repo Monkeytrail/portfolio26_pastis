@@ -1,9 +1,7 @@
-import Link from 'next/link';
 import Image from 'next/image';
 import { client } from '@/sanity/lib/client';
 import { projectsQuery, aboutQuery, siteSettingsQuery } from '@/sanity/lib/queries';
 import { urlForImage } from '@/sanity/lib/image';
-import { DragScroll } from '@/components/DragScroll';
 import { ScrollTheme } from '@/components/ScrollTheme';
 import { CopyEmailButton } from '@/components/CopyEmailButton';
 import { LabGrid } from '@/components/LabGrid';
@@ -22,60 +20,64 @@ export default async function HomePage() {
   } catch { }
 
   const experience: any[] = Array.isArray(about?.experience) ? about.experience : [];
+  const bio: string[] = (settings?.heroSubheadline ?? '').split(/\n\s*\n/).filter(Boolean);
 
   return (
     <div className="hp">
       <ScrollTheme />
-      <DragScroll selector=".hp-grid" />
 
       {/* Hero */}
       <section className="hp-hero" data-scroll-theme="light">
-        <p className="hp-eyebrow">{settings?.heroEyebrow}</p>
-        {settings?.heroHeadline && <h1 className="hp-heading">{settings.heroHeadline}</h1>}
-        <p className="hp-bio" style={{ whiteSpace: 'pre-line' }}>{settings?.heroSubheadline}</p>
+        {settings?.heroHeadline && (
+          <pastis-statement eyebrow={settings?.heroEyebrow} size="md">
+            <h1>{settings.heroHeadline}</h1>
+          </pastis-statement>
+        )}
+        <div className="hp-bio">
+          {bio.map((para, i) => <p key={i}>{para}</p>)}
+        </div>
+        {/* VIBE-KILLER GAP: no button group in Pastis; layout-only rule in globals.css */}
         <div className="hp-cta-row">
           {settings?.contactEmail && (
             <CopyEmailButton email={settings.contactEmail} />
           )}
           {settings?.socialLinks?.linkedin && (
-            <a href={settings.socialLinks.linkedin} target="_blank" rel="noopener noreferrer" style={{ display: 'inline-block' }}>
-              <pastis-button variant="ghost">LinkedIn ↗</pastis-button>
-            </a>
+            <pastis-button variant="ghost" href={settings.socialLinks.linkedin} target="_blank">
+              LinkedIn <span aria-hidden="true">↗</span>
+            </pastis-button>
           )}
         </div>
       </section>
 
-      {/* Work — full-width carousel */}
+      {/* Work — full-width shelf */}
       {projects.length > 0 && (
         <section className="hp-section hp-work-section" data-scroll-theme="light">
-          <p className="hp-section-label">Selected work</p>
-          <div className="hp-grid">
+          <h2 className="hp-section-label">Selected work</h2>
+          <pastis-shelf label="Selected work">
             {projects.map((project: any) => {
               const imageUrl = project.coverImage ? urlForImage(project.coverImage) : null;
               return (
-                // Cards temporarily not clickable — restore as <Link href={`/work/${project.slug?.current}`}> to re-enable
-                <div key={project._id} className="hp-card">
-                  <div className="hp-card-inner">
-                    {imageUrl
-                      ? <Image src={imageUrl} alt={project.title} fill sizes="(max-width:768px) 100vw, 70vw" style={{ objectFit: 'cover' }} />
-                      : <div className="hp-card-bg" />
-                    }
-                  </div>
-                  <div className="hp-card-info">
-                    <span className="hp-card-title">{project.title}</span>
-                    {project.year && <span className="hp-card-year">{project.year}</span>}
-                  </div>
-                </div>
+                <pastis-project-card
+                  key={project._id}
+                  href={`/work/${project.slug?.current}`}
+                  heading={project.title}
+                  year={project.year ? String(project.year) : undefined}
+                  size="tall"
+                >
+                  {imageUrl && (
+                    <Image slot="media" src={imageUrl} alt="" fill sizes="(max-width:768px) 86vw, 380px" />
+                  )}
+                </pastis-project-card>
               );
             })}
-          </div>
+          </pastis-shelf>
         </section>
       )}
 
       {/* Experience */}
       {experience.length > 0 && (
-        <section className="hp-section" data-scroll-theme="dark">
-          <p className="hp-section-label">Experience</p>
+        <section className="hp-section" data-scroll-theme="dark" aria-labelledby="experience-heading">
+          <h2 id="experience-heading" className="hp-section-label">Experience</h2>
           <ul className="hp-exp">
             {experience.map((item: any, i: number) => (
               <li key={i} className="hp-exp-row">
@@ -90,8 +92,8 @@ export default async function HomePage() {
       )}
 
       {/* Lab */}
-      <section className="hp-section" data-scroll-theme="dark">
-        <p className="hp-section-label">Lab</p>
+      <section className="hp-section" data-scroll-theme="dark" aria-labelledby="lab-heading">
+        <h2 id="lab-heading" className="hp-section-label">Lab</h2>
         <LabGrid />
       </section>
 

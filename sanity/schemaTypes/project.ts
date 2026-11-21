@@ -1,5 +1,12 @@
 import { defineType, defineField } from 'sanity';
 
+const altField = defineField({
+  name: 'alt',
+  title: 'Alt text',
+  type: 'string',
+  description: 'Describes the image for screen readers. Falls back to the file name if empty.',
+});
+
 export const project = defineType({
   name: 'project',
   title: 'Project',
@@ -103,12 +110,13 @@ export const project = defineType({
               title: 'Image',
               type: 'image',
               options: { hotspot: true },
+              fields: [altField],
             },
             {
               name: 'images',
               title: 'Images (Gallery)',
               type: 'array',
-              of: [{ type: 'image', options: { hotspot: true } }],
+              of: [{ type: 'image', options: { hotspot: true }, fields: [altField] }],
             },
             {
               name: 'items',

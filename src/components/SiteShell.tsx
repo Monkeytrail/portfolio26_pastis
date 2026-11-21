@@ -26,11 +26,11 @@ export default function SiteShell({ children, brand, contactEmail, tagline, copy
     socialLinks?.dribbble && { label: 'Dribbble', href: socialLinks.dribbble, icon: 'db' },
   ].filter(Boolean) as { label: string; href: string; icon: string }[];
 
-  const isHome = pathname === '/';
+  const hideNav = pathname === '/' || pathname?.startsWith('/work/');
 
   return (
     <>
-      {!isHome && <Nav brand={brand} contactEmail={contactEmail} />}
+      {!hideNav && <Nav brand={brand} contactEmail={contactEmail} />}
       <main>{children}</main>
       <Footer
         brand={brand}
