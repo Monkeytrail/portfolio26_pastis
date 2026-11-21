@@ -1,6 +1,5 @@
 'use client';
 
-import Link from 'next/link';
 import { useEffect, useRef, useState } from 'react';
 import { contrastRatio } from '@/lib/contrast';
 
@@ -269,7 +268,9 @@ export default function TokenPlayground() {
           Label on accent: {ratio.toFixed(1)}:1 {ratio >= 4.5 ? '· AA ✓' : '· below AA'}
         </p>
 
-        <Link href="/system" className="lab-ds-link">Explore system ↗</Link>
+        <a href="https://pastis-ds.netlify.app" target="_blank" rel="noopener noreferrer" className="lab-ds-link">
+          Explore system ↗
+        </a>
       </div>
 
       <div className="lab-preview" style={tokens}>
