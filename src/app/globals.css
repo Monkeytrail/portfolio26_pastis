@@ -538,6 +538,10 @@ img {
   background: #fff;
 }
 
+.project-hero-cover img {
+  object-fit: cover;
+}
+
 .project-hero-bare {
   position: relative;
   height: 96px;

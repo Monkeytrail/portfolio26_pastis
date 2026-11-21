@@ -143,6 +143,8 @@ export default async function ProjectPage({ params }: PageProps) {
   const heroIndex = blocks.findIndex((b) => b.contentType === 'image' && b.image);
   const heroUrl = heroIndex >= 0 ? urlForImage(blocks[heroIndex].image) : null;
   const rest = blocks.filter((_, i) => i !== heroIndex);
+  // Projects without screenshots (e.g. confidential work) show their homepage card image instead.
+  const coverUrl = heroUrl ? null : urlForImage(project.coverImage);
 
   const backLink = (
     <Link href="/" className="project-back-pill">
@@ -166,6 +168,11 @@ export default async function ProjectPage({ params }: PageProps) {
                 priority
               />
             </div>
+          </div>
+        ) : coverUrl ? (
+          <div className="project-hero project-hero-cover">
+            {backLink}
+            <Image src={coverUrl} alt="" fill sizes="100vw" priority />
           </div>
         ) : (
           <div className="project-hero-bare">{backLink}</div>
