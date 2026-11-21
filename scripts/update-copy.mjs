@@ -34,7 +34,7 @@ Open to conversations about senior UX designer or UX engineer roles.`,
   '48678004-e1bd-4de7-a006-337db567cd69': {
     title: 'Fleet Management Software',
     year: '2024 - Current',
-    description: "Control software for fleets of automated vehicles — AGVs and shuttles — in KION's automated warehouses. Built on the KION design system for a consistent experience across products.",
+    description: "Control software for fleets of automated vehicles — AGVs and shuttles — in KION's automated warehouses. Built on the KION design system for a consistent experience across products. Screenshots aren't shown here because the product is confidential, but I'm happy to walk you through the work in a conversation.",
   },
   'fcaecda5-f77b-4d4a-ade5-b7493b4f77ce': {
     title: 'Cultuur Centra Antwerpen',

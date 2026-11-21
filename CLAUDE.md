@@ -9,7 +9,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 - `npm run start` — run the production build
 - No lint, typecheck, or test scripts are configured in `package.json`. Use `npx tsc --noEmit` for a manual typecheck if needed.
 - Sanity Studio is not run separately — it's mounted inside the Next app at `/studio` (see Architecture).
-- One-off content scripts live in `scripts/` (e.g. `scripts/upload-projects.mjs`) and are run directly with `node`, e.g. `SANITY_API_TOKEN=... node scripts/upload-projects.mjs`. They require a `SANITY_API_TOKEN` env var with write access to the Sanity dataset.
+- One-off content scripts live in `scripts/` (e.g. `scripts/upload-projects.mjs`) and are run directly with `node`, e.g. `node --env-file=.env.local scripts/upload-projects.mjs`. They require a `SANITY_API_TOKEN` with write access to the Sanity dataset, stored in the gitignored `.env.local`.
 
 ## Architecture
 

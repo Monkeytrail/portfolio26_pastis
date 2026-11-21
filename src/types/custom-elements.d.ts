@@ -145,6 +145,23 @@ declare global {
         };
         'pastis-table': React.HTMLAttributes<HTMLElement> & {
           columns?: unknown[]; rows?: unknown[]; striped?: boolean; hoverable?: boolean;
+          ref?: React.Ref<HTMLElement>;
+        };
+        'pastis-statement': React.HTMLAttributes<HTMLElement> & {
+          eyebrow?: string; size?: string; reveal?: boolean;
+        };
+        'pastis-shelf': React.HTMLAttributes<HTMLElement> & {
+          label?: string; stagger?: number;
+        };
+        'pastis-project-card': React.HTMLAttributes<HTMLElement> & {
+          href?: string; heading?: string; client?: string; year?: string; summary?: string;
+          image?: string; 'image-alt'?: string; size?: string; reveal?: boolean; key?: React.Key;
+        };
+        'pastis-token-swatch': React.HTMLAttributes<HTMLElement> & {
+          token?: string; label?: string; key?: React.Key;
+        };
+        'pastis-spec-table': React.HTMLAttributes<HTMLElement> & {
+          tokens?: string; kind?: string; caption?: string; sample?: string;
         };
         'pastis-tabs': React.HTMLAttributes<HTMLElement> & {
           tabs?: unknown[]; active?: string; variant?: string;

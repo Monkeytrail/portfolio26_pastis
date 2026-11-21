@@ -410,170 +410,47 @@ img {
 .hp {
   max-width: 900px;
   margin: 0 auto;
-  padding: 0 24px 100px;
+  padding: 0 var(--space-lg) var(--space-4xl);
 }
 
-/* Hero */
+/* Layout only. Pastis has no page container, stack, button group or eyebrow type style (vibe-killer gaps) */
 .hp-hero {
-  padding: 72px 0 56px;
-}
-
-.hp-eyebrow {
-  font-size: 0.8125rem;
-  color: var(--text-tertiary);
-  margin-bottom: 0.75rem;
-}
-
-.hp-heading {
-  font-size: clamp(2rem, 5vw, 3rem);
-  font-weight: 500;
-  letter-spacing: -0.02em;
-  line-height: 1.1;
-  color: var(--text-primary);
-  margin-bottom: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+  padding: var(--space-3xl) 0 var(--space-2xl);
 }
 
 .hp-bio {
-  font-size: 0.9375rem;
-  line-height: 1.75;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+  max-width: var(--container-prose);
   color: var(--text-secondary);
 }
 
-/* CTA row — layout only; buttons are <pastis-button> */
-.hp-cta-row {
-  display: flex;
-  gap: 0.75rem;
-  flex-wrap: wrap;
-  margin-top: 2rem;
-  align-items: center;
-}
+.hp-cta-row { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-sm); }
 
-/* Ghost buttons here hover like the primary email button (offset shadow) instead of filling. */
-.hp-cta-row pastis-button[variant="ghost"]::part(button):hover {
-  background: transparent;
-  color: var(--text-primary);
-  border-color: var(--action-ghost-border);
-  box-shadow: var(--shadow-xl);
-}
-
-.hp-cta-row pastis-button[variant="ghost"]::part(button):active {
-  transform: translate(2px, 2px);
-  box-shadow: var(--shadow-lg);
-}
-
-/* Section */
-.hp-section {
-  margin-top: 64px;
-}
-
-/* Work section breaks out of the max-width column */
-.hp-work-section {
-  /* overflow: hidden removed — it was clipping the full-viewport carousel */
-}
+.hp-section { margin-top: var(--space-3xl); }
 
 .hp-section-label {
-  font-size: 0.75rem;
-  font-weight: 500;
+  font-size: var(--font-size-caption);
+  font-weight: var(--font-weight-medium);
   text-transform: uppercase;
-  letter-spacing: 0.08em;
+  letter-spacing: var(--letter-spacing-wide);
   color: var(--text-tertiary);
-  margin-bottom: 1.5rem;
+  margin-bottom: var(--space-lg);
 }
 
-/* ── Collins work carousel — full-viewport horizontal scroll ── */
-.hp-grid {
-  display: flex;
-  align-items: flex-start; /* required for vertical stagger */
-  gap: 0.75rem;
-  overflow-x: auto;
-  scroll-snap-type: x mandatory;
-  scrollbar-width: none;
-  cursor: grab;
-  /* full viewport width, first card aligns with content */
-  width: 100vw;
-  box-sizing: border-box;
-  margin-left: calc(-1 * max(24px, (100vw - 900px) / 2 + 24px));
-  padding: 24px 48px 56px max(24px, (100vw - 900px) / 2 + 24px);
-  scroll-padding-left: max(24px, (100vw - 900px) / 2 + 24px);
+/* Shelf breaks out of the .hp column; its first card lines up with the column edge */
+.hp-work-section pastis-shelf {
+  margin-inline: calc(50% - 50vw);
+  --pastis-shelf-inset: max(var(--space-lg), (100vw - 900px) / 2 + var(--space-lg));
+  --pastis-project-card-title-lines: 2;
 }
 
-.hp-grid::-webkit-scrollbar { display: none; }
-.hp-grid:active { cursor: grabbing; }
-.hp-grid { user-select: none; }
-
-/* Portrait cards, Collins style */
-.hp-card {
-  display: block;
-  text-decoration: none;
-  outline: none;
-  flex: 0 0 min(374px, 70vw);
-  scroll-snap-align: start;
-}
-
-/* Stagger: even cards drop down */
-.hp-card:nth-child(even) { margin-top: 58px; }
-
-.hp-card-inner {
-  position: relative;
-  aspect-ratio: 3 / 4;
-  clip-path: inset(0 round 1rem);
-  transform-origin: bottom;
-  transition: transform 0.8s cubic-bezier(0.19, 1, 0.22, 1),
-              clip-path 0.8s cubic-bezier(0.19, 1, 0.22, 1);
-  will-change: transform;
-  background: var(--bg-card);
-}
-
-.hp-card:hover .hp-card-inner,
-.hp-card:focus-visible .hp-card-inner {
-  transform: perspective(1500px) rotateX(-10deg);
-}
-
-.hp-card:hover:active .hp-card-inner {
-  transform: perspective(1500px) rotateX(0deg);
-}
-
-.hp-card-bg {
-  width: 100%;
-  height: 100%;
-  background: var(--bg-elevated);
-}
-
-/* Card title fades in on hover */
-.hp-card-info {
-  display: flex;
-  justify-content: space-between;
-  align-items: baseline;
-  gap: 0.75rem;
-  padding: 0.5rem 0.25rem 0;
-  opacity: 0;
-  transform: translateY(4px);
-  transition: opacity 0.3s ease, transform 0.3s ease;
-}
-
-.hp-card:hover .hp-card-info {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.hp-card-title {
-  font-size: 0.875rem;
-  font-weight: 500;
-  color: var(--text-primary);
-  line-height: 1.3;
-}
-
-.hp-card-year {
-  font-size: 0.8125rem;
-  color: var(--text-tertiary);
-  flex-shrink: 0;
-}
-
-@media (max-width: 640px) {
-  .hp-hero { padding: 48px 0 40px; }
-  .hp-card { flex: 0 0 86vw; }
-  .hp-exp-row { grid-template-columns: 1fr; gap: 0.25rem; }
-}
+/* Stagger: the shelf bottom-aligns cards, so lifting the odd ones drops the even ones */
+.hp-work-section pastis-project-card:nth-child(odd) { margin-bottom: var(--space-3xl); }
 
 /* ── Experience — Collins list style ── */
 .hp-exp {
@@ -608,6 +485,10 @@ img {
   font-size: 0.9rem;
   color: var(--text-tertiary);
   line-height: 1.5;
+}
+
+@media (max-width: 640px) {
+  .hp-exp-row { grid-template-columns: 1fr; gap: 0.25rem; }
 }
 
 /* ── Lab & System ── */
@@ -897,120 +778,24 @@ img {
   margin-bottom: 0.5rem;
 }
 
-.system-section { margin-top: 3.5rem; }
+/* Layout only. Pastis has no in-column section, grid or button-group component (vibe-killer gaps) */
+.system-section { display: flex; flex-direction: column; gap: var(--space-lg); }
 
-.system-section-label {
-  font-size: 0.6875rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: var(--letter-spacing-wide);
-  color: var(--text-tertiary);
-  margin-bottom: 1.25rem;
-}
+.system-section > p { margin-bottom: 0; }
 
 .system-swatches {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 1rem;
+  gap: var(--space-md);
 }
 
 @media (max-width: 480px) { .system-swatches { grid-template-columns: repeat(2, 1fr); } }
 
-.swatch-color {
-  height: 48px;
-  border-radius: var(--radius-md);
-  margin-bottom: 0.5rem;
-  border: 1px solid var(--border-default);
-}
+.system-buttons { display: flex; flex-wrap: wrap; gap: var(--space-sm); }
 
-.swatch-name { display: block; font-size: 0.75rem; color: var(--text-secondary); }
-.swatch-hex { display: block; font-size: 0.6875rem; color: var(--text-tertiary); font-family: monospace; }
-
-.system-type-samples { display: flex; flex-direction: column; }
-
-.type-sample {
-  display: flex;
-  align-items: baseline;
-  gap: 1.5rem;
-  padding: 0.875rem 0;
-  border-top: 1px solid var(--border-default);
-}
-
-.type-sample:last-child { border-bottom: 1px solid var(--border-default); }
-
-.type-meta {
-  font-size: 0.6875rem;
-  color: var(--text-tertiary);
-  white-space: nowrap;
-  min-width: 200px;
-  flex-shrink: 0;
-}
-
-.type-preview { margin: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-.type--display { font-size: 2rem; font-weight: 500; color: var(--text-primary); }
-.type--body { font-size: 1rem; color: var(--text-secondary); }
-.type--small { font-size: 0.8125rem; color: var(--text-secondary); }
-.type--label { font-size: 0.6875rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-tertiary); }
-
-.system-buttons { display: flex; gap: 0.75rem; flex-wrap: wrap; margin-top: 1rem; }
-
-.system-btn {
-  display: inline-flex;
-  align-items: center;
-  padding: 0.5rem 1rem;
-  font-size: 0.875rem;
-  font-weight: 500;
-  border-radius: var(--radius-md);
-  cursor: pointer;
-  font-family: inherit;
-  transition: all var(--transition-fast);
-  text-decoration: none;
-}
-
-.system-btn--primary {
-  background: var(--action-primary);
-  color: var(--action-primary-text);
-  border: none;
-}
-
-.system-btn--secondary {
-  background: transparent;
-  color: var(--text-secondary);
-  border: 1px solid var(--border-default);
-}
-
-.system-btn--secondary:hover {
-  border-color: var(--action-primary);
-  color: var(--text-primary);
-}
-
-.system-token-table {
-  width: 100%;
-  border-collapse: collapse;
-  font-size: 0.8125rem;
-  margin-top: 0;
-}
-
-.system-token-table th {
-  text-align: left;
-  padding: 0.5rem 0.75rem;
-  font-size: 0.6875rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  color: var(--text-tertiary);
-  border-bottom: 1px solid var(--border-default);
-}
-
-.system-token-table td {
-  padding: 0.625rem 0.75rem;
-  border-bottom: 1px solid var(--border-default);
-  color: var(--text-secondary);
-}
-
-.system-token-table tr:last-child td { border-bottom: none; }
-.system-token-table td:first-child { font-family: monospace; color: var(--text-primary); font-size: 0.75rem; }
-.system-token-table td:nth-child(2) { font-family: monospace; color: var(--text-tertiary); font-size: 0.75rem; }
+/* VIBE-KILLER GAP: pastis-spec-table's nowrap type preview stretches an auto-layout
+   table past its container. Remove once fixed upstream in pastis-spec-table. */
+pastis-spec-table::part(table) { table-layout: fixed; }
 
 /* ============================================================
    LAB — experiments (homepage + detail page)
